@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Discovery artefacts can be tens of MB; the derived config is what matters.
+discovery/network_log.json
+discovery/hydration_blobs.json
+discovery/*.html

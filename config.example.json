@@ -1,0 +1,11 @@
+{
+  "_comment": "Written automatically by `python -m qpscrape discover` to discovery/config.json. Edit by hand only to correct what discovery inferred.",
+  "api": {
+    "url": "https://baku.quizplease.com/<path-discovery-found>",
+    "method": "GET",
+    "query_params": {"city": "baku", "type": "past"},
+    "pagination": {"style": "page", "param": "page", "start": 1, "step": 1},
+    "headers": {"accept": "application/json", "x-requested-with": "XMLHttpRequest"},
+    "post_data": null
+  }
+}
