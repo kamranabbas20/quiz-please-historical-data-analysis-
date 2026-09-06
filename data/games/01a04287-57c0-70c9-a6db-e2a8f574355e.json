@@ -1,0 +1,187 @@
+{
+  "id": "01a04287-57c0-70c9-a6db-e2a8f574355e",
+  "url": "https://baku.quizplease.com/game/01a04287-57c0-70c9-a6db-e2a8f574355e",
+  "title": "[видеоигры] BAKU",
+  "game_number": "3",
+  "full_title": "[видеоигры] BAKU 3",
+  "package_number": "видеоигры3",
+  "date": "2026-09-01T19:30:00",
+  "date_raw": "01.09.2026 19:30",
+  "registration_opens": "2026-08-27T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 180,
+    "title": "[видеоигры]",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "видеоигры",
+    "Тип": "на эрудицию и логику",
+    "Механики раундов": "угадываем игры по кадрам и аудиодорожкам, выстраиваем серию из правильных ответов подряд, подключаем логику",
+    "Сложность": "нормальная",
+    "Формат": "7 раундов, 2 часа",
+    "Рейтинг": "классика"
+  },
+  "description": "Если вы геймер с подшивкой «Игромании» на антресолях и статьёй «Почему Кодзима гений» в одной из вкладок – эта игра для вас. Вас ждут вопросы по самым разным видеоиграм и будням геймеров. Го на регу!",
+  "welcome_inscription": "Давайте наконец выясним, у кого больше ачивок, что значит iddqd и кто украл у вас сладкий рулет.",
+  "teams_registered": 8,
+  "teams_came": 8,
+  "people_registered": 56,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/gameresults/841f58e063f0c793076b261e7c906310764bd576b0e6e6fb9151cf9fbcd3686f.xlsx",
+  "photos": [],
+  "created_at": "2026-08-27T09:22:41+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Noldor",
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 52,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 6.5,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 7.5,
+        "round_7": 18
+      }
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-сити",
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 51.5,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 6.5,
+        "round_4": 5,
+        "round_5": 5.5,
+        "round_6": 5.5,
+        "round_7": 20
+      }
+    },
+    {
+      "place": 3,
+      "team": "Team Rocket",
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 48.5,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5,
+        "round_3": 5.5,
+        "round_4": 4,
+        "round_5": 6.5,
+        "round_6": 8.5,
+        "round_7": 16
+      }
+    },
+    {
+      "place": 4,
+      "team": "Колобки",
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 42.5,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5,
+        "round_3": 6.5,
+        "round_4": 5,
+        "round_5": 5.5,
+        "round_6": 8.5,
+        "round_7": 9
+      }
+    },
+    {
+      "place": 5,
+      "team": "Low Poly",
+      "rank": "sergeant",
+      "rank_title": "Сержант",
+      "total": 41,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 5.5,
+        "round_4": 5,
+        "round_5": 5.5,
+        "round_6": 6,
+        "round_7": 11
+      }
+    },
+    {
+      "place": 6,
+      "team": "Майнкрафт ЭТО МОЯ ЖИЗНЬ",
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 35.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 3,
+        "round_5": 4,
+        "round_6": 5.5,
+        "round_7": 11
+      }
+    },
+    {
+      "place": 7,
+      "team": "Ванси",
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 34,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 4,
+        "round_3": 4.5,
+        "round_4": 1,
+        "round_5": 3.5,
+        "round_6": 4,
+        "round_7": 14
+      }
+    },
+    {
+      "place": 8,
+      "team": "Бусидо",
+      "rank": "lieutenant",
+      "rank_title": "Лейтенант",
+      "total": 31,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 3,
+        "round_5": 4.5,
+        "round_6": 4.5,
+        "round_7": 7
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T21:42:02.431918+00:00"
+}
