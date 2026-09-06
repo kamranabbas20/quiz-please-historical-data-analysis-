@@ -1,0 +1,189 @@
+{
+  "id": "019f4cf2-365d-73d0-ac40-fa8c0414cd9c",
+  "url": "https://baku.quizplease.com/game/019f4cf2-365d-73d0-ac40-fa8c0414cd9c",
+  "title": "[с др, Гарри Поттер!] BAKU",
+  "game_number": "1",
+  "full_title": "[с др, Гарри Поттер!] BAKU 1",
+  "package_number": "сдгарри2",
+  "date": "2026-07-31T19:30:00",
+  "date_raw": "31.07.2026 19:30",
+  "registration_opens": "2026-07-10T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 2185,
+    "title": "Avenue",
+    "address": "72 Heydər Əliyev prospekti, Bakı 1030",
+    "lat": 40.401156124694054,
+    "lon": 49.87947623357111
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 637,
+    "title": "[с др, Гарри Поттер!]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Не нужно брать кредиты в «Гринготтсе», чтобы купить подарок для Гарри Поттера – одно только ваше присутствие на игре будет лучшим поздравлением для Гарри. Седлайте клювокрылов или по старинке садитесь на метлу и залетайте на нашу игру-праздник!",
+  "welcome_inscription": "Happee birthdae Harry!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-07-10T16:52:49+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Ванси",
+      "team_id": 1179394,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 27,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 6
+      }
+    },
+    {
+      "place": 2,
+      "team": "Как приручить Драко",
+      "team_id": 1179410,
+      "rank": "general",
+      "rank_title": "Генерал",
+      "total": 26,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 5
+      }
+    },
+    {
+      "place": 3,
+      "team": "Колобки",
+      "team_id": 1179383,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 26,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 5
+      }
+    },
+    {
+      "place": 4,
+      "team": "Узники Алкобара",
+      "team_id": 1179416,
+      "rank": "lieutenant",
+      "rank_title": "Лейтенант",
+      "total": 25,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 5
+      }
+    },
+    {
+      "place": 5,
+      "team": "Маглы, но стараемся",
+      "team_id": 1264445,
+      "rank": null,
+      "rank_title": null,
+      "total": 24,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 6
+      }
+    },
+    {
+      "place": 6,
+      "team": "The Smartinies",
+      "team_id": 1264444,
+      "rank": null,
+      "rank_title": null,
+      "total": 20,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 3
+      }
+    },
+    {
+      "place": 7,
+      "team": "Добби свободен, а мы на квизе",
+      "team_id": 1264447,
+      "rank": null,
+      "rank_title": null,
+      "total": 14,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 1,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 2
+      }
+    },
+    {
+      "place": 8,
+      "team": "Gossip Girls",
+      "team_id": 1264446,
+      "rank": null,
+      "rank_title": null,
+      "total": 9,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 0,
+        "round_3": 3,
+        "round_4": 1,
+        "round_5": 3
+      }
+    },
+    {
+      "place": 9,
+      "team": "Орден Пьяного Феникса",
+      "team_id": 1264448,
+      "rank": null,
+      "rank_title": null,
+      "total": 0,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 0,
+        "round_3": 0,
+        "round_4": 0,
+        "round_5": 0
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:19:01.336976+00:00"
+}

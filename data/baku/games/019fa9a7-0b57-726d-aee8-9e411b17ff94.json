@@ -1,0 +1,219 @@
+{
+  "id": "019fa9a7-0b57-726d-aee8-9e411b17ff94",
+  "url": "https://baku.quizplease.com/game/019fa9a7-0b57-726d-aee8-9e411b17ff94",
+  "title": "[music party] 100 хитов BAKU",
+  "game_number": "1",
+  "full_title": "[music party] 100 хитов BAKU 1",
+  "package_number": "100хитов1",
+  "date": "2026-08-25T19:30:00",
+  "date_raw": "25.08.2026 19:30",
+  "registration_opens": "2026-07-28T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 563,
+    "title": "[music party] 100 хитов",
+    "level": "light"
+  },
+  "format": {
+    "Тема": "самые разные песни",
+    "Тип": "музыкальная",
+    "Сложность": "лёгкая",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Если вы поёте «Звезда по имени Sunny» и «Don’t worry, be счастливым, как никто», то это значит, что в вашей голове перепутались все строчки! Регистрируйтесь на эту игру и расставьте по местам этих легендариков! Баллы с этой игры идут вдоль ночных дорог в рейтинг кино и музыки.",
+  "welcome_inscription": "Мою песню услышат тысячи глаз! Моё фото раскупят сотни рук!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-07-28T16:55:24+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179143,
+      "rank": null,
+      "rank_title": "Платиновая пластинка",
+      "total": 111,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 10,
+        "round_3": 10,
+        "round_4": 15,
+        "round_5": 9,
+        "round_6": 10,
+        "round_7": 10,
+        "round_8": 8,
+        "round_9": 10,
+        "round_10": 19
+      }
+    },
+    {
+      "place": 2,
+      "team": "Колобки",
+      "team_id": 1179144,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 103.5,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 9,
+        "round_3": 10,
+        "round_4": 13,
+        "round_5": 8,
+        "round_6": 10,
+        "round_7": 12,
+        "round_8": 9,
+        "round_9": 9.5,
+        "round_10": 13
+      }
+    },
+    {
+      "place": 3,
+      "team": "Слон В.",
+      "team_id": 1179149,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 101,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 10,
+        "round_3": 9,
+        "round_4": 12,
+        "round_5": 7.5,
+        "round_6": 9,
+        "round_7": 12,
+        "round_8": 9,
+        "round_9": 9.5,
+        "round_10": 14
+      }
+    },
+    {
+      "place": 4,
+      "team": "НеВалдис Пельш",
+      "team_id": 1179145,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 100,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 9,
+        "round_3": 8,
+        "round_4": 12,
+        "round_5": 9,
+        "round_6": 10,
+        "round_7": 12,
+        "round_8": 9,
+        "round_9": 10,
+        "round_10": 12
+      }
+    },
+    {
+      "place": 5,
+      "team": "Ванси",
+      "team_id": 1179150,
+      "rank": null,
+      "rank_title": "2 золотая пластинка.",
+      "total": 89.5,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 10,
+        "round_3": 9,
+        "round_4": 10,
+        "round_5": 8,
+        "round_6": 9,
+        "round_7": 10,
+        "round_8": 7,
+        "round_9": 9.5,
+        "round_10": 7
+      }
+    },
+    {
+      "place": 6,
+      "team": "ТРИллер",
+      "team_id": 1179179,
+      "rank": null,
+      "rank_title": "1 виниловая пластинка",
+      "total": 74.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 6.5,
+        "round_6": 10,
+        "round_7": 12,
+        "round_8": 5,
+        "round_9": 7,
+        "round_10": 6
+      }
+    },
+    {
+      "place": 7,
+      "team": "Чувасики",
+      "team_id": 1294907,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 70,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 9,
+        "round_5": 7,
+        "round_6": 7,
+        "round_7": 8,
+        "round_8": 3,
+        "round_9": 7,
+        "round_10": 10
+      }
+    },
+    {
+      "place": 8,
+      "team": "Белочки",
+      "team_id": 1179175,
+      "rank": null,
+      "rank_title": "1 виниловая пластинка",
+      "total": 46.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 3,
+        "round_6": 5,
+        "round_7": 5,
+        "round_8": 2,
+        "round_9": 4.5,
+        "round_10": 4
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:18:51.833869+00:00"
+}

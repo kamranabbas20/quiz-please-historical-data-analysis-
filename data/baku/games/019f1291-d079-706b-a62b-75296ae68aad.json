@@ -1,0 +1,219 @@
+{
+  "id": "019f1291-d079-706b-a62b-75296ae68aad",
+  "url": "https://baku.quizplease.com/game/019f1291-d079-706b-a62b-75296ae68aad",
+  "title": "[угадываем исполнителей] 2000-е BAKU",
+  "game_number": "1",
+  "full_title": "[угадываем исполнителей] 2000-е BAKU 1",
+  "package_number": "угадываем2000",
+  "date": "2026-07-28T19:30:00",
+  "date_raw": "28.07.2026 19:30",
+  "registration_opens": "2026-06-26T23:18:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 635,
+    "title": "[угадываем исполнителей] 2000-е",
+    "level": "light"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Песни нулевых уже можно назвать винтажными. Но это не значит, что слушать мы будем только «Винтаж». Вас ждут треки разных жанров от исполнителей из разных стран. Попробуйте их угадать! Баллы с этой игры увозят за сто морей прямо в рейтинг кино и музыки.",
+  "welcome_inscription": "Помните, кто собирался «Ветром стать»? А у кого «Poker face»?",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-06-29T08:49:33+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": 1179144,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 50,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 9,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 11
+      }
+    },
+    {
+      "place": 2,
+      "team": "НеВалдис Пельш",
+      "team_id": 1179145,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 49,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 12
+      }
+    },
+    {
+      "place": 3,
+      "team": "Ванси",
+      "team_id": 1179150,
+      "rank": null,
+      "rank_title": "2 золотая пластинка.",
+      "total": 49,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 9,
+        "round_3": 10,
+        "round_4": 8,
+        "round_5": 12
+      }
+    },
+    {
+      "place": 4,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179143,
+      "rank": null,
+      "rank_title": "Платиновая пластинка",
+      "total": 49,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 11
+      }
+    },
+    {
+      "place": 5,
+      "team": "Слон В.",
+      "team_id": 1179149,
+      "rank": null,
+      "rank_title": "2 золотая пластинка.",
+      "total": 48,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 11
+      }
+    },
+    {
+      "place": 6,
+      "team": "Team Rocket",
+      "team_id": 1179146,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 48,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 9,
+        "round_3": 10,
+        "round_4": 9,
+        "round_5": 11
+      }
+    },
+    {
+      "place": 7,
+      "team": "Kubachino",
+      "team_id": 1179153,
+      "rank": null,
+      "rank_title": "1 золотая пластинка",
+      "total": 48,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 10
+      }
+    },
+    {
+      "place": 8,
+      "team": "Неглокая Куздра",
+      "team_id": 1263434,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 47,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 12
+      }
+    },
+    {
+      "place": 9,
+      "team": "Скрытый потанцевал",
+      "team_id": 1179156,
+      "rank": null,
+      "rank_title": "3 виниловая пластинка",
+      "total": 47,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 7,
+        "round_3": 10,
+        "round_4": 10,
+        "round_5": 11
+      }
+    },
+    {
+      "place": 10,
+      "team": "Meta-Ersa",
+      "team_id": 1263435,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 42,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 9,
+        "round_4": 8,
+        "round_5": 10
+      }
+    },
+    {
+      "place": 11,
+      "team": "ТРИллер",
+      "team_id": 1179179,
+      "rank": null,
+      "rank_title": "1 виниловая пластинка",
+      "total": 41,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 6,
+        "round_3": 9,
+        "round_4": 8,
+        "round_5": 10
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:19:02.872826+00:00"
+}

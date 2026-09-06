@@ -1,0 +1,189 @@
+{
+  "id": "019fa9a9-809c-70cc-a6a8-7987692601bb",
+  "url": "https://baku.quizplease.com/game/019fa9a9-809c-70cc-a6a8-7987692601bb",
+  "title": "[топовые фильмы и сериалы] BAKU",
+  "game_number": "2",
+  "full_title": "[топовые фильмы и сериалы] BAKU 2",
+  "package_number": "топовыефильмысериалы2",
+  "date": "2026-08-14T19:30:00",
+  "date_raw": "14.08.2026 19:30",
+  "registration_opens": "2026-07-28T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 2185,
+    "title": "Avenue",
+    "address": "72 Heydər Əliyev prospekti, Bakı 1030",
+    "lat": 40.401156124694054,
+    "lon": 49.87947623357111
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 498,
+    "title": "[топовые фильмы и сериалы]",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "про кино и сериалы",
+    "Тип": "про кино",
+    "Механики раундов": "угадываем фильмы и сериалы по кадру и аудиодорожке, слушаем саундтреки, узнаём актёров и режиссёров, разгадываем кроссворд",
+    "Сложность": "нормальная",
+    "Формат": "7 раундов, 2 часа",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Скорее всего вы слышали про Тарантино, Нолана и Бондарчука. Этого достаточно! Фильмы, знакомые по мемам, комедии, цитируемые родителями. Многое вы даже смотрели сами.",
+  "welcome_inscription": "С топовыми фильмами и сериалами приходит топовое веселье!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-07-28T16:58:05+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Noldor",
+      "team_id": 1179147,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 35,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 5.5,
+        "round_5": 7,
+        "round_6": 8.5
+      }
+    },
+    {
+      "place": 2,
+      "team": "Лоразепам",
+      "team_id": 1179152,
+      "rank": null,
+      "rank_title": "1 золотая пластинка",
+      "total": 31.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 6,
+        "round_6": 8.5
+      }
+    },
+    {
+      "place": 3,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179143,
+      "rank": null,
+      "rank_title": "Платиновая пластинка",
+      "total": 31,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 7,
+        "round_6": 6
+      }
+    },
+    {
+      "place": 4,
+      "team": "Колобки",
+      "team_id": 1179144,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 27.5,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 3.5,
+        "round_3": 2,
+        "round_4": 6.5,
+        "round_5": 5,
+        "round_6": 7.5
+      }
+    },
+    {
+      "place": 5,
+      "team": "Паша, не пей",
+      "team_id": 1228018,
+      "rank": null,
+      "rank_title": "2 виниловая пластинка",
+      "total": 22.5,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 3.5,
+        "round_5": 6,
+        "round_6": 3
+      }
+    },
+    {
+      "place": 6,
+      "team": "Alt+F4",
+      "team_id": 1229574,
+      "rank": null,
+      "rank_title": "1 виниловая пластинка",
+      "total": 21.5,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 2.5,
+        "round_3": 3,
+        "round_4": 3.5,
+        "round_5": 3,
+        "round_6": 8.5
+      }
+    },
+    {
+      "place": 7,
+      "team": "Сочные дальневосточные",
+      "team_id": 1179312,
+      "rank": null,
+      "rank_title": null,
+      "total": 15.5,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 2.5,
+        "round_3": 3,
+        "round_4": 4.5,
+        "round_5": 3,
+        "round_6": 0.5
+      }
+    },
+    {
+      "place": 8,
+      "team": "Киношные дивы",
+      "team_id": 1283200,
+      "rank": null,
+      "rank_title": null,
+      "total": 11.5,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 1.5,
+        "round_3": 2,
+        "round_4": 1.5,
+        "round_5": 2,
+        "round_6": 3.5
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:18:54.987400+00:00"
+}

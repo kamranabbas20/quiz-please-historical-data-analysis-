@@ -1,0 +1,53 @@
+{
+  "id": "019d2e58-e7aa-7341-91fd-1b48ae3b4e1f",
+  "url": "https://baku.quizplease.com/game/019d2e58-e7aa-7341-91fd-1b48ae3b4e1f",
+  "title": "Квиз, плиз! [криминальный] BAKU",
+  "game_number": "1",
+  "full_title": "Квиз, плиз! [криминальный] BAKU 1",
+  "package_number": "криминал1",
+  "date": "2026-04-14T19:30:00",
+  "date_raw": "14.04.2026 19:30",
+  "registration_opens": "2026-03-26T17:46:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 580,
+    "title": "Квиз, плиз! [криминальный]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Нам кажется, что на этой игре случится что-то криминально крутое и мы можем это доказать! Есть улики: леденящие кровь вопросы, таинственная атмосфера игры и интригующие призы. Найден мотив: провести вечер в компании друзей и пощекотать себе нервишки. Дело раскрыто! Баллы с этой игры идут в досье рейтинга классики.",
+  "welcome_inscription": "Преступления, расследования и разоблачения…",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-03-27T08:11:11+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:19:51.400615+00:00"
+}

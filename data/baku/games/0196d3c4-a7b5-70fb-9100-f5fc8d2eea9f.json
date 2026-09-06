@@ -1,0 +1,53 @@
+{
+  "id": "0196d3c4-a7b5-70fb-9100-f5fc8d2eea9f",
+  "url": "https://baku.quizplease.com/game/0196d3c4-a7b5-70fb-9100-f5fc8d2eea9f",
+  "title": "[мальчик, который выжил] BAKU",
+  "game_number": "1",
+  "full_title": "[мальчик, который выжил] BAKU 1",
+  "package_number": "Мальчик1",
+  "date": "2024-07-30T19:30:00",
+  "date_raw": "30.07.2024 19:30",
+  "registration_opens": "2024-07-23T20:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1154,
+    "title": "Palato cafe",
+    "address": "Bashir Safaroglu 184, Baku",
+    "lat": 40.37602,
+    "lon": 49.84464
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 407,
+    "title": "[мальчик, который выжил]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Happee Birthdae, Harry! Если вы знаете, почему мы написали именно так, то это игра специально для вас! Предлагаем отпраздновать день рождения великого волшебника вместе с Квиз, плиз!",
+  "welcome_inscription": "Вы, может, и не Хагрид, но тортик принести тоже можете. Мы передадим его Гарри, честное слово.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T11:46:42+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:23:59.427201+00:00"
+}

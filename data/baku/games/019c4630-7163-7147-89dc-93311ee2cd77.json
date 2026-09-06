@@ -1,0 +1,60 @@
+{
+  "id": "019c4630-7163-7147-89dc-93311ee2cd77",
+  "url": "https://baku.quizplease.com/game/019c4630-7163-7147-89dc-93311ee2cd77",
+  "title": "[music party] про любовь, про тебя BAKU",
+  "game_number": "1",
+  "full_title": "[music party] про любовь, про тебя BAKU 1",
+  "package_number": "любовь1",
+  "date": "2026-02-13T19:30:00",
+  "date_raw": "13.02.2026 19:30",
+  "registration_opens": "2026-02-09T21:55:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1597,
+    "title": "Emirgan Sütiş",
+    "address": "60 Nizami St, Baku 1005 (NARGIZ MALL, 3 этаж)",
+    "lat": 49.83803528144818,
+    "lon": null
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 447,
+    "title": "[music party] про любовь, про тебя",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "про любовь",
+    "Тип": "музыкальная",
+    "Механики раундов": "слушаем хиты, смотрим клипы, угадываем исполнителей, разгадываем каверы и мэшапы",
+    "Сложность": "нормальная",
+    "Формат": "8 раундов, 2 часа",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Между нами любовь! Вот такая, вот такая любовь! Самая романтичная музыкальная игра, приуроченная ко дню всех влюблённых.",
+  "welcome_inscription": "Про знакомые слова до боли...",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-02-10T06:15:05+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:17.752982+00:00"
+}

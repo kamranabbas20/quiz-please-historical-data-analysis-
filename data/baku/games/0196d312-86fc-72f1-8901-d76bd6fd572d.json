@@ -1,0 +1,53 @@
+{
+  "id": "0196d312-86fc-72f1-8901-d76bd6fd572d",
+  "url": "https://baku.quizplease.com/game/0196d312-86fc-72f1-8901-d76bd6fd572d",
+  "title": "[HALLOWEEN] BAKU",
+  "game_number": "1",
+  "full_title": "[HALLOWEEN] BAKU 1",
+  "package_number": "хэллоуин1",
+  "date": "2023-10-31T19:30:00",
+  "date_raw": "31.10.2023 19:30",
+  "registration_opens": "2023-10-17T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 817,
+    "title": "SAFRANI",
+    "address": "Улица Бакиханова 29, Баку",
+    "lat": 40.39214974161063,
+    "lon": 49.8489108306852
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 119,
+    "title": "[HALLOWEEN]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Празднуем Хэллоуин и играем в тематический Квиз, плиз! Вопросы про самые разнообразные ужасы, какие только могут быть: от хорроров Хичкока до динамики курса рубля. Вооружайтесь чесноком, серебряным колом и берите с собой самых смелых друзей. Будет страшно весело.",
+  "welcome_inscription": "Игра, посвященная Хэллоуин и всему, что с ним связано: собрали в одну игру все самые страшные вопросы. Берите с собой знакомую нечисть и приходите на наш интеллектуальный шабаш.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T08:32:08+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:25:31.888797+00:00"
+}

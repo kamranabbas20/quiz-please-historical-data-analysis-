@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru" data-app="quiz-please-dashboard">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Квиз, плиз! — история результатов команд</title>
+  <meta name="description" content="Интерактивный разбор исторических результатов команд Квиз, плиз!">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <h1>История результатов команд</h1>
+      <span class="sub" id="coverage"></span>
+      <span class="spacer"></span>
+      <button class="theme-toggle" id="themeToggle" type="button">Тема</button>
+    </header>
+
+    <!-- One filter row, above everything it scopes: город → команда → формат → период -->
+    <section class="filters" aria-label="Фильтры">
+      <div class="field field--wide">
+        <label for="city">Город</label>
+        <select id="city"></select>
+      </div>
+      <div class="field field--wide">
+        <label for="team">Команда</label>
+        <select id="team"></select>
+      </div>
+      <div class="field">
+        <label for="gameType">Формат игры</label>
+        <select id="gameType"></select>
+      </div>
+      <div class="field">
+        <label for="league">Лига</label>
+        <select id="league"></select>
+      </div>
+      <div class="field">
+        <label for="season">Сезон</label>
+        <select id="season"></select>
+      </div>
+      <div class="field">
+        <label for="from">С даты</label>
+        <input type="date" id="from">
+      </div>
+      <div class="field">
+        <label for="to">По дату</label>
+        <input type="date" id="to">
+      </div>
+      <button class="reset" id="reset" type="button">Сбросить фильтры</button>
+    </section>
+    <p class="scope-note" id="scopeNote"></p>
+
+    <nav class="tabs" id="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="overview" aria-selected="true">Обзор</button>
+      <button class="tab" role="tab" data-view="games" aria-selected="false">Игры и разбор</button>
+      <button class="tab" role="tab" data-view="types" aria-selected="false">Форматы</button>
+      <button class="tab" role="tab" data-view="compare" aria-selected="false">Сравнение команд</button>
+    </nav>
+
+    <main id="main"></main>
+  </div>
+
+  <script type="module">
+    import { start } from './js/ui.js';
+    start();
+  </script>
+</body>
+</html>

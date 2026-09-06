@@ -1,0 +1,60 @@
+{
+  "id": "0196d3d5-ff4b-7053-8658-c3ede8979e42",
+  "url": "https://baku.quizplease.com/game/0196d3d5-ff4b-7053-8658-c3ede8979e42",
+  "title": "[music party] BAKU",
+  "game_number": "6",
+  "full_title": "[music party] BAKU 6",
+  "package_number": "musicparty6",
+  "date": "2024-10-09T19:30:00",
+  "date_raw": "09.10.2024 19:30",
+  "registration_opens": "2024-09-29T17:37:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 817,
+    "title": "SAFRANI",
+    "address": "Улица Бакиханова 29, Баку",
+    "lat": 40.39214974161063,
+    "lon": 49.8489108306852
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 237,
+    "title": "[music party]",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "музыка",
+    "Тип": "музыкальная",
+    "Механики раундов": "слушаем хиты, смотрим клипы, угадываем исполнителей, разгадываем каверы и мэшапы",
+    "Сложность": "нормальная",
+    "Формат": "8 раундов, 2 часа",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Самая расслабляющая среди музыкальных и самая музыкальная среди всех прочих. В специальной игре пробежимся по хитам разных поколений.",
+  "welcome_inscription": "Так, так, так. Что это у нас здесь? Самая привычная музыкальная игра Квиз, плиз!, на которой лучше всего удаётся петь и веселиться.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T12:05:39+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:23:26.519009+00:00"
+}

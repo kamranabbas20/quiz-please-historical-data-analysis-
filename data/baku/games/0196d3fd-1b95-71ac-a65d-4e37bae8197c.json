@@ -1,0 +1,53 @@
+{
+  "id": "0196d3fd-1b95-71ac-a65d-4e37bae8197c",
+  "url": "https://baku.quizplease.com/game/0196d3fd-1b95-71ac-a65d-4e37bae8197c",
+  "title": "[Happy Birthday] BAKU",
+  "game_number": "2",
+  "full_title": "[Happy Birthday] BAKU 2",
+  "package_number": "hb2",
+  "date": "2025-04-04T19:30:00",
+  "date_raw": "04.04.2025 19:30",
+  "registration_opens": "2025-03-23T18:20:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 817,
+    "title": "SAFRANI",
+    "address": "Улица Бакиханова 29, Баку",
+    "lat": 40.39214974161063,
+    "lon": 49.8489108306852
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 134,
+    "title": "[Happy Birthday]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Наша классическая игра: 7 раундов, 39+ вопросов, торт со свечками (но это неточно) и два с лишним часа радости и позитива.",
+  "welcome_inscription": "Хоть это и наша юбилейная игра, подарки можете не брать. А вот мы вас без награды не оставим —за призовые места, конечно.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T12:48:22+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:22:21.061774+00:00"
+}

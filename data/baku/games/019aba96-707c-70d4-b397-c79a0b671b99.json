@@ -1,0 +1,53 @@
+{
+  "id": "019aba96-707c-70d4-b397-c79a0b671b99",
+  "url": "https://baku.quizplease.com/game/019aba96-707c-70d4-b397-c79a0b671b99",
+  "title": "[music party] хиты BAKU",
+  "game_number": "1",
+  "full_title": "[music party] хиты BAKU 1",
+  "package_number": "хиты1",
+  "date": "2025-12-02T19:30:00",
+  "date_raw": "02.12.2025 19:30",
+  "registration_opens": "2025-11-25T17:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1504,
+    "title": "Roomka",
+    "address": "57 Mehdi Mehdizadə küç., Bakı 1000",
+    "lat": 49.87334730824568,
+    "lon": null
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 533,
+    "title": "[music party] хиты",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Представьте самый хитовый концерт всех времён, кто будет на сцене? «Ария» или «Пицца», Тейлор Свифт или Майкл Джексон? Вам не нужно выбирать — на игре вы услышите их всех! «Listen to the music»!",
+  "welcome_inscription": "Hit the [music party], Jack!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-11-25T10:36:52+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:48.114712+00:00"
+}

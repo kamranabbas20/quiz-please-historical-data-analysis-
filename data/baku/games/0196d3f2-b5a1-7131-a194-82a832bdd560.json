@@ -1,0 +1,53 @@
+{
+  "id": "0196d3f2-b5a1-7131-a194-82a832bdd560",
+  "url": "https://baku.quizplease.com/game/0196d3f2-b5a1-7131-a194-82a832bdd560",
+  "title": "[music party] иностранщина BAKU",
+  "game_number": "1",
+  "full_title": "[music party] иностранщина BAKU 1",
+  "package_number": "иностранщина1",
+  "date": "2025-02-11T19:30:00",
+  "date_raw": "11.02.2025 19:30",
+  "registration_opens": "2025-02-03T19:16:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 443,
+    "title": "[music party] иностранщина",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Ду ю спик инглиш? Игра для тех, кто предпочитает зарубежные хиты отечественным.",
+  "welcome_inscription": "Please don't stop the music... Пропели? Тогда вам точно сюда!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T12:37:00+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:22:44.037660+00:00"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "01999ef4-ceb9-7233-862f-97e0c6e3714f",
+  "url": "https://baku.quizplease.com/game/01999ef4-ceb9-7233-862f-97e0c6e3714f",
+  "title": "[music party] 2010-е BAKU",
+  "game_number": "1",
+  "full_title": "[music party] 2010-е BAKU 1",
+  "package_number": "20101music",
+  "date": "2025-10-07T19:30:00",
+  "date_raw": "07.10.2025 19:30",
+  "registration_opens": "2025-09-28T19:42:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 500,
+    "title": "[music party] 2010-е",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "2010-е... Как же давно это было... Тейлор Свифт ещё не была \"Человеком года\", а группа \"Градусы\", наоборот, была ещё популярна, мы ещё смотрели МУЗ-ТВ, но уже не скачивали музыку через СМС.\nДа ладно, не так много времени прошло! Попробуйте вспомнить, под что вы танцевали на тусах или на дачах, пока ещё всё свежо в памяти. Го на регу!",
+  "welcome_inscription": "Парти фор эврибади! Даже зумеры слышали эти песни",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-10-01T08:47:47+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:21:07.449278+00:00"
+}

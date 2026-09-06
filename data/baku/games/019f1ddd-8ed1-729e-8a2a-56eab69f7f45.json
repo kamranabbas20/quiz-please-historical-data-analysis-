@@ -1,0 +1,204 @@
+{
+  "id": "019f1ddd-8ed1-729e-8a2a-56eab69f7f45",
+  "url": "https://baku.quizplease.com/game/019f1ddd-8ed1-729e-8a2a-56eab69f7f45",
+  "title": "[мемы и приколы] золотая коллекция BAKU",
+  "game_number": "1",
+  "full_title": "[мемы и приколы] золотая коллекция BAKU 1",
+  "package_number": "мемыиприколы1",
+  "date": "2026-07-21T19:30:00",
+  "date_raw": "21.07.2026 19:30",
+  "registration_opens": "2026-07-01T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 638,
+    "title": "[мемы и приколы] золотая коллекция",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Эта игра – аннигиляторная пушка, дирижабль и борщ с капусткой в одном флаконе. Это Люба говорит. Знаете, как правильно произносить слово «шлагбаум»? Умеете готовить плов? Тогда мы идём к вам! Ой, то есть вы – к нам! Баллы с этой игры идут в рейтинг классики, хотя их никто не звал.",
+  "welcome_inscription": "Are you winning, son?",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-07-01T13:28:07+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179384,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 30,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 6
+      }
+    },
+    {
+      "place": 2,
+      "team": "67",
+      "team_id": 1260627,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 30,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 6
+      }
+    },
+    {
+      "place": 3,
+      "team": "Колобки",
+      "team_id": 1179383,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 29,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 4
+      }
+    },
+    {
+      "place": 4,
+      "team": "Кандибобер",
+      "team_id": 1179679,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 28,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 5
+      }
+    },
+    {
+      "place": 5,
+      "team": "Alt+F4",
+      "team_id": 1260626,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 25,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 3
+      }
+    },
+    {
+      "place": 6,
+      "team": "Ванси",
+      "team_id": 1179394,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 25,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 2
+      }
+    },
+    {
+      "place": 7,
+      "team": "Умер от Варенья",
+      "team_id": 1260624,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 22,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 4
+      }
+    },
+    {
+      "place": 8,
+      "team": "Группа в ухо",
+      "team_id": 1260623,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 22,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 5,
+        "round_5": 3
+      }
+    },
+    {
+      "place": 9,
+      "team": "мы тут случайно",
+      "team_id": 1260628,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 18,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 1,
+        "round_3": 2,
+        "round_4": 5,
+        "round_5": 5
+      }
+    },
+    {
+      "place": 10,
+      "team": "Пивозавры",
+      "team_id": 1260625,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 16,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 2,
+        "round_4": 2,
+        "round_5": 2
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:19:06.382050+00:00"
+}

@@ -8,8 +8,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from quizplease.jsobj import JsParseError, parse_nuxt_payload
 from quizplease.scraper import (
-    _parse_block_fields, _parse_datetime, extract_nuxt_state,
-    normalize_game, parse_results_table, results_to_csv_rows,
+    _parse_block_fields, _parse_datetime, extract_nuxt_state, game_csv_row,
+    normalize_results, normalize_state, parse_results_table, results_to_csv_rows,
 )
 from quizplease.xlsx import read_first_sheet
 
@@ -64,7 +64,7 @@ class JsObjTest(unittest.TestCase):
 
 class NormalizeTest(unittest.TestCase):
     def setUp(self):
-        self.record = normalize_game(parse_nuxt_payload(PAYLOAD), "https://example/game/abc")
+        self.record = normalize_state(parse_nuxt_payload(PAYLOAD), "https://example/game/abc")
 
     def test_core_fields(self):
         self.assertEqual(self.record["id"], "abc")
@@ -80,7 +80,13 @@ class NormalizeTest(unittest.TestCase):
     def test_missing_game_raises(self):
         from quizplease.scraper import ScrapeError
         with self.assertRaises(ScrapeError):
-            normalize_game({"data": {"game": {"data": None}}}, "u")
+            normalize_state({"data": {"game": {"data": None}}}, "u")
+
+    def test_game_csv_row(self):
+        row = game_csv_row(self.record)
+        self.assertEqual(row[0], "abc")
+        self.assertEqual(row[2], "Баку")
+        self.assertEqual(row[10], "видеоигры")   # theme, out of the format block
 
     def test_extract_requires_payload(self):
         from quizplease.scraper import ScrapeError
@@ -101,17 +107,41 @@ class ResultsTest(unittest.TestCase):
         self.assertEqual(results[0]["rounds"], {"round_1": 5, "round_2": 6.5})
         self.assertEqual(results[0]["rank_title"], "Недосягаемые")
         self.assertEqual(results[1]["team"], "Ванси")  # trailing tab stripped
+        self.assertIsNone(results[0]["team_id"])       # not present in .xlsx
 
     def test_csv_rows(self):
-        record = normalize_game(parse_nuxt_payload(PAYLOAD), "u")
+        record = normalize_state(parse_nuxt_payload(PAYLOAD), "u")
         record["results"] = parse_results_table(RESULT_ROWS)
         rows = list(results_to_csv_rows(record))
         self.assertEqual(rows[0][-2:], ["round_1", "round_2"])
         self.assertEqual(len(rows), 3)
-        self.assertEqual(rows[1][6], "Noldor")
+        self.assertEqual(rows[1][rows[0].index("team")], "Noldor")
 
     def test_empty_table(self):
         self.assertEqual(parse_results_table([]), [])
+
+
+class ApiResultsTest(unittest.TestCase):
+    ROWS = [
+        {"place": 2, "rank": {"title": "Новичок"}, "team": {"id": 7, "title": " Ванси "},
+         "rounds": {"1": "3", "2": "4.5"}, "total": "34.0"},
+        {"place": 1, "rank": None, "team": {"id": 9, "title": "Noldor"},
+         "rounds": {"1": "5", "2": "6"}, "total": "52"},
+    ]
+
+    def test_normalizes_and_sorts(self):
+        results = normalize_results(self.ROWS)
+        self.assertEqual([r["place"] for r in results], [1, 2])
+        self.assertEqual(results[0]["team_id"], 9)
+        self.assertEqual(results[0]["total"], 52)      # "52" -> int
+        self.assertEqual(results[1]["total"], 34)      # "34.0" -> int
+        self.assertEqual(results[1]["team"], "Ванси")  # whitespace stripped
+        self.assertEqual(results[1]["rank"], "novich")  # title mapped back to code
+        self.assertEqual(results[1]["rounds"], {"round_1": 3, "round_2": 4.5})
+        self.assertIsNone(results[0]["rank"])
+
+    def test_empty(self):
+        self.assertEqual(normalize_results(None), [])
 
 
 class HelpersTest(unittest.TestCase):

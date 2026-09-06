@@ -1,0 +1,53 @@
+{
+  "id": "019948db-7ca2-7271-9fda-d03683da98cf",
+  "url": "https://baku.quizplease.com/game/019948db-7ca2-7271-9fda-d03683da98cf",
+  "title": "[music party] изи BAKU",
+  "game_number": "1",
+  "full_title": "[music party] изи BAKU 1",
+  "package_number": "мюзикизи1",
+  "date": "2025-09-02T19:30:00",
+  "date_raw": "02.09.2025 19:30",
+  "registration_opens": "2025-08-25T17:23:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 452,
+    "title": "[music party] изи",
+    "level": "light"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Не игра, а сплошное удовольствие... Собрали все ваши любимые треки в одном месте. Можно особо не напрягаться. Ну если только совсем чуть-чуть.",
+  "welcome_inscription": "Релакс! Тэйк ит и-и-и-изи!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-09-14T15:32:47+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:21:20.139363+00:00"
+}

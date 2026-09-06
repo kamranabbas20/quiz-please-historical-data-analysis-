@@ -1,0 +1,53 @@
+{
+  "id": "019b01e5-baa1-7040-99fe-d7b5f43c00f2",
+  "url": "https://baku.quizplease.com/game/019b01e5-baa1-7040-99fe-d7b5f43c00f2",
+  "title": "[HELLO 2026] BAKU",
+  "game_number": null,
+  "full_title": "[HELLO 2026] BAKU",
+  "package_number": "2026",
+  "date": "2025-12-30T19:30:00",
+  "date_raw": "30.12.2025 19:30",
+  "registration_opens": "2025-12-09T02:21:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 540,
+    "title": "[HELLO 2026]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Вы ещё помните, как в начале года мы болели за Юру Борисова на Оскаре? А потом смотрели фильм про Майнкрафт. Помните тренд про «Балерину Капучино» и песню про кофе на Евровидении? Что это вообще было?! Лучшая возможность понять — сыграть в [HELLO 2026]. Заодно и по новогодней тематике пройдёмся!",
+  "welcome_inscription": "А ничё тот факт, что 2025 почти закончился?",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-12-09T06:56:31+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:36.901436+00:00"
+}

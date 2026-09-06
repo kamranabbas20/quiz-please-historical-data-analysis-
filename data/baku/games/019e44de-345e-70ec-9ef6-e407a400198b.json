@@ -1,0 +1,150 @@
+{
+  "id": "019e44de-345e-70ec-9ef6-e407a400198b",
+  "url": "https://baku.quizplease.com/game/019e44de-345e-70ec-9ef6-e407a400198b",
+  "title": "[music party] летние хиты BAKU",
+  "game_number": "1",
+  "full_title": "[music party] летние хиты BAKU 1",
+  "package_number": "нормлетниехиты1",
+  "date": "2026-06-30T19:30:00",
+  "date_raw": "30.06.2026 19:30",
+  "registration_opens": "2026-05-19T20:51:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 620,
+    "title": "[music party] летние хиты",
+    "level": "light"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Вот оно какое наше лето: популярные треки, пляжные напитки, солнечное настроение и самые летние вопросы! Приходите со своим шезлонгом, наносите солнцезащитный крем и будьте готовы сёрфить на музыкальных волнах. Баллы с этой игры греются в лучах рейтинга кино и музыки.",
+  "welcome_inscription": "Уникальная возможность провести с Квиз, плиз! целую жизнь! Ведь всем известно, что лето – это маленькая жизнь.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-05-20T10:11:13+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Ванси",
+      "team_id": 1179150,
+      "rank": null,
+      "rank_title": "1 золотая пластинка",
+      "total": 17,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 9
+      }
+    },
+    {
+      "place": 2,
+      "team": "Колобки",
+      "team_id": 1179144,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 16.5,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 8.5
+      }
+    },
+    {
+      "place": 3,
+      "team": "Kubachino",
+      "team_id": 1179153,
+      "rank": null,
+      "rank_title": "1 золотая пластинка",
+      "total": 15.5,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 7.5
+      }
+    },
+    {
+      "place": 4,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179143,
+      "rank": null,
+      "rank_title": "Платиновая пластинка",
+      "total": 15.5,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 6.5
+      }
+    },
+    {
+      "place": 5,
+      "team": "Слон В.",
+      "team_id": 1179149,
+      "rank": null,
+      "rank_title": "2 золотая пластинка.",
+      "total": 15,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 6
+      }
+    },
+    {
+      "place": 6,
+      "team": "Meta-Ersa",
+      "team_id": 1222625,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 14,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 6
+      }
+    },
+    {
+      "place": 7,
+      "team": "Леди Мага",
+      "team_id": 1179263,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 10.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5.5
+      }
+    },
+    {
+      "place": 8,
+      "team": "Паша, не пей!",
+      "team_id": 1179170,
+      "rank": null,
+      "rank_title": "1 виниловая пластинка",
+      "total": 8.5,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5.5
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:19:14.300436+00:00"
+}

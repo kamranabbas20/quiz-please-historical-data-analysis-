@@ -1,0 +1,53 @@
+{
+  "id": "0196d3bb-ce34-7004-a410-6f0b2252a6c2",
+  "url": "https://baku.quizplease.com/game/0196d3bb-ce34-7004-a410-6f0b2252a6c2",
+  "title": "[шазам] BAKU",
+  "game_number": "2",
+  "full_title": "[шазам] BAKU 2",
+  "package_number": "шазам2",
+  "date": "2024-06-25T19:30:00",
+  "date_raw": "25.06.2024 19:30",
+  "registration_opens": "2024-06-10T10:41:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 798,
+    "title": "BALAGAN",
+    "address": "г. Баку, улица Хагани 103",
+    "lat": 40.37687081733487,
+    "lon": 49.85494743845463
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 198,
+    "title": "[шазам]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Обучаем вас внимательно слушать не только изложения в школе, но и вопросы на играх. Открываем новые музыкальные горизонты на [шазам]!",
+  "welcome_inscription": "Игра, в которой вам понадобится знание музыки. И иногда клипов. Но скорее музыки. Готовьте свои ушки!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T11:37:02+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:24:11.996174+00:00"
+}

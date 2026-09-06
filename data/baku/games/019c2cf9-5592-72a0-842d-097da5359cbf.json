@@ -1,0 +1,53 @@
+{
+  "id": "019c2cf9-5592-72a0-842d-097da5359cbf",
+  "url": "https://baku.quizplease.com/game/019c2cf9-5592-72a0-842d-097da5359cbf",
+  "title": "[300к1] BAKU",
+  "game_number": "2",
+  "full_title": "[300к1] BAKU 2",
+  "package_number": "300к12",
+  "date": "2026-02-10T19:30:00",
+  "date_raw": "10.02.2026 19:30",
+  "registration_opens": "2026-02-04T17:44:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1430,
+    "title": "Mezzo Lounge",
+    "address": "220 Dilarə Əliyeva Küçəsi, Bakı, Азербайджан",
+    "lat": 40.37771777545991,
+    "lon": 49.84708774925088
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 242,
+    "title": "[300к1]",
+    "level": "light"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "В чем суть: мы задали вопросы 300 разным людям и собрали все их ответы. И теперь предлагаем вам угадать самые популярные ответы (а иногда и самые редкие). Берите с собой друзей, которые душа компании, и не забудьте тех, кто выдает самые странные ответы, – пригодятся.",
+  "welcome_inscription": "Логика и эрудиция не уступают интуиции и чутью на этой игре. [300к1] –  это когда знаешь ответ на вопрос, но это не гарантирует победу. Накал страстей обеспечен.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-02-05T08:44:23+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:19.245264+00:00"
+}

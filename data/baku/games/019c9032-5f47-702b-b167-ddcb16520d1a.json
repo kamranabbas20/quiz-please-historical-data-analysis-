@@ -1,0 +1,53 @@
+{
+  "id": "019c9032-5f47-702b-b167-ddcb16520d1a",
+  "url": "https://baku.quizplease.com/game/019c9032-5f47-702b-b167-ddcb16520d1a",
+  "title": "[music party] угадываем хиты BAKU",
+  "game_number": "1",
+  "full_title": "[music party] угадываем хиты BAKU 1",
+  "package_number": "угадываемхиты1",
+  "date": "2026-03-03T19:30:00",
+  "date_raw": "03.03.2026 19:30",
+  "registration_opens": "2026-02-24T16:09:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 579,
+    "title": "[music party] угадываем хиты",
+    "level": "light"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Музыка объединяет людей и позволяет общаться нотами и ритмами. На этой игре вы услышите песни, которые отозвались в сердцах многих меломанов по всей земле. Самые известные, самые разные, самые движовые – это всё про игру [music party] угадываем хиты. Баллы с этой игры are on the highway to рейтинг кино и музыки.",
+  "welcome_inscription": "«Хит-хит-хит-хит» – так звучат басы на самой узнаваемой игре Квиз, плиз!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-02-24T15:09:06+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:10.006164+00:00"
+}

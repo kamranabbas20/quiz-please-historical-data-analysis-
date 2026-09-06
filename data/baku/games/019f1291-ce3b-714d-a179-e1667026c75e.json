@@ -1,0 +1,230 @@
+{
+  "id": "019f1291-ce3b-714d-a179-e1667026c75e",
+  "url": "https://baku.quizplease.com/game/019f1291-ce3b-714d-a179-e1667026c75e",
+  "title": "Квиз, плиз! BAKU",
+  "game_number": "138",
+  "full_title": "Квиз, плиз! BAKU 138",
+  "package_number": "классика138",
+  "date": "2026-07-03T19:30:00",
+  "date_raw": "03.07.2026 19:30",
+  "registration_opens": "2026-06-26T23:05:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 2185,
+    "title": "Avenue",
+    "address": "72 Heydər Əliyev prospekti, Bakı 1030",
+    "lat": 40.401156124694054,
+    "lon": 49.87947623357111
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 2,
+    "title": "Квиз, плиз!",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Классическая игра, в которой надо затащить своей эрудицией, логикой и удачей!",
+  "welcome_inscription": "Наша классическая игра – 7 раундов, вопросы на абсолютно разные темы и море позитива. В команде может быть от 2 до 9 человек, игра открыта для всех: новых и опытных участников.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-06-29T08:49:33+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Крабовладельческий строй",
+      "team_id": 1179381,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 34.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 6.5,
+        "round_5": 6,
+        "round_6": 4
+      }
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179384,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 31,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 4
+      }
+    },
+    {
+      "place": 3,
+      "team": "Сельджан",
+      "team_id": 1179588,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 28,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 6,
+        "round_6": 4
+      }
+    },
+    {
+      "place": 4,
+      "team": "Ванси",
+      "team_id": 1179394,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 28,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 6,
+        "round_6": 0
+      }
+    },
+    {
+      "place": 5,
+      "team": "Колобки",
+      "team_id": 1179383,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 27.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 6.5,
+        "round_5": 6,
+        "round_6": 4
+      }
+    },
+    {
+      "place": 6,
+      "team": "Шерлок",
+      "team_id": 1179386,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 27,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 3,
+        "round_6": 2
+      }
+    },
+    {
+      "place": 7,
+      "team": "Byte Brawlers",
+      "team_id": 1179385,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 26.5,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 5.5,
+        "round_5": 4,
+        "round_6": 2
+      }
+    },
+    {
+      "place": 8,
+      "team": "Adams Family",
+      "team_id": 1179452,
+      "rank": "sergeant",
+      "rank_title": "Сержант",
+      "total": 26,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 2
+      }
+    },
+    {
+      "place": 9,
+      "team": "Полёт в никуда",
+      "team_id": 1179425,
+      "rank": "lieutenant",
+      "rank_title": "Лейтенант",
+      "total": 26,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 6,
+        "round_5": 4,
+        "round_6": 2
+      }
+    },
+    {
+      "place": 10,
+      "team": "паша, не пей",
+      "team_id": 1224866,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 22.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 5.5,
+        "round_5": 5,
+        "round_6": 2
+      }
+    },
+    {
+      "place": 11,
+      "team": "Бомбы Нереалки",
+      "team_id": 1224865,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 17.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 3.5,
+        "round_5": 3,
+        "round_6": 0
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:19:12.483858+00:00"
+}

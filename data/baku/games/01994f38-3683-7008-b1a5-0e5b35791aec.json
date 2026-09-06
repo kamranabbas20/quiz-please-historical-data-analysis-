@@ -1,0 +1,53 @@
+{
+  "id": "01994f38-3683-7008-b1a5-0e5b35791aec",
+  "url": "https://baku.quizplease.com/game/01994f38-3683-7008-b1a5-0e5b35791aec",
+  "title": "[назад в 21 век] BAKU",
+  "game_number": "1",
+  "full_title": "[назад в 21 век] BAKU 1",
+  "package_number": "назадв211",
+  "date": "2025-07-22T19:30:00",
+  "date_raw": "22.07.2025 19:30",
+  "registration_opens": "2025-06-28T14:30:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 492,
+    "title": "[назад в 21 век]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Смартфоны, роботы, космический туризм, быстрая доставка, генная инженерия — всё это ещё недавно казалось элементом фантастики. Сейчас-то мы уже ко всему привыкли. Даже некоторые слова уже не хайп, не кайф и даже не вайб. Мы предлагаем вам, как трушным философам, осмыслить многогранный XXI век. Ведь даже этот текст написала нейросеть.",
+  "welcome_inscription": "Приветствуем вас, люди XXI века! Что у вас нового? Как живёте?",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-09-15T21:11:48+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:21:38.376357+00:00"
+}

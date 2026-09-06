@@ -1,0 +1,60 @@
+{
+  "id": "0196d32e-d6fc-7327-a5e9-0323415f23ae",
+  "url": "https://baku.quizplease.com/game/0196d32e-d6fc-7327-a5e9-0323415f23ae",
+  "title": "Квиз, плиз! [WTF] BAKU",
+  "game_number": "1",
+  "full_title": "Квиз, плиз! [WTF] BAKU 1",
+  "package_number": "wtf1",
+  "date": "2024-04-02T19:34:00",
+  "date_raw": "02.04.2024 19:34",
+  "registration_opens": "2024-03-22T19:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1078,
+    "title": "Beer Hall ",
+    "address": "Баку, Сабаильский р-он, Агиль Гулиев 11",
+    "lat": 40.345352236996796,
+    "lon": 49.840995316863875
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 210,
+    "title": "Квиз, плиз! [WTF]",
+    "level": "extra_hard"
+  },
+  "format": {
+    "Тема": "про всё",
+    "Тип": "абсурдная",
+    "Механики раундов": "вводим в ступор",
+    "Сложность": "лёгкая",
+    "Формат": "8 раундов, 2 часа",
+    "Рейтинг": "вне рейтинга"
+  },
+  "league": "вне рейтинга",
+  "game_type_code": 0,
+  "description": "Что? Каво? Как? Где? Такие вопросы вы будете задавать на этой игре.",
+  "welcome_inscription": "Квиз, плиз! [WTF]— это чё вообще? Вотафак? К чёрту правила, к чёрту сбалансированные раунды — только дичь, только абсурд и самые странные механики. Почему? Потому что мы так захотели, вот почему.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T09:03:04+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:24:45.404326+00:00"
+}

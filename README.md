@@ -1,93 +1,267 @@
 # quiz-please-historical-data-analysis
 
-Scraper for [Quiz Please](https://quizplease.com) game pages, plus the scraped data.
+Two things live here:
 
-Game pages are server-rendered Nuxt, so the entire game record — venue, price,
-format, team counts, and the link to the published scoreboard — already sits in
-the `window.__NUXT__` payload. This scraper reads that payload directly instead
-of scraping rendered HTML, then downloads the `.xlsx` scoreboard a finished game
-publishes and flattens it into per-team, per-round rows.
+1. **A scraper** for [Quiz Please](https://quizplease.com) game results (`quizplease/`).
+2. **A dashboard** for exploring a team's history game by game (`dashboard/` + `app/`).
 
-Pure standard library: no `requests`, no `beautifulsoup4`, no `openpyxl`, and no
-JS engine. The payload is parsed, never executed.
+Both are pure standard library / vanilla JS: no `requests`, no `pandas`, no
+`openpyxl`, no npm install, no build step, no JS engine needed to scrape.
 
-## Usage
+---
+
+## Quick start
 
 ```bash
-# scrape one game into data/games/
-python -m quizplease https://baku.quizplease.com/game/01a04287-57c0-70c9-a6db-e2a8f574355e
+# 1. scrape a city (already done for Baku — data/baku/ is committed)
+python3 -m quizplease --delay 0.15 city baku
+python3 -m quizplease --delay 0.15 standings baku     # all-time rating tables
 
-# several at once; bare UUIDs resolve against --city
-python -m quizplease --city baku 01a04287-57c0-70c9-a6db-e2a8f574355e <another-id>
+# 2. compile the browser dataset
+python3 -m dashboard.build
 
-# print JSON instead of writing files
-python -m quizplease --stdout <url>
+# 3. serve the app (fetch() needs http://, not file://)
+python3 -m http.server 8765 --directory app
+# open http://127.0.0.1:8765/
 ```
 
-| flag | effect |
-| --- | --- |
-| `--city SLUG` | subdomain used when a bare game id is given (default `baku`) |
-| `-o, --out-dir DIR` | where to write (default `data/games`) |
-| `--stdout` | print JSON, write nothing |
-| `--no-results` | skip the scoreboard download |
-| `--raw` | keep the untouched game record from the payload under `raw` |
+To deploy, publish the `app/` directory as static files — GitHub Pages, S3, any
+web server. There is no backend.
 
-As a library:
+---
 
-```python
-from quizplease import scrape_game
+## What the data actually is
 
-game = scrape_game("https://baku.quizplease.com/game/01a04287-57c0-70c9-a6db-e2a8f574355e")
-print(game["results"][0]["team"], game["results"][0]["total"])
+The site publishes **round-by-round scoreboards only for roughly the last six
+months**. Older games are listed with venue, format and date, but their results
+are not exposed by any public endpoint — verified by sampling Moscow's full
+8,534-game history back to 2021.
+
+For Baku that means:
+
+| | |
+|---|---|
+| Games in the schedule | 285 (April 2023 → September 2026) |
+| Games with a published scoreboard | 17 (June → September 2026) |
+| Team-game rows | 143 |
+| Distinct teams | 53 |
+| All-time rating standings | 766 team/league rows, up to 196 games per team |
+
+So the dashboard shows deep detail for a shallow window, and uses the rating
+standings for the lifetime context ("17 games here, 242 all-time"). Adding
+cities widens it — see *Adding another city*.
+
+Two data facts worth knowing before reading any number:
+
+- **A team has one id per rating league** (classic vs. film-and-music), so ids
+  do not identify a team across formats. Teams are keyed by their **name**, with
+  the ids kept as aliases.
+- **No theoretical maximum score is published.** "% от лучшего" is measured
+  against the best total actually achieved in that game, so the winner is always
+  100%. It answers "how close to the best team in the room", not "how close to
+  perfect".
+
+---
+
+## The dashboard
+
+Filters run top-down — **город → команда → формат → лига → сезон → период** — in
+one row that scopes every panel below it. Changing the city reloads that city's
+dataset and rebuilds the team list; changing the team rebuilds the format,
+league and season options from that team's own games, each with a count, so no
+filter can produce an empty view.
+
+Four views:
+
+- **Обзор** — KPI cards (games, average percentile, trend, wins, top-3, average
+  and best position, average/median score, consistency) plus the chronological
+  timeline: percentile with a 5-game rolling average, total score, finishing
+  position against the size of the field, distribution of places, distribution
+  of results, and average percentile per format.
+- **Игры и разбор** — a sortable table of every game, and for the selected one:
+  score, place, round-by-round scores against the field's average and best,
+  strongest and weakest round, comparison with the team's career averages,
+  position after each round, and the game's full final table.
+- **Форматы** — one row per quiz format: games, average score, average place,
+  win rate, top-3 rate, average percentile, consistency.
+- **Сравнение команд** — up to three opponents beside the selected team, with
+  head-to-head games and who finished higher.
+
+Every chart has a hover/keyboard readout **and** a table view, so no value is
+reachable only by pointing at it. The palette is validated for colour-vision
+deficiency in both light and dark themes.
+
+### Metrics
+
+| Metric | Definition |
+|---|---|
+| Процентиль | share of the field finished ahead of: `(N − place) / (N − 1) × 100`; a one-team game is 100 |
+| % от лучшего | `total / best total in that game × 100` |
+| Динамика | least-squares slope of percentile over the game sequence, in points per game; needs 3+ games |
+| Стабильность | sample σ of "% от лучшего"; undefined for a single game |
+| Recent form | mean percentile over the last 5 games |
+
+Percentile is the only measure comparable **between** formats — formats differ
+in round count, so raw scores are not (a 10-round music party scores ~100, a
+7-round classic ~60).
+
+---
+
+## Architecture
+
+```
+quizplease/          data collection — the site's public API
+  api.py             /api/cities, /api/games/finished/{city}, /view/{id}, /{id}/results
+  rating.py          rating-api.quizplease.com — all-time standings
+  harvest.py         walk a city's back catalogue, write per-city JSON + CSV
+  scraper.py         normalise a game record; also scrapes a page directly
+  jsobj.py           parser for the minified window.__NUXT__ literal
+  xlsx.py            minimal .xlsx reader for the published scoreboard files
+  cli.py             python -m quizplease {game,city,standings,cities}
+
+dashboard/           cleaning, normalisation, analytics
+  model.py           the internal data model: Game + TeamGame, team keys, seasons
+  analytics.py       per-game derived metrics (percentile, % of best, round shares)
+  build.py           data/ -> app/data/*.json
+
+app/                 visualisation and UI (static)
+  js/data.js         loading, indexing, caching, filtering
+  js/stats.js        statistics over a filtered slice (pure functions)
+  js/charts.js       SVG chart primitives
+  js/ui.js           views, filters, wiring
+  css/app.css        design tokens, light + dark
 ```
 
-## Output
+The split that matters: **facts about a game** (its field size, its best score,
+each team's percentile within it) never change with a filter, so they are
+computed once in `dashboard/analytics.py` at build time. **Facts about a
+selection** (averages, win rate, form, trend) depend on what the reader filtered
+to, so they are computed in `app/js/stats.js` on the fly. Nothing is computed in
+both places.
 
-Each game produces `data/games/<id>.json` and, when the game has finished,
-`data/games/<id>_results.csv`.
+The app hard-codes no city, team or format: it reads `app/data/index.json`,
+loads one file per city on demand, and derives every option from the data.
 
-The JSON record carries game identity and timing (`id`, `title`, `game_number`,
-`date`, `status`), location (`city`, `country`, `place` with coordinates),
-commercials (`price`, `currency`, `pay_method`), the format block parsed into
-key/value pairs (`Тема`, `Сложность`, `Формат`, …), attendance
-(`teams_registered`, `teams_came`, `people_registered`) and `results` — one entry
-per team with `place`, `team`, `rank`, `total` and per-round scores.
+---
 
-The CSV is the same scoreboard in one flat table, with the game's identity
-repeated on every row so files from many games concatenate directly:
+## Data schema
 
+### Scraper output (`data/<city>/`)
+
+| Path | Contents |
+|---|---|
+| `games/<game_id>.json` | one normalised game, including its scoreboard |
+| `games.csv` | one row per game |
+| `results.csv` | one row per team per game (long format) |
+| `standings.csv` | all-time rating table rows: team, league, points, games, rank |
+
+A game JSON:
+
+```jsonc
+{
+  "id": "01a04287-…", "url": "https://baku.quizplease.com/game/…",
+  "title": "[видеоигры] BAKU", "game_number": "3", "full_title": "[видеоигры] BAKU 3",
+  "date": "2026-09-01T19:30:00", "status": "finished",
+  "city":   { "id": 158, "name": "Баку", "slug": "baku" },
+  "country":{ "id": 30, "name": "Азербайджан" },
+  "place":  { "id": 1309, "title": "Paulaner Braühaus", "address": "…", "lat": …, "lon": … },
+  "template": { "id": 180, "title": "[видеоигры]", "level": "medium" },
+  "format": { "Тема": "видеоигры", "Сложность": "нормальная", "Формат": "7 раундов, 2 часа" },
+  "league": "классика", "price": 15, "currency": "₼",
+  "teams_registered": 8, "teams_came": 8, "people_registered": 56,
+  "results": [
+    { "place": 1, "team": "Noldor", "team_id": 1179382, "rank": "unattainable",
+      "rank_title": "Недосягаемые", "total": 52,
+      "rounds": { "round_1": 5, "round_2": 5, "round_7": 18 } }
+  ]
+}
 ```
-game_id,date,city,title,game_number,place,team,rank,total,round_1,…,round_7
-01a04287-…,2026-09-01T19:30:00,Баку,[видеоигры] BAKU,3,1,Noldor,unattainable,52,5,…,18
+
+### App dataset (`app/data/<city>.json`)
+
+```jsonc
+{
+  "city":     { "slug": "baku", "name": "Баку", "currency": "₼" },
+  "coverage": { "games_total": 285, "games_with_results": 17, "result_rows": 143,
+                "teams": 53, "date_from": …, "scored_from": …, "scored_to": … },
+  "filters":  { "game_types": […], "leagues": […], "seasons": […], "venues": […] },
+  "games": [ { "id", "date", "season", "title", "game_number", "game_type", "league",
+               "theme", "difficulty", "format", "venue", "address", "price", "currency",
+               "url", "rounds": ["round_1", …], "round_labels": ["Раунд 1", …],
+               "teams_count", "best_total", "worst_total", "mean_total", "has_results" } ],
+  "rows":  [ { "game_id", "team", "team_key", "team_ids": [ … ], "position", "total",
+               "percentile", "score_pct", "gap_to_best", "gap_to_mean",
+               "rank", "rank_title",
+               "rounds":    [5, 5, 6.5, …],   // aligned with the game's `rounds`
+               "round_pct": [100, 83, …] } ],
+  "teams": [ { "key", "name", "names": [ … ], "ids": [ … ], "games", "first", "last" } ],
+  "standings": [ { "team", "team_key", "league", "league_code", "position",
+                   "points", "games", "rank_title" } ]
+}
 ```
 
-Ranks come through as the site's own codes (`novich`, `sergeant`, `lieutenant`,
-`general`, `rambo`, `chuck`, `unattainable`); the JSON adds the Russian label as
-`rank_title`.
+`team_key` is the team name normalised (case-folded, whitespace and trailing
+punctuation stripped); `names` keeps every spelling seen, and the display name is
+the most common one.
 
-## Layout
+---
 
+## Updating the dataset with new games
+
+```bash
+python3 -m quizplease --delay 0.15 city baku    # only new games are fetched
+python3 -m quizplease --delay 0.15 standings baku
+python3 -m dashboard.build                      # rewrites app/data/
 ```
-quizplease/
-  jsobj.py    parser for the minified `window.__NUXT__` literal
-  xlsx.py     minimal .xlsx reader (shared/inline strings and numbers)
-  scraper.py  fetch, normalise, flatten
-  cli.py      command line entry point
-tests/        unit tests, no network access required
-data/games/   scraped output
+
+`city` is resumable and incremental: games already on disk are skipped, so a
+weekly run costs one listing request plus two per new game. `--refresh`
+re-fetches everything; a game that fails is reported and the run continues.
+
+The app picks the rebuilt files up on reload — no code change, no configuration.
+
+### Adding another city
+
+```bash
+python3 -m quizplease cities --counts -o /tmp/cities.csv   # slugs and game counts
+python3 -m quizplease --delay 0.15 city tbilisi
+python3 -m quizplease --delay 0.15 standings tbilisi
+python3 -m dashboard.build
 ```
+
+The city appears in the dropdown automatically. Scraping costs two API calls per
+game, so use `--delay`, and expect a city the size of Moscow (8.5k games) to take
+hours. Scoreboard coverage varies: sample a city before committing to it.
+
+---
 
 ## Tests
 
 ```bash
-python -m unittest discover -s tests
+python3 -m unittest discover -s tests -p 'test_*.py'   # 45 tests: scraper, model, analytics, build
+node --test tests/test_stats.mjs                       # 10 tests: dashboard statistics
+
+# browser tests need the app running on :8765
+python3 -m http.server 8765 --directory app &
+node tests/browser/smoke.mjs           # every view renders, no console errors
+node tests/browser/interactions.mjs    # filters, single-game teams, comparison, table views
+node tests/browser/looks.mjs           # dark mode + phone width, no horizontal overflow
+python3 tests/validate_against_source.py Колобки Ванси Noldor
 ```
 
-## Notes
+The last one is the important one: it recomputes every headline figure straight
+from `data/baku/games/*.json` — code that shares nothing with the app — drives
+the real page in Chromium, and compares the two. `tests/test_multicity.py` builds
+a throwaway two-city dataset and checks that switching city really does swap the
+teams, the filters and the coverage line.
 
-- Scores are half-points on some rounds, so totals are floats when they need to
-  be and ints when they don't.
-- A game that has not finished has no scoreboard; `results` is then empty and no
-  CSV is written.
-- `scrape_game_from_html(html, url, results_xlsx=...)` re-processes an archived
-  copy of a page without touching the network.
+## Notes and limits
+
+- Scores are half-points in some rounds, so totals are floats where they need to
+  be and ints where they don't.
+- `came_peoples` is 0 on most games — venues record team counts, not head counts.
+  Use `people_registered` for attendance.
+- The rating standings endpoint returns the full league table, but only page one
+  reports the total; the client remembers it.
+- A game with no published scoreboard is still kept, so coverage can be stated
+  honestly rather than silently dropped.

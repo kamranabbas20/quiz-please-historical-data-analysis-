@@ -1,0 +1,53 @@
+{
+  "id": "0196d312-c8e6-70d0-9e53-507600edb6c1",
+  "url": "https://baku.quizplease.com/game/0196d312-c8e6-70d0-9e53-507600edb6c1",
+  "title": "[кино и музыка] BAKU",
+  "game_number": "3",
+  "full_title": "[кино и музыка] BAKU 3",
+  "package_number": "ким3",
+  "date": "2023-10-17T19:30:00",
+  "date_raw": "17.10.2023 19:30",
+  "registration_opens": "2023-10-10T18:30:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 817,
+    "title": "SAFRANI",
+    "address": "Улица Бакиханова 29, Баку",
+    "lat": 40.39214974161063,
+    "lon": 49.8489108306852
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 82,
+    "title": "[кино и музыка]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Игра нашего необычного формата: вопросы только про кино и музыку. Меломанам и кинолюбителям посвящается!",
+  "welcome_inscription": "Вас ждут вопросы про музыкантов, режиссеров, клипы, песни, фильмы, сериалы, но и без вопросов на логику, конечно, не обойдется. Мы же интеллектуальная игра.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T08:32:25+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:25:36.263560+00:00"
+}

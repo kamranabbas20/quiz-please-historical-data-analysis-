@@ -1,0 +1,60 @@
+{
+  "id": "019c5671-8771-71a2-813b-325f75229e2f",
+  "url": "https://baku.quizplease.com/game/019c5671-8771-71a2-813b-325f75229e2f",
+  "title": "[мемы и приколы] 18+ BAKU",
+  "game_number": "1",
+  "full_title": "[мемы и приколы] 18+ BAKU 1",
+  "package_number": "мемыиприколы181",
+  "date": "2026-04-21T19:30:00",
+  "date_raw": "21.04.2026 19:30",
+  "registration_opens": "2026-02-13T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1239,
+    "title": "Chill and Meal",
+    "address": "33A Yusif Səfərov küçəsi",
+    "lat": 40.384389596926944,
+    "lon": 49.86321222909822
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 444,
+    "title": "[мемы и приколы] 18+",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "мемы",
+    "Тип": "18+",
+    "Механики раундов": "смотрим легендарные видео, узнаём мем на слух, отвечаем на скорость, пытаемся угадать, что скрыто на картинке и много смеёмся",
+    "Сложность": "нормальная",
+    "Формат": "7 раундов, 2 часа",
+    "Рейтинг": "классика"
+  },
+  "league": "классика",
+  "game_type_code": 0,
+  "description": "Если вы до сих пор хихикаете над словом «многочлен», то вэлкам на эту игру. Здесь вас точно не осудят.",
+  "welcome_inscription": "Расслабьтесь, неженки, это называется чёрный юмор!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-02-13T10:00:06+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:19:48.179277+00:00"
+}

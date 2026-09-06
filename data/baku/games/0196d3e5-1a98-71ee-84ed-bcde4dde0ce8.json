@@ -1,0 +1,60 @@
+{
+  "id": "0196d3e5-1a98-71ee-84ed-bcde4dde0ce8",
+  "url": "https://baku.quizplease.com/game/0196d3e5-1a98-71ee-84ed-bcde4dde0ce8",
+  "title": "[караоке] новогоднее BAKU",
+  "game_number": "1",
+  "full_title": "[караоке] новогоднее BAKU 1",
+  "package_number": "КараокеНГ1",
+  "date": "2024-12-24T19:30:00",
+  "date_raw": "24.12.2024 19:30",
+  "registration_opens": "2024-12-02T16:46:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1239,
+    "title": "Chill and Meal",
+    "address": "33A Yusif Səfərov küçəsi",
+    "lat": 40.384389596926944,
+    "lon": 49.86321222909822
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 434,
+    "title": "[караоке] новогоднее",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "Новый год",
+    "Тип": "музыкально-подпевающая",
+    "Механики раундов": "слушаем хиты, смотрим клипы, выбираем варианты ответа, угадываем исполнителей и много-много подпеваем",
+    "Сложность": "лёгкая",
+    "Формат": "7 раундов, 2 часа",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Любители спеть за новогодним столом, эта игра специально для вас! Бутерброды с икрой не обещаем, но отборные новогодние хиты точно будут. Готовьте ваши звонкие голоса и регайтесь!",
+  "welcome_inscription": "Как бы сказала Мэрайя Кэри — it's time!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T12:22:09+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:22:58.233440+00:00"
+}

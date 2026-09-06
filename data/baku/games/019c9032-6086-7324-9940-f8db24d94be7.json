@@ -1,0 +1,60 @@
+{
+  "id": "019c9032-6086-7324-9940-f8db24d94be7",
+  "url": "https://baku.quizplease.com/game/019c9032-6086-7324-9940-f8db24d94be7",
+  "title": "[кино и музыка] изи BAKU",
+  "game_number": "3",
+  "full_title": "[кино и музыка] изи BAKU 3",
+  "package_number": "кимизи3",
+  "date": "2026-03-10T19:30:00",
+  "date_raw": "10.03.2026 19:30",
+  "registration_opens": "2026-02-24T16:15:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 362,
+    "title": "[кино и музыка] изи",
+    "level": "light"
+  },
+  "format": {
+    "Тема": "кино и музыка",
+    "Тип": "киномузыкальная",
+    "Механики раундов": "слушаем треки, смотрим клипы, узнаём исполнителя, угадываем фильм по кадру и аудиодорожке",
+    "Сложность": "лёгкая",
+    "Формат": "7 раундов, 2 часа",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Рецепт [изи] прост. Берём за основу наши классические кино-музыкальные игры и добавляем нуууу оооочень много фана.",
+  "welcome_inscription": "Ещё более развлекательная интеллектуальная битва!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-02-24T15:09:06+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:05.138151+00:00"
+}

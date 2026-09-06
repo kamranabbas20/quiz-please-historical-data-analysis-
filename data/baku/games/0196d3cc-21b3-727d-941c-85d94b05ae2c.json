@@ -1,0 +1,60 @@
+{
+  "id": "0196d3cc-21b3-727d-941c-85d94b05ae2c",
+  "url": "https://baku.quizplease.com/game/0196d3cc-21b3-727d-941c-85d94b05ae2c",
+  "title": "[Back to school] BAKU",
+  "game_number": "1",
+  "full_title": "[Back to school] BAKU 1",
+  "package_number": "backtoschool1",
+  "date": "2024-09-17T19:30:00",
+  "date_raw": "17.09.2024 19:30",
+  "registration_opens": "2024-08-28T13:45:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1154,
+    "title": "Palato cafe",
+    "address": "Bashir Safaroglu 184, Baku",
+    "lat": 40.37602,
+    "lon": 49.84464
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 337,
+    "title": "[Back to school]",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "школа",
+    "Тип": "на эрудицию",
+    "Механики раундов": "решаем примеры, проверяем орфографию, узнаём произведение искусства, вспоминаем переменки",
+    "Сложность": "нормальная",
+    "Формат": "7 раундов, 2 часа",
+    "Рейтинг": "классика"
+  },
+  "league": "классика",
+  "game_type_code": 0,
+  "description": "Перед вами обычный Квиз, плиз!, но составленный по школьной программе. Пора вспоминать рецессивные и доминантные гены, стихи Есенина и Ахматовой, самую высокую точку России и многое другое. Обещаем без травмирующих двоек и вызовов родителей к директору!",
+  "welcome_inscription": "Пробегаемся по школьной программе и ностальгируем по тем самым школьным временам.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T11:54:52+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:23:32.656918+00:00"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "0196d3b2-7d2c-72b9-9240-9d0e81d36769",
+  "url": "https://baku.quizplease.com/game/0196d3b2-7d2c-72b9-9240-9d0e81d36769",
+  "title": "Квиз, плиз! [Wake up] BAKU",
+  "game_number": "1",
+  "full_title": "Квиз, плиз! [Wake up] BAKU 1",
+  "package_number": "wakeup1",
+  "date": "2024-05-12T12:30:00",
+  "date_raw": "12.05.2024 12:30",
+  "registration_opens": "2024-04-26T18:30:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 798,
+    "title": "BALAGAN",
+    "address": "г. Баку, улица Хагани 103",
+    "lat": 40.37687081733487,
+    "lon": 49.85494743845463
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 378,
+    "title": "Квиз, плиз! [Wake up]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Позавтракайте вместе с Квиз, плиз и Balagan! С вас — небольшой депозит на завтрак в 25 манат, а с нас — ранняя интеллектуальная игра. По рукам?",
+  "welcome_inscription": "Кто любит поздно пробуждаться, тот в Квиз, плиз! [Wake Up] не играет.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T11:26:52+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:24:29.469957+00:00"
+}

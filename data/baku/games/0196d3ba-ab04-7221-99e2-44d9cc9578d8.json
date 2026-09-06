@@ -1,0 +1,53 @@
+{
+  "id": "0196d3ba-ab04-7221-99e2-44d9cc9578d8",
+  "url": "https://baku.quizplease.com/game/0196d3ba-ab04-7221-99e2-44d9cc9578d8",
+  "title": "[я из 2000-х] BAKU",
+  "game_number": "1",
+  "full_title": "[я из 2000-х] BAKU 1",
+  "package_number": "яиз20001",
+  "date": "2024-06-18T19:30:00",
+  "date_raw": "18.06.2024 19:30",
+  "registration_opens": "2024-06-03T16:46:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 798,
+    "title": "BALAGAN",
+    "address": "г. Баку, улица Хагани 103",
+    "lat": 40.37687081733487,
+    "lon": 49.85494743845463
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 382,
+    "title": "[я из 2000-х]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Спите и видите, как бы вернуть 2007? А как насчёт вернуть целые 2000-е? Мы уже готовы подарить вам СТОПИЦОТ воспоминаний.",
+  "welcome_inscription": "До сих пор помните, сколько стоила Шипучка в киоске около школы? Тогда вам точно надо на эту игру.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T11:35:48+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:24:15.264969+00:00"
+}

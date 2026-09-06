@@ -1,0 +1,60 @@
+{
+  "id": "0196d3e5-17d9-704a-9394-f8ca0dc956dd",
+  "url": "https://baku.quizplease.com/game/0196d3e5-17d9-704a-9394-f8ca0dc956dd",
+  "title": "[music party] BAKU",
+  "game_number": "8",
+  "full_title": "[music party] BAKU 8",
+  "package_number": "musicparty8",
+  "date": "2024-12-10T19:30:00",
+  "date_raw": "10.12.2024 19:30",
+  "registration_opens": "2024-12-02T16:38:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1239,
+    "title": "Chill and Meal",
+    "address": "33A Yusif Səfərov küçəsi",
+    "lat": 40.384389596926944,
+    "lon": 49.86321222909822
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 237,
+    "title": "[music party]",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "музыка",
+    "Тип": "музыкальная",
+    "Механики раундов": "слушаем хиты, смотрим клипы, угадываем исполнителей, разгадываем каверы и мэшапы",
+    "Сложность": "нормальная",
+    "Формат": "8 раундов, 2 часа",
+    "Рейтинг": "кино и музыка"
+  },
+  "league": "кино и музыка",
+  "game_type_code": 0,
+  "description": "Самая расслабляющая среди музыкальных и самая музыкальная среди всех прочих. В специальной игре пробежимся по хитам разных поколений.",
+  "welcome_inscription": "Так, так, так. Что это у нас здесь? Самая привычная музыкальная игра Квиз, плиз!, на которой лучше всего удаётся петь и веселиться.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T12:22:08+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:23:04.571371+00:00"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "019c5228-2d77-7278-8218-c96cff00229f",
+  "url": "https://baku.quizplease.com/game/019c5228-2d77-7278-8218-c96cff00229f",
+  "title": "[назад в 90-е] BAKU",
+  "game_number": "1",
+  "full_title": "[назад в 90-е] BAKU 1",
+  "package_number": "Назадв90-1",
+  "date": "2026-02-17T19:30:00",
+  "date_raw": "17.02.2026 19:30",
+  "registration_opens": "2026-02-11T21:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 95,
+    "title": "[назад в 90-е]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "На игре мы вспомним все прекрасное, что было в 90-х: музыку, стиль, телевидение, образ мышления и может быть даже ковры. Ожидается пришествие малиновых пиджаков. Ностальгия пройдет под горячительное от бара и крутую атмосферу от Квиз, плиз!",
+  "welcome_inscription": "На игре мы вспомним все прекрасное, что было в 90-х: музыку, стиль, телевидение, образ мышления и может быть даже ковры. Ожидается пришествие малиновых пиджаков. Ностальгия пройдет под горячительное от бара и крутую атмосферу от Квиз, плиз!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-02-12T14:01:30+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:20:16.304348+00:00"
+}

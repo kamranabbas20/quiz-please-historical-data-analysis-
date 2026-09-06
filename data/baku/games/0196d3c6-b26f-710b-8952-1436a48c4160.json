@@ -1,0 +1,53 @@
+{
+  "id": "0196d3c6-b26f-710b-8952-1436a48c4160",
+  "url": "https://baku.quizplease.com/game/0196d3c6-b26f-710b-8952-1436a48c4160",
+  "title": "Квиз, плиз! BAKU",
+  "game_number": "66",
+  "full_title": "Квиз, плиз! BAKU 66",
+  "package_number": "66",
+  "date": "2024-08-09T19:30:00",
+  "date_raw": "09.08.2024 19:30",
+  "registration_opens": "2024-08-02T19:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1154,
+    "title": "Palato cafe",
+    "address": "Bashir Safaroglu 184, Baku",
+    "lat": 40.37602,
+    "lon": 49.84464
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 2,
+    "title": "Квиз, плиз!",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Классическая игра, в которой надо затащить своей эрудицией, логикой и удачей!",
+  "welcome_inscription": "Наша классическая игра – 7 раундов, 39 вопросов и море позитива. В команде может быть от 2 до 9 человек, игра открыта для всех: новых и опытных участников.",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-15T11:48:56+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:23:51.134335+00:00"
+}

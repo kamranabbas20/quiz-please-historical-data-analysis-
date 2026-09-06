@@ -1,0 +1,58 @@
+{
+  "id": "019dde36-ccb0-723c-b55e-c62bc1c18ac3",
+  "url": "https://baku.quizplease.com/game/019dde36-ccb0-723c-b55e-c62bc1c18ac3",
+  "title": "Квиз, плиз! [секретная тема] BAKU",
+  "game_number": "1",
+  "full_title": "Квиз, плиз! [секретная тема] BAKU 1",
+  "package_number": "секретнаятема1",
+  "date": "2026-05-08T19:30:00",
+  "date_raw": "08.05.2026 19:30",
+  "registration_opens": "2026-04-24T20:07:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 605,
+    "title": "Квиз, плиз! [секретная тема]",
+    "level": "medium"
+  },
+  "format": {
+    "Тема": "???",
+    "Тип": "на эрудицию и логику",
+    "Сложность": "нормальная",
+    "Рейтинг": "классика"
+  },
+  "league": "классика",
+  "game_type_code": 0,
+  "description": "Ох уж эти секретики… Чего только не сделаешь для эффекта неожиданности. Вам пригодится не только широкий кругозор, но и умение выстраивать логические связи. Сопоставляйте вопросы, чтобы угадать тему раунда. Баллы с этой игры идут в рейтинг… хорошо, скажем, в рейтинг классики.",
+  "welcome_inscription": "А что же будет на игре – большой, большой секрет!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-04-30T11:47:06+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:19:40.096114+00:00"
+}

@@ -1,0 +1,190 @@
+{
+  "id": "019fa9a1-8701-70e6-a9f4-8f069022553a",
+  "url": "https://baku.quizplease.com/game/019fa9a1-8701-70e6-a9f4-8f069022553a",
+  "title": "[рок vs попса] BAKU",
+  "game_number": "3",
+  "full_title": "[рок vs попса] BAKU 3",
+  "package_number": "рокvsпопса",
+  "date": "2026-08-11T19:30:00",
+  "date_raw": "11.08.2026 19:30",
+  "registration_opens": "2026-07-28T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 286,
+    "title": "[рок vs попса]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Игра для любителей рока... и попсы! Хватит спорить, что круче. Просто объединяйтесь и приходите на эту игру!",
+  "welcome_inscription": "Еееее, рок! Уиииии, попса!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-07-28T16:49:23+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179143,
+      "rank": null,
+      "rank_title": "Платиновая пластинка",
+      "total": 63.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 6,
+        "round_5": 20,
+        "round_6": 7.5,
+        "round_7": 5
+      }
+    },
+    {
+      "place": 2,
+      "team": "Колобки",
+      "team_id": 1179144,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 52,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 7,
+        "round_3": 8,
+        "round_4": 6,
+        "round_5": 15,
+        "round_6": 5,
+        "round_7": 3
+      }
+    },
+    {
+      "place": 3,
+      "team": "Team Rocket",
+      "team_id": 1179146,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 51.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 8,
+        "round_3": 9,
+        "round_4": 6,
+        "round_5": 11,
+        "round_6": 6.5,
+        "round_7": 6
+      }
+    },
+    {
+      "place": 4,
+      "team": "Ванси",
+      "team_id": 1179150,
+      "rank": null,
+      "rank_title": "2 золотая пластинка.",
+      "total": 48.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 7,
+        "round_3": 8,
+        "round_4": 5,
+        "round_5": 13,
+        "round_6": 4.5,
+        "round_7": 4
+      }
+    },
+    {
+      "place": 5,
+      "team": "НеВалдис Пельш",
+      "team_id": 1179145,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 44,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 8,
+        "round_4": 6,
+        "round_5": 13,
+        "round_6": 5,
+        "round_7": 2
+      }
+    },
+    {
+      "place": 6,
+      "team": "Слон В.",
+      "team_id": 1179149,
+      "rank": null,
+      "rank_title": "3 золотая пластинка",
+      "total": 43.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 4,
+        "round_5": 16,
+        "round_6": 4.5,
+        "round_7": 4
+      }
+    },
+    {
+      "place": 7,
+      "team": "Паша, не пей",
+      "team_id": 1228018,
+      "rank": null,
+      "rank_title": "2 виниловая пластинка",
+      "total": 23,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 1
+      }
+    },
+    {
+      "place": 8,
+      "team": "Ангелы Чарли",
+      "team_id": 1280816,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 17,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 4,
+        "round_6": 1,
+        "round_7": 1
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:18:56.541269+00:00"
+}

@@ -1,0 +1,166 @@
+{
+  "id": "019fa9a3-503d-72ec-989d-97ab7f3198a5",
+  "url": "https://baku.quizplease.com/game/019fa9a3-503d-72ec-989d-97ab7f3198a5",
+  "title": "[треш и угар] 18+ BAKU",
+  "game_number": "1",
+  "full_title": "[треш и угар] 18+ BAKU 1",
+  "package_number": "трешиугар1",
+  "date": "2026-08-18T19:30:00",
+  "date_raw": "18.08.2026 19:30",
+  "registration_opens": "2026-07-28T12:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 554,
+    "title": "[треш и угар] 18+",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Эта игра понравится любителям юмора не для всех. Наконец-то можно смеяться над всеми приколами и никто вас не осудит! Баллы с этой игры идут в **** классики.",
+  "welcome_inscription": "Да, треш… Это реально треш!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 10,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-07-28T16:51:20+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179384,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 40.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 10,
+        "round_6": 6.5
+      }
+    },
+    {
+      "place": 2,
+      "team": "Колобки",
+      "team_id": 1179383,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 36.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 10,
+        "round_6": 6.5
+      }
+    },
+    {
+      "place": 3,
+      "team": "Ванси",
+      "team_id": 1179394,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 34.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 7,
+        "round_6": 5.5
+      }
+    },
+    {
+      "place": 4,
+      "team": "Белочки",
+      "team_id": 1179418,
+      "rank": "lieutenant",
+      "rank_title": "Лейтенант",
+      "total": 28,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 4
+      }
+    },
+    {
+      "place": 5,
+      "team": "Бусидо",
+      "team_id": 1179451,
+      "rank": "sergeant",
+      "rank_title": "Сержант",
+      "total": 28,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 3,
+        "round_5": 6,
+        "round_6": 3
+      }
+    },
+    {
+      "place": 6,
+      "team": "Риадик, иди кушать",
+      "team_id": 1286111,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 26.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 2,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 4.5
+      }
+    },
+    {
+      "place": 7,
+      "team": "Группа в ухо",
+      "team_id": 1260623,
+      "rank": null,
+      "rank_title": "Новички",
+      "total": 19.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 2,
+        "round_6": 2.5
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:18:53.465349+00:00"
+}

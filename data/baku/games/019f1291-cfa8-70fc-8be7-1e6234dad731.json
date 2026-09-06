@@ -1,0 +1,173 @@
+{
+  "id": "019f1291-cfa8-70fc-8be7-1e6234dad731",
+  "url": "https://baku.quizplease.com/game/019f1291-cfa8-70fc-8be7-1e6234dad731",
+  "title": "[железные яйца] BAKU",
+  "game_number": "2",
+  "full_title": "[железные яйца] BAKU 2",
+  "package_number": "железныеяйца2",
+  "date": "2026-07-17T19:30:00",
+  "date_raw": "17.07.2026 19:30",
+  "registration_opens": "2026-06-26T23:12:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 2185,
+    "title": "Avenue",
+    "address": "72 Heydər Əliyev prospekti, Bakı 1030",
+    "lat": 40.401156124694054,
+    "lon": 49.87947623357111
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 213,
+    "title": "[железные яйца]",
+    "level": "hard"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Эта игра создана для храбрых и азартных! Ставки, баллы, борьба за высокие места... Вот это будет битва! Но одной железной яичницей сыт не будешь. Чтобы рискнуть баллом, его надо ещё заработать. А на вопросы этой игры ответит не каждый, надо и мозги железные иметь.",
+  "welcome_inscription": "Слабоумие — нет, отвага — да!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-06-29T08:49:33+00:00",
+  "results": [
+    {
+      "place": 1,
+      "team": "Крабовладельческий строй",
+      "team_id": 1179381,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 79,
+      "rounds": {
+        "round_1": 11,
+        "round_2": 16,
+        "round_3": 2,
+        "round_4": 9,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 28
+      }
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-сити",
+      "team_id": 1179384,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 62,
+      "rounds": {
+        "round_1": 13,
+        "round_2": 12,
+        "round_3": 7,
+        "round_4": 3,
+        "round_5": 8,
+        "round_6": 2,
+        "round_7": 17
+      }
+    },
+    {
+      "place": 3,
+      "team": "Колобки",
+      "team_id": 1179383,
+      "rank": "unattainable",
+      "rank_title": "Недосягаемые",
+      "total": 46,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 12,
+        "round_3": 12,
+        "round_4": -6,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 10
+      }
+    },
+    {
+      "place": 4,
+      "team": "паша, не пей",
+      "team_id": 1224866,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 30,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 8,
+        "round_3": 5,
+        "round_4": -3,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 10
+      }
+    },
+    {
+      "place": 5,
+      "team": "Позже придумаем",
+      "team_id": 1179434,
+      "rank": "lieutenant",
+      "rank_title": "Лейтенант",
+      "total": 23,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 1,
+        "round_7": 9
+      }
+    },
+    {
+      "place": 6,
+      "team": "Шерлок",
+      "team_id": 1179386,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 22.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 1,
+        "round_3": 3,
+        "round_4": 1.5,
+        "round_5": 1,
+        "round_6": 5,
+        "round_7": 6
+      }
+    },
+    {
+      "place": 7,
+      "team": "Сельджан",
+      "team_id": 1179588,
+      "rank": "sergeant",
+      "rank_title": "Сержант",
+      "total": 22,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 7
+      }
+    }
+  ],
+  "scraped_at": "2026-09-06T22:19:07.854884+00:00"
+}

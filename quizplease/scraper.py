@@ -23,6 +23,9 @@ __all__ = [
     "extract_nuxt_state",
     "fetch",
     "game_url",
+    "normalize_game",
+    "normalize_results",
+    "normalize_state",
     "parse_results_table",
     "scrape_game",
     "scrape_game_from_html",
@@ -53,7 +56,20 @@ RANK_TITLES = {
     "rambo": "Рэмбо",
     "chuck": "Чак Норрис",
     "unattainable": "Недосягаемые",
+    "legends1": "Легенды LVL1",
+    "legends2": "Легенды LVL2",
+    "legends3": "Легенды LVL3",
+    "keepers1": "Хранители LVL1",
+    "keepers2": "Хранители LVL2",
+    "keepers3": "Хранители LVL3",
+    "golds1": "Голды LVL1",
+    "golds2": "Голды LVL2",
+    "golds3": "Голды LVL3",
 }
+
+# The .xlsx scoreboards carry rank codes, the API carries Russian titles;
+# normalise both to the same pair of fields.
+RANK_CODES = dict((title, code) for code, title in RANK_TITLES.items())
 
 _UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.I)
 _NUXT_ASSIGNMENT = re.compile(r"window\.__NUXT__\s*=")
@@ -197,6 +213,7 @@ def parse_results_table(rows):
         results.append({
             "place": _number(row[place_column]) if place_column is not None else None,
             "team": name,
+            "team_id": None,   # the .xlsx scoreboards do not carry team ids
             "rank": rank or None,
             "rank_title": RANK_TITLES.get(rank),
             "total": _number(row[total_column]) if total_column is not None else None,
@@ -206,20 +223,26 @@ def parse_results_table(rows):
     return results
 
 
-def normalize_game(state, url):
-    """Reduce the raw Nuxt state to the fields worth keeping per game."""
-    game = (state.get("data", {}).get("game") or {}).get("data")
-    if not game:
-        raise ScrapeError("payload has no game record")
+def normalize_game(game, url, city=None, country=None):
+    """Reduce a raw game record to the fields worth keeping.
 
-    location = state.get("pinia", {}).get("location", {})
-    city = location.get("city") or {}
-    country = location.get("country") or {}
+    ``game`` is the object returned by ``/api/games/view/{id}`` -- the same
+    object the game page embeds. ``city``/``country`` supply the human-readable
+    names the record itself only references by id.
+    """
+    if not game:
+        raise ScrapeError("no game record to normalize")
+
+    city = city or {}
+    country = country or {}
     place = game.get("place") or {}
     template = game.get("template") or {}
     result = game.get("result") or {}
 
-    fields = _parse_block_fields(game.get("block_with_text") or template.get("block"))
+    # Older games carry the format table only on their template, newer ones
+    # override it per game; merge so every game exposes the same keys.
+    fields = _parse_block_fields(template.get("block"))
+    fields.update(_parse_block_fields(game.get("block_with_text")))
 
     return {
         "id": game.get("id"),
@@ -236,12 +259,12 @@ def normalize_game(state, url):
         "is_championship": game.get("is_championship"),
         "city": {
             "id": _number(city.get("id")) or game.get("city_id"),
-            "name": city.get("name") or location.get("cityTitle"),
-            "slug": city.get("slug") or location.get("citySlug"),
+            "name": city.get("name") or city.get("title"),
+            "slug": city.get("slug"),
         },
         "country": {
             "id": _number(country.get("id")) or game.get("country_id"),
-            "name": country.get("name") or location.get("countryTitle"),
+            "name": country.get("name") or country.get("title"),
         },
         "place": {
             "id": place.get("id"),
@@ -251,7 +274,7 @@ def normalize_game(state, url):
             "lon": place.get("lon"),
         },
         "price": _number(game.get("current_price")) or _number(game.get("price")),
-        "currency": country.get("currency") or location.get("currencyMode"),
+        "currency": country.get("currency") if isinstance(country.get("currency"), str) else None,
         "pay_method": PAY_METHOD.get(game.get("pay_method"), game.get("pay_method")),
         "template": {
             "id": template.get("id"),
@@ -259,6 +282,8 @@ def normalize_game(state, url):
             "level": template.get("game_level"),
         },
         "format": fields,
+        "league": fields.get("Рейтинг"),
+        "game_type_code": game.get("game_type"),
         "description": _strip_html(game.get("description")),
         "welcome_inscription": game.get("welcome_inscription"),
         "teams_registered": game.get("team_count"),
@@ -272,11 +297,48 @@ def normalize_game(state, url):
     }
 
 
+def normalize_state(state, url):
+    """Normalize a game straight from a page's `window.__NUXT__` state."""
+    game = (state.get("data", {}).get("game") or {}).get("data")
+    location = state.get("pinia", {}).get("location", {}) or {}
+    city = dict(location.get("city") or {})
+    country = dict(location.get("country") or {})
+    city.setdefault("name", location.get("cityTitle"))
+    city.setdefault("slug", location.get("citySlug"))
+    country.setdefault("name", location.get("countryTitle"))
+    country.setdefault("currency", location.get("currencyMode"))
+    return normalize_game(game, url, city=city, country=country)
+
+
+def normalize_results(rows):
+    """Normalize `/api/games/{id}/results` rows into scoreboard entries."""
+    results = []
+    for row in rows or []:
+        team = row.get("team") or {}
+        rank = row.get("rank") or {}
+        rank_title = rank.get("title") if isinstance(rank, dict) else rank
+        rounds = {}
+        for name, value in (row.get("rounds") or {}).items():
+            key = "round_%s" % name if not str(name).startswith("round_") else str(name)
+            rounds[key] = _number(value)
+        results.append({
+            "place": _number(row.get("place")),
+            "team": (team.get("title") or "").strip() or None,
+            "team_id": team.get("id"),
+            "rank": RANK_CODES.get(rank_title),
+            "rank_title": rank_title,
+            "total": _number(row.get("total")),
+            "rounds": rounds,
+        })
+    results.sort(key=lambda item: (item["place"] is None, item["place"]))
+    return results
+
+
 def scrape_game(reference, city="baku", with_results=True, keep_raw=False):
     """Scrape one game page into a dict ready to serialise."""
     url = game_url(reference, city=city)
     state = extract_nuxt_state(fetch(url))
-    record = normalize_game(state, url)
+    record = normalize_state(state, url)
 
     record["results"] = []
     if with_results and record.get("results_table_url"):
@@ -294,7 +356,7 @@ def scrape_game_from_html(html, url, results_xlsx=None):
 
     Useful for tests and for re-processing an archived copy of a page.
     """
-    record = normalize_game(extract_nuxt_state(html), url)
+    record = normalize_state(extract_nuxt_state(html), url)
     record["results"] = []
     if results_xlsx is not None:
         record["results"] = parse_results_table(read_first_sheet(io.BytesIO(results_xlsx)))
@@ -311,14 +373,59 @@ def results_to_csv_rows(record):
                 round_names.append(name)
     round_names.sort(key=lambda name: int(name.split("_")[1]))
 
-    yield ["game_id", "date", "city", "title", "game_number", "place",
-           "team", "rank", "total"] + round_names
+    yield RESULT_CSV_COLUMNS + round_names
+    for row in result_csv_rows(record, round_names):
+        yield row
+
+
+RESULT_CSV_COLUMNS = [
+    "game_id", "date", "city", "title", "game_number", "package_number",
+    "place_title", "place", "team", "team_id", "rank", "rank_title", "total",
+]
+
+GAME_CSV_COLUMNS = [
+    "game_id", "date", "city", "country", "title", "game_number", "full_title",
+    "package_number", "template_title", "level", "theme", "difficulty", "format",
+    "league", "venue", "address", "price", "currency", "status", "teams_registered",
+    "teams_came", "people_registered", "team_count_with_results", "url",
+]
+
+
+def round_names_of(records):
+    """Round column names across one or more games, ordered numerically."""
+    if isinstance(records, dict):
+        records = [records]
+    names = set()
+    for record in records:
+        for result in record.get("results", []):
+            names.update(result["rounds"])
+    return sorted(names, key=lambda name: int(name.split("_")[1]))
+
+
+def result_csv_rows(record, round_names):
+    """Scoreboard rows for one game, each carrying the game's identity."""
     for result in record.get("results", []):
         yield [
             record["id"], record["date"], record["city"]["name"], record["title"],
-            record["game_number"], result["place"], result["team"],
-            result["rank"], result["total"],
+            record["game_number"], record["package_number"],
+            record["place"]["title"], result["place"], result["team"],
+            result["team_id"], result["rank"], result["rank_title"], result["total"],
         ] + [result["rounds"].get(name) for name in round_names]
+
+
+def game_csv_row(record):
+    """One row describing a game, without its scoreboard."""
+    fields = record.get("format") or {}
+    return [
+        record["id"], record["date"], record["city"]["name"], record["country"]["name"],
+        record["title"], record["game_number"], record["full_title"],
+        record["package_number"], record["template"]["title"], record["template"]["level"],
+        fields.get("Тема"), fields.get("Сложность"), fields.get("Формат"),
+        record.get("league"), record["place"]["title"], record["place"]["address"], record["price"],
+        record["currency"], record["status"], record["teams_registered"],
+        record["teams_came"], record["people_registered"], len(record.get("results", [])),
+        record["url"],
+    ]
 
 
 def dumps(record):

@@ -1,0 +1,53 @@
+{
+  "id": "019de7da-5748-7293-aa47-dc8c9f496562",
+  "url": "https://baku.quizplease.com/game/019de7da-5748-7293-aa47-dc8c9f496562",
+  "title": "[music party] поп-хиты BAKU",
+  "game_number": "1",
+  "full_title": "[music party] поп-хиты BAKU 1",
+  "package_number": "попхиты1",
+  "date": "2026-05-05T19:30:00",
+  "date_raw": "05.05.2026 19:30",
+  "registration_opens": "2026-05-01T15:32:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 1309,
+    "title": "Paulaner Braühaus",
+    "address": "25B 8 Noyabr Prospekti, Bakı 1025",
+    "lat": 40.3808961546798,
+    "lon": 49.87957371578592
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 517,
+    "title": "[music party] поп-хиты",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Как отличить хит от обычной песни? Никто ещё не придумал стопроцентный способ, но почему-то «Believer» всегда хочется пропеть, а от голоса Татьяны Булановой хочется отрываться вместе с её подтанцовкой. Хит может быть отечественным или зарубежным, но важно другое — он «попадает в сердце и остаётся там». Уверены, игру [music party] поп-хиты вы сможете назвать хитовой, ведь вас ждут диско, техно, танцевальная музыка и даже k-pop — всё, что вы точно слышали и успели полюбить!",
+  "welcome_inscription": "Самый лучший хит, пульсом бьёт бит, пульсом бьёт бит!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2026-05-02T08:42:19+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:19:41.700596+00:00"
+}

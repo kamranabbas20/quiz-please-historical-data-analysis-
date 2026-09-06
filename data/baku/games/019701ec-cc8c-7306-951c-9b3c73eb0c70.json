@@ -1,0 +1,53 @@
+{
+  "id": "019701ec-cc8c-7306-951c-9b3c73eb0c70",
+  "url": "https://baku.quizplease.com/game/019701ec-cc8c-7306-951c-9b3c73eb0c70",
+  "title": "[рок vs попса] BAKU",
+  "game_number": "1",
+  "full_title": "[рок vs попса] BAKU 1",
+  "package_number": "рокпопса1",
+  "date": "2024-05-21T19:30:00",
+  "date_raw": "21.05.2024 19:30",
+  "registration_opens": "2024-04-30T18:00:00",
+  "status": "finished",
+  "status_code": 4,
+  "is_championship": false,
+  "city": {
+    "id": 158,
+    "name": "Баку",
+    "slug": "baku"
+  },
+  "country": {
+    "id": 30,
+    "name": "Азербайджан"
+  },
+  "place": {
+    "id": 798,
+    "title": "BALAGAN",
+    "address": "г. Баку, улица Хагани 103",
+    "lat": 40.37687081733487,
+    "lon": 49.85494743845463
+  },
+  "price": 15,
+  "currency": "₼",
+  "pay_method": "cash",
+  "template": {
+    "id": 286,
+    "title": "[рок vs попса]",
+    "level": "medium"
+  },
+  "format": {},
+  "league": null,
+  "game_type_code": 0,
+  "description": "Исторически так сложилось, что рок и поп-музыку противопоставляют, и фанаты этих жанров редко находят общий язык. Проверяем это на практике — а именно в формате Квиз, плиз! Регистрируясь, вы укажете за какой жанр будет играть ваша команда, чтобы в итоге выяснить, кто кого.",
+  "welcome_inscription": "Спэшл для всех, кому катастрофически не хватало любимой музыки не только в наушниках, но еще и на наших играх! Будут как музыкальные, так и логические вопросы. Выбирайте, на чьей стороне вы в игре [рок vs попса]!",
+  "teams_registered": 0,
+  "teams_came": 0,
+  "people_registered": 0,
+  "people_came": 0,
+  "max_participants_per_team": 9,
+  "results_table_url": null,
+  "photos": [],
+  "created_at": "2025-05-24T10:53:05+00:00",
+  "results": [],
+  "scraped_at": "2026-09-06T22:24:24.739301+00:00"
+}
