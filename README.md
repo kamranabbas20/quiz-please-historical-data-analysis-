@@ -117,6 +117,10 @@ Four views:
   score, place, round-by-round scores against the field's average and best,
   strongest and weakest round, comparison with the team's career averages,
   position after each round, and the game's full final table.
+- **Раунды** — the team across every round of the filtered slice: strongest and
+  weakest round against the room's own average, where its points come from, how
+  often it took a round outright, and how often it went negative. Rounds are
+  compared by share of the round's best score, never by raw points.
 - **Форматы** — one row per quiz format: games, average score, average place,
   win rate, top-3 rate, average percentile, consistency.
 - **Площадки** — where the games were held: an OpenStreetMap-backed map of the
@@ -152,6 +156,31 @@ deliberately structural, not semantic: `[про кино] Гарри Потте�
 of the `Гарри Поттер [Хогвартс]` series. The Форматы tab has a toggle that
 expands families back into individual editions, and `game_type` keeps the
 original name on every row.
+
+### Round scores
+
+Round-by-round scores are scraped for every game that publishes them and used in
+three places: the per-game breakdown (team vs. the room's average and best, plus
+position after each round), the game's full final table, and the **Раунды** view,
+which aggregates a team across all its games.
+
+Rounds are not worth the same. In a classic Baku game rounds 1–3 and 5–6 top out
+near 6 points, round 4 near 11 and round 7 near 18, so averaging raw scores would
+just rediscover the scoring table. Everything comparative therefore uses the
+share of the best score achieved in that round, and the raw average sits beside
+it because it is what a player recognises.
+
+Two things the data itself says, worth knowing before reading the view:
+
+- **Points can be lost.** 64 of Baku's round scores are negative, almost all in
+  round 7 and a few in round 4 — the rounds where teams stake points. A game
+  total never goes below zero. The view counts these separately as «уходы в
+  минус» rather than hiding them in an average.
+- **Round 3 in a seven-round game is not round 3 in a ten-round one.** Formats
+  differ in structure, so where the filtered slice mixes them the view says so
+  and suggests picking a format first. The "strongest round" headline ignores
+  rounds that appear in only a handful of games, or a single ten-round music
+  party would outrank three years of classics.
 
 ### The venue map
 
@@ -345,7 +374,7 @@ There are ~101,000 finished games across 244 cities;
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'   # 64 tests: scraper, model, analytics, build
-node --test tests/test_stats.mjs                       # 10 tests: dashboard statistics
+node --test tests/test_stats.mjs                       # 13 tests: dashboard statistics
 
 # browser tests need the app running on :8765
 python3 -m http.server 8765 --directory app &

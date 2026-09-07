@@ -13,7 +13,7 @@ import {
 } from './charts.js';
 import {
   byGameType, cumulativeProgress, formatDate, formatNumber, formatPercent,
-  headToHead, isNumber, mean, roundBreakdown, rollingMean, summarize,
+  headToHead, isNumber, mean, roundBreakdown, roundProfile, rollingMean, summarize,
 } from './stats.js';
 
 const ROLLING_WINDOW = 5;
@@ -280,6 +280,7 @@ function update() {
   const views = {
     overview: renderOverview,
     games: renderGames,
+    rounds: renderRounds,
     types: renderTypes,
     venues: renderVenues,
     compare: renderCompare,
@@ -775,6 +776,171 @@ function renderTypes(container, rows) {
       entries.map((entry) => [entry.gameType, String(entry.games), formatNumber(entry.avgPosition, 1)])),
   }));
   container.appendChild(grid);
+}
+
+/* ------------------------------------------------------------ rounds view */
+
+function renderRounds(container, rows) {
+  if (!rows.length) {
+    container.appendChild(message('Нет игр', 'Ни одна игра не подходит под выбранные фильтры.'));
+    return;
+  }
+
+  const profile = roundProfile(rows, (gameId) => state.dataset.rowsByGame.get(gameId) || []);
+  if (!profile.length) {
+    container.appendChild(message('Нет данных по раундам',
+      'В выбранных играх не опубликованы результаты по раундам.'));
+    return;
+  }
+
+  const teamName = (state.dataset.teamsByKey.get(state.team) || {}).name || '';
+  const structures = new Set(rows.map((row) => (row.game.round_labels || []).length));
+
+  // Rounds only a handful of formats have (a tenth round in a music party) are
+  // no basis for "strongest round": one game at 100% would outrank seven years
+  // of the round that actually decides games.
+  const busiest = Math.max(...profile.map((entry) => entry.games), 1);
+  const threshold = Math.max(3, busiest * 0.2);
+  const representative = profile.filter((entry) => isNumber(entry.avgShare) && entry.games >= threshold);
+  const scored = representative.length
+    ? representative
+    : profile.filter((entry) => isNumber(entry.avgShare));
+  const strongest = scored.length ? scored.reduce((a, b) => (a.avgShare >= b.avgShare ? a : b)) : null;
+  const weakest = scored.length ? scored.reduce((a, b) => (a.avgShare <= b.avgShare ? a : b)) : null;
+  const penalties = profile.reduce((sum, entry) => sum + entry.negatives, 0);
+  const biggest = profile.reduce((a, b) => ((a.pointsShare ?? 0) >= (b.pointsShare ?? 0) ? a : b));
+
+  const kpis = document.createElement('div');
+  kpis.className = 'grid kpis';
+  for (const card of [
+    { label: 'Сильнейший раунд', value: strongest ? strongest.label : '—', small: true,
+      delta: strongest
+        ? `${formatNumber(strongest.avgShare, 1)}% от лучшего · зал ${formatNumber(strongest.fieldShare, 1)}% · ${strongest.games} игр`
+        : null },
+    { label: 'Слабейший раунд', value: weakest ? weakest.label : '—', small: true,
+      delta: weakest
+        ? `${formatNumber(weakest.avgShare, 1)}% от лучшего · зал ${formatNumber(weakest.fieldShare, 1)}% · ${weakest.games} игр`
+        : null },
+    { label: 'Больше всего очков', value: biggest.label, small: true,
+      delta: `${formatNumber(biggest.pointsShare, 0)}% всех баллов команды` },
+    { label: 'Выигранных раундов', value: String(profile.reduce((sum, entry) => sum + entry.wins, 0)),
+      delta: 'лучший результат зала в раунде' },
+    { label: 'Уходов в минус', value: String(penalties),
+      delta: penalties ? 'в раундах со ставкой очки можно потерять' : 'ни одного отрицательного раунда' },
+  ]) {
+    const node = document.createElement('div');
+    node.className = 'card kpi';
+    const label = document.createElement('div');
+    label.className = 'label';
+    label.textContent = card.label;
+    const value = document.createElement('div');
+    value.className = card.small ? 'value small' : 'value';
+    value.textContent = card.value;
+    node.append(label, value);
+    if (card.delta) {
+      const delta = document.createElement('div');
+      delta.className = 'delta';
+      delta.textContent = card.delta;
+      node.appendChild(delta);
+    }
+    kpis.appendChild(node);
+  }
+  container.appendChild(kpis);
+
+  if (structures.size > 1) {
+    const warn = document.createElement('p');
+    warn.className = 'scope-note';
+    warn.textContent = `В выборке игры с разным числом раундов (${[...structures].sort((a, b) => a - b).join(', ')}). `
+      + 'Раунд №3 в семираундовой игре и в восьмираундовой — это разные раунды; '
+      + 'выберите формат в фильтрах, чтобы сравнивать одинаковые.';
+    container.appendChild(warn);
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'grid charts-2';
+
+  grid.appendChild(chartCard({
+    title: 'Профиль по раундам',
+    note: 'Доля от лучшего результата в этом раунде — единственная величина, сравнимая между '
+      + 'раундами: в классике раунд 7 стоит ~18 баллов, а раунды 1–3 — по 6.',
+    legend: [
+      { label: teamName || 'Команда', color: SERIES[0], shape: 'rect' },
+      { label: 'Средний по залу', color: SERIES[1], shape: 'rect' },
+    ],
+    render: (holder, tooltip) => groupedColumns(holder, tooltip, {
+      groups: profile.map((entry) => ({
+        label: entry.label.replace('Раунд ', 'Р'),
+        values: [entry.avgShare, entry.fieldShare],
+      })),
+      series: [
+        { label: teamName || 'Команда', color: SERIES[0] },
+        { label: 'Средний по залу', color: SERIES[1] },
+      ],
+      formatValue: (value) => formatNumber(value, 1),
+    }),
+    table: () => simpleTable(
+      ['Раунд', 'Игр', '% от лучшего', 'Зал, % от лучшего'],
+      profile.map((entry) => [
+        entry.label, String(entry.games),
+        formatNumber(entry.avgShare, 1), formatNumber(entry.fieldShare, 1),
+      ]),
+    ),
+  }));
+
+  grid.appendChild(chartCard({
+    title: 'Откуда приходят баллы',
+    note: 'Доля раунда в сумме, набранной командой за выбранные игры.',
+    render: (holder, tooltip) => barChart(holder, tooltip, {
+      items: profile.map((entry) => ({
+        label: entry.label,
+        value: entry.pointsShare ?? 0,
+        rows: [
+          { label: 'Доля в сумме', value: `${formatNumber(entry.pointsShare, 1)}%`, color: SERIES[0] },
+          { label: 'Средний балл', value: formatNumber(entry.avgScore, 1) },
+          { label: 'Игр', value: String(entry.games) },
+        ],
+      })),
+      formatValue: (value) => `${formatNumber(value, 0)}%`,
+    }),
+    table: () => simpleTable(
+      ['Раунд', 'Средний балл', 'Доля в сумме, %'],
+      profile.map((entry) => [
+        entry.label, formatNumber(entry.avgScore, 1), formatNumber(entry.pointsShare, 1),
+      ]),
+    ),
+  }));
+  container.appendChild(grid);
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  const heading = document.createElement('h3');
+  heading.textContent = 'Раунды по числам';
+  const note = document.createElement('div');
+  note.className = 'card-note';
+  note.textContent = 'Выигранный раунд — лучший результат зала в нём, включая дележ первого места. '
+    + 'В отдельных раундах результат бывает отрицательным: очки в них можно потерять, '
+    + 'хотя итог игры ниже нуля не опускается.';
+  card.append(heading, note);
+
+  const columns = [
+    { key: 'label', label: 'Раунд', get: (entry) => entry.index, render: (entry) => entry.label, left: true },
+    { key: 'games', label: 'Игр', get: (entry) => entry.games, render: (entry) => String(entry.games) },
+    { key: 'avgScore', label: 'Средний балл', get: (entry) => entry.avgScore ?? -1, render: (entry) => formatNumber(entry.avgScore, 2) },
+    { key: 'bestScore', label: 'Лучший', get: (entry) => entry.bestScore ?? -1, render: (entry) => formatNumber(entry.bestScore, 1) },
+    { key: 'worstScore', label: 'Худший', get: (entry) => entry.worstScore ?? -1, render: (entry) => formatNumber(entry.worstScore, 1) },
+    { key: 'avgShare', label: '% от лучшего', get: (entry) => entry.avgShare ?? -1, render: (entry) => formatNumber(entry.avgShare, 1) },
+    { key: 'fieldShare', label: 'Зал, %', get: (entry) => entry.fieldShare ?? -1, render: (entry) => formatNumber(entry.fieldShare, 1) },
+    { key: 'pointsShare', label: 'Доля в сумме, %', get: (entry) => entry.pointsShare ?? -1, render: (entry) => formatNumber(entry.pointsShare, 1) },
+    { key: 'wins', label: 'Выиграно', get: (entry) => entry.wins, render: (entry) => `${entry.wins} · ${formatPercent(entry.winRate, 0)}` },
+    { key: 'negatives', label: 'В минус', get: (entry) => entry.negatives, render: (entry) => String(entry.negatives) },
+    { key: 'consistency', label: 'σ, %', get: (entry) => entry.consistency ?? -1, render: (entry) => formatNumber(entry.consistency, 1) },
+  ];
+  if (!state.sort.rounds) state.sort.rounds = { key: 'label', dir: 'asc' };
+  card.appendChild(buildTable(columns, sortRows(profile, columns, state.sort.rounds), {
+    sortState: state.sort.rounds,
+    onSort: (key) => { toggleSort(state.sort.rounds, key); update(); },
+  }));
+  container.appendChild(card);
 }
 
 /* ------------------------------------------------------------ venues view */

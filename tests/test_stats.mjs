@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 
 import {
   byGameType, cumulativeProgress, formatNumber, formatPercent, headToHead,
-  mean, median, roundBreakdown, rollingMean, stdev, summarize, trendSlope,
+  mean, median, roundBreakdown, roundProfile, rollingMean, stdev, summarize, trendSlope,
 } from '../app/js/stats.js';
 
 /* A tiny fixture in the shape the build step emits. */
@@ -142,6 +142,63 @@ test('headToHead keeps only shared games, in date order', () => {
   assert.equal(shared.length, 1);
   assert.equal(shared[0].game.id, 'b');
   assert.equal(shared[0].entries.size, 2);
+});
+
+test('roundProfile aggregates a team across rounds', () => {
+  const g1 = game('a', '2026-01-01T19:00', 'Классика', 3);
+  const g2 = game('b', '2026-02-01T19:00', 'Классика', 3);
+  const mine1 = row(g1, { position: 1, total: 15, rounds: [5, 10] });
+  mine1.round_pct = [100, 50];
+  const mine2 = row(g2, { position: 2, total: 9, rounds: [3, 6] });
+  mine2.round_pct = [60, 60];
+  const field = {
+    a: [mine1, { ...row(g1, { position: 2, total: 24, rounds: [4, 20] }), round_pct: [80, 100] }],
+    b: [mine2, { ...row(g2, { position: 1, total: 15, rounds: [5, 10] }), round_pct: [100, 100] }],
+  };
+
+  const profile = roundProfile([mine1, mine2], (id) => field[id]);
+  assert.equal(profile.length, 2);
+
+  const [first, second] = profile;
+  assert.equal(first.games, 2);
+  assert.equal(first.avgScore, 4);              // (5 + 3) / 2
+  assert.equal(first.avgShare, 80);             // (100 + 60) / 2
+  assert.equal(first.bestScore, 5);
+  assert.equal(first.worstScore, 3);
+  assert.equal(first.wins, 1);                  // took round 1 in game a only
+  assert.equal(first.winRate, 0.5);
+  // 8 of the team's 24 points came from round 1.
+  assert.equal(Math.round(first.pointsShare), 33);
+  assert.equal(Math.round(second.pointsShare), 67);
+  assert.equal(first.fieldShare, 85);           // (100+80+60+100)/4
+});
+
+test('roundProfile counts negative rounds and tolerates gaps', () => {
+  const g = game('a', '2026-01-01T19:00', 'Классика', 4, ['round_1', 'round_2']);
+  const mine = row(g, { position: 1, total: 2, rounds: [-3, 5] });
+  mine.round_pct = [-60, 100];
+  const profile = roundProfile([mine], () => [mine]);
+  assert.equal(profile[0].negatives, 1);        // points can be lost in a round
+  assert.equal(profile[1].negatives, 0);
+  assert.equal(profile[0].avgScore, -3);
+
+  // A round with no data anywhere simply does not appear.
+  const empty = row(game('b', '2026-02-01T19:00', 'Классика', 4, ['round_1']), {
+    position: 1, total: 0, rounds: [null],
+  });
+  empty.round_pct = [null];
+  assert.equal(roundProfile([empty], () => []).length, 0);
+});
+
+test('roundProfile handles a team with no field data', () => {
+  const g = game('a', '2026-01-01T19:00', 'Классика', 1);
+  const mine = row(g, { position: 1, total: 8, rounds: [3, 5] });
+  mine.round_pct = [100, 100];
+  const profile = roundProfile([mine], () => []);
+  assert.equal(profile.length, 2);
+  assert.equal(profile[0].wins, 0);             // nothing to compare against
+  assert.equal(profile[0].winRate, null);
+  assert.equal(profile[0].fieldShare, null);
 });
 
 test('formatters degrade to an em dash rather than NaN', () => {

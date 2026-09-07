@@ -132,6 +132,91 @@ export function byGameType(rows, level = 'family') {
     .sort((a, b) => (b.avgPercentile ?? -1) - (a.avgPercentile ?? -1) || b.games - a.games);
 }
 
+/* The team's profile across every round of the filtered slice.
+ *
+ * Rounds are not worth the same: in a classic game rounds 1-3 top out around 6
+ * points and round 7 around 18, so averaging raw scores would just rediscover
+ * the scoring table. The comparable measure is the share of the best score in
+ * that round, which the build step already computed per row; the raw average is
+ * kept beside it because it is what a player recognises.
+ *
+ * `fieldRowsFor(gameId)` supplies every team's row in a game, for the baseline
+ * and for counting rounds the team took outright.
+ */
+export function roundProfile(rows, fieldRowsFor) {
+  const byRound = new Map();
+
+  for (const row of rows) {
+    const labels = (row.game && row.game.round_labels) || [];
+    for (let index = 0; index < labels.length; index += 1) {
+      const value = row.rounds[index];
+      const share = row.round_pct[index];
+      if (!isNumber(value) && !isNumber(share)) continue;
+
+      if (!byRound.has(index)) {
+        byRound.set(index, {
+          index,
+          label: labels[index],
+          scores: [],
+          shares: [],
+          fieldShares: [],
+          wins: 0,
+          ranked: 0,
+          negatives: 0,
+        });
+      }
+      const entry = byRound.get(index);
+      if (isNumber(value)) {
+        entry.scores.push(value);
+        // Some rounds can be lost as well as won -- the scoreboards record
+        // negative scores in them, though a game total never goes below zero.
+        if (value < 0) entry.negatives += 1;
+      }
+      if (isNumber(share)) entry.shares.push(share);
+
+      const field = fieldRowsFor ? fieldRowsFor(row.game_id) : null;
+      if (field && field.length) {
+        const others = field.map((other) => other.rounds[index]).filter(isNumber);
+        if (others.length) {
+          const best = Math.max(...others);
+          entry.fieldShares.push(...field
+            .map((other) => other.round_pct[index])
+            .filter(isNumber));
+          if (isNumber(value)) {
+            entry.ranked += 1;
+            // Sharing the top score counts: the round was not lost.
+            if (value >= best) entry.wins += 1;
+          }
+        }
+      }
+    }
+  }
+
+  const totalPoints = rows.reduce((sum, row) => sum + (isNumber(row.total) ? row.total : 0), 0);
+
+  return [...byRound.values()]
+    .sort((a, b) => a.index - b.index)
+    .map((entry) => {
+      const points = entry.scores.reduce((sum, value) => sum + value, 0);
+      return {
+        index: entry.index,
+        label: entry.label,
+        games: entry.scores.length,
+        avgScore: mean(entry.scores),
+        bestScore: entry.scores.length ? Math.max(...entry.scores) : null,
+        worstScore: entry.scores.length ? Math.min(...entry.scores) : null,
+        avgShare: mean(entry.shares),
+        fieldShare: mean(entry.fieldShares),
+        // How much of everything the team scored came from this round.
+        pointsShare: totalPoints ? (points / totalPoints) * 100 : null,
+        wins: entry.wins,
+        winRate: entry.ranked ? entry.wins / entry.ranked : null,
+        negatives: entry.negatives,
+        consistency: stdev(entry.shares),
+      };
+    });
+}
+
 /* Round-level view of one game for the selected team, against the field. */
 export function roundBreakdown(row, fieldRows) {
   const game = row.game;

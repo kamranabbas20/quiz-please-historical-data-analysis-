@@ -147,6 +147,21 @@ if (boxes.length) {
   record('each compared team gets its own colour', new Set(swatches).size === swatches.length, swatches);
 }
 
+/* 5a2. Round profile: aggregates exist and respect the sample size. */
+await page.click('.tab[data-view="rounds"]');
+await page.waitForTimeout(400);
+const roundRows = await page.$$eval('.card table tbody tr', (n) => n.length);
+record('round table lists every round', roundRows > 1, roundRows);
+const strongest = await page.$$eval('.kpi', (nodes) => {
+  const found = nodes.find((n) => n.querySelector('.label').textContent === 'Сильнейший раунд');
+  return found ? { value: found.querySelector('.value').textContent, delta: found.querySelector('.delta').textContent } : null;
+});
+record('strongest round is named', Boolean(strongest && /Раунд/.test(strongest.value)), strongest);
+// The headline round must rest on a real sample, not a one-off format's extra round.
+const sample = strongest ? Number((strongest.delta.match(/(\d+) игр/) || [])[1] || 0) : 0;
+record('strongest round is backed by a real sample', sample >= 3, { sample, delta: strongest && strongest.delta });
+record('round profile charts render', (await page.$$eval('.chart svg', (n) => n.length)) >= 2);
+
 /* 5b. Format grouping: families collapse editions, the toggle expands them. */
 await page.click('.tab[data-view="types"]');
 await page.waitForTimeout(300);
