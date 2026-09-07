@@ -37,13 +37,15 @@ for (const needle of wanted) {
 
   await page.click('.tab[data-view="types"]');
   await page.waitForTimeout(200);
+  // Read the games column by its header: the table's columns change over time.
+  const typeHeaders = await page.$$eval('table thead th', (nodes) => nodes.map((n) => n.textContent.trim()));
   const types = await page.$$eval('table tbody tr', (nodes) => nodes.map(
     (node) => [...node.querySelectorAll('td')].map((cell) => cell.textContent),
   ));
 
   await page.click('.tab[data-view="overview"]');
   await page.waitForTimeout(150);
-  out.teams[needle] = { key: value, kpis, gameRows: rows, typeRows: types };
+  out.teams[needle] = { key: value, kpis, gameRows: rows, typeRows: types, typeHeaders };
 }
 
 await browser.close();

@@ -8,7 +8,7 @@
 
 import { applyFilters, loadCity, loadIndex, optionsFor, teamRows } from './data.js';
 import {
-  SERIES, barChart, chartCard, columnChart, groupedColumns, lineChart,
+  SERIES, barChart, chartCard, columnChart, groupedColumns, lineChart, mapChart, periodBars,
 } from './charts.js';
 import {
   byGameType, cumulativeProgress, formatDate, formatNumber, formatPercent,
@@ -62,7 +62,7 @@ export async function start() {
 
 function cacheDom() {
   for (const id of ['city', 'team', 'teamSearch', 'family', 'gameType', 'variantField',
-    'league', 'season', 'from', 'to', 'reset', 'main', 'tabs', 'scopeNote',
+    'league', 'season', 'venue', 'from', 'to', 'reset', 'main', 'tabs', 'scopeNote',
     'themeToggle', 'coverage']) {
     dom[id] = document.getElementById(id);
   }
@@ -83,7 +83,7 @@ function wireStaticControls() {
     refreshDependentFilters();
     update();
   });
-  for (const id of ['family', 'gameType', 'league', 'season', 'from', 'to']) {
+  for (const id of ['family', 'gameType', 'league', 'season', 'venue', 'from', 'to']) {
     dom[id].addEventListener('change', () => {
       state.filters[id] = dom[id].value;
       // Picking a different family invalidates the variant chosen under the old one.
@@ -179,6 +179,7 @@ function refreshDependentFilters() {
     ['family', (row) => row.game.game_family || row.game.game_type, 'Все форматы'],
     ['league', (row) => row.game.league, 'Все лиги'],
     ['season', (row) => row.game.season, 'Все сезоны'],
+    ['venue', (row) => row.game.venue, 'Все площадки'],
   ];
   for (const [id, pick, placeholder] of specs) {
     const options = optionsFor(rows, pick);
@@ -237,7 +238,7 @@ function fillTeamSelect() {
 }
 
 function syncFilterInputs() {
-  for (const id of ['family', 'gameType', 'league', 'season', 'from', 'to']) {
+  for (const id of ['family', 'gameType', 'league', 'season', 'venue', 'from', 'to']) {
     if (dom[id]) dom[id].value = state.filters[id] || '';
   }
 }
@@ -270,6 +271,7 @@ function update() {
     overview: renderOverview,
     games: renderGames,
     types: renderTypes,
+    venues: renderVenues,
     compare: renderCompare,
   };
   const container = document.createElement('div');
@@ -763,6 +765,145 @@ function renderTypes(container, rows) {
       entries.map((entry) => [entry.gameType, String(entry.games), formatNumber(entry.avgPosition, 1)])),
   }));
   container.appendChild(grid);
+}
+
+/* ------------------------------------------------------------ venues view */
+
+function renderVenues(container, rows) {
+  const venues = state.dataset.venues || [];
+  if (!venues.length) {
+    container.appendChild(message('Нет площадок', 'В датасете нет ни одной площадки.'));
+    return;
+  }
+
+  // Games the selected team played at each venue, on the current filters.
+  const teamGames = new Map();
+  for (const row of rows) {
+    const name = row.game.venue;
+    if (name) teamGames.set(name, (teamGames.get(name) || 0) + 1);
+  }
+  const teamName = (state.dataset.teamsByKey.get(state.team) || {}).name || '';
+  const plotted = venues.filter((venue) => venue.has_coords);
+  const missing = venues.filter((venue) => !venue.has_coords);
+
+  const points = plotted.map((venue) => ({
+    key: venue.title,
+    name: venue.title,
+    lat: venue.lat,
+    lon: venue.lon,
+    value: venue.games,
+    color: teamGames.has(venue.title) ? SERIES[0] : SERIES[1],
+    dim: !teamGames.has(venue.title),
+    label: venue.title,
+    rows: [
+      { label: 'Игр в городе', value: String(venue.games), color: SERIES[0] },
+      { label: `Игр команды ${teamName}`, value: String(teamGames.get(venue.title) || 0) },
+      { label: 'Период', value: `${formatDate(venue.first)} — ${formatDate(venue.last)}` },
+      { label: 'Адрес', value: venue.address || '—' },
+    ],
+  }));
+
+  // The map leads this view, so it gets the full width rather than a column.
+  container.appendChild(chartCard({
+    title: 'Где играли в Баку',
+    note: 'Размер круга — число игр на площадке. Синие — где играла выбранная команда. '
+      + 'Без подложки: только координаты площадок, север сверху, масштаб внизу.',
+    legend: [
+      { label: `Играла ${teamName}`.trim(), color: SERIES[0], shape: 'rect' },
+      { label: 'Остальные площадки', color: SERIES[1], shape: 'rect' },
+    ],
+    render: (holder, tooltip) => mapChart(holder, tooltip, {
+      points,
+      selectedKey: state.filters.venue,
+      onSelect: (point) => {
+        // Clicking a pin filters everything below to that venue, and clicking
+        // the selected one clears it again.
+        state.filters.venue = state.filters.venue === point.key ? '' : point.key;
+        syncFilterInputs();
+        update();
+      },
+    }),
+    table: () => simpleTable(
+      ['Площадка', 'Игр в городе', 'Игр команды', 'Широта', 'Долгота'],
+      plotted.map((venue) => [
+        venue.title, String(venue.games), String(teamGames.get(venue.title) || 0),
+        venue.lat.toFixed(5), venue.lon.toFixed(5),
+      ]),
+    ),
+  }));
+
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+
+  grid.appendChild(chartCard({
+    title: 'Когда работала каждая площадка',
+    note: 'От первой игры до последней. Видно, как сцена переезжала по городу.',
+    render: (holder, tooltip) => periodBars(holder, tooltip, {
+      items: venues.filter((venue) => venue.first && venue.last).map((venue) => ({
+        label: venue.title,
+        from: venue.first,
+        to: venue.last,
+        value: venue.games,
+        color: teamGames.has(venue.title) ? SERIES[0] : SERIES[1],
+      })),
+      formatDate,
+    }),
+    table: () => simpleTable(
+      ['Площадка', 'Первая игра', 'Последняя игра', 'Игр'],
+      venues.map((venue) => [
+        venue.title, formatDate(venue.first), formatDate(venue.last), String(venue.games),
+      ]),
+    ),
+  }));
+  container.appendChild(grid);
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  const heading = document.createElement('h3');
+  heading.textContent = 'Площадки';
+  const note = document.createElement('div');
+  note.className = 'card-note';
+  note.textContent = 'Нажмите на строку, чтобы отфильтровать всё по этой площадке.';
+  card.append(heading, note);
+
+  const columns = [
+    { key: 'title', label: 'Площадка', get: (v) => v.title, render: (v) => v.title, left: true },
+    { key: 'address', label: 'Адрес', get: (v) => v.address || '', render: (v) => v.address || '—', left: true },
+    { key: 'games', label: 'Игр в городе', get: (v) => v.games, render: (v) => String(v.games) },
+    { key: 'scored', label: 'С результатами', get: (v) => v.scored, render: (v) => String(v.scored) },
+    { key: 'team', label: 'Игр команды', get: (v) => teamGames.get(v.title) || 0,
+      render: (v) => String(teamGames.get(v.title) || 0) },
+    { key: 'first', label: 'Первая', get: (v) => v.first || '', render: (v) => formatDate(v.first), left: true },
+    { key: 'last', label: 'Последняя', get: (v) => v.last || '', render: (v) => formatDate(v.last), left: true },
+  ];
+  if (!state.sort.venues) state.sort.venues = { key: 'games', dir: 'desc' };
+  card.appendChild(buildTable(columns, sortRows(venues, columns, state.sort.venues), {
+    sortState: state.sort.venues,
+    onSort: (key) => { toggleSort(state.sort.venues, key); update(); },
+    onRowClick: (venue) => {
+      state.filters.venue = state.filters.venue === venue.title ? '' : venue.title;
+      syncFilterInputs();
+      update();
+    },
+    isSelected: (venue) => state.filters.venue === venue.title,
+  }));
+  container.appendChild(card);
+
+  if (missing.length) {
+    const warn = document.createElement('div');
+    warn.className = 'card';
+    const warnHeading = document.createElement('h3');
+    warnHeading.textContent = 'Без координат на карте';
+    const warnNote = document.createElement('div');
+    warnNote.className = 'card-note';
+    warnNote.textContent = 'У этих площадок в источнике нет пригодных координат '
+      + '(долгота отсутствует), поэтому на карту они не нанесены.';
+    warn.append(warnHeading, warnNote, simpleTable(
+      ['Площадка', 'Адрес', 'Игр'],
+      missing.map((venue) => [venue.title, venue.address || '—', String(venue.games)]),
+    ));
+    container.appendChild(warn);
+  }
 }
 
 /* -------------------------------------------------------- comparison view */

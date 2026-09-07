@@ -73,6 +73,45 @@ def _distinct(values):
     return sorted({value for value in values if value})
 
 
+def _venues(games):
+    """One entry per venue, with its coordinates checked before use.
+
+    The source's coordinates are not always usable: a few venues carry a
+    longitude in the latitude field and no longitude at all. Rather than plot
+    those somewhere wrong, they are marked `has_coords: false` and the app lists
+    them beside the map instead.
+    """
+    venues = {}
+    for game in games:
+        name = game.venue
+        if not name:
+            continue
+        entry = venues.setdefault(name, {
+            "title": name, "address": game.address, "lat": None, "lon": None,
+            "games": 0, "scored": 0, "first": None, "last": None,
+        })
+        entry["games"] += 1
+        if game.results:
+            entry["scored"] += 1
+        if game.date:
+            entry["first"] = min(entry["first"] or game.date, game.date)
+            entry["last"] = max(entry["last"] or game.date, game.date)
+        if entry["lat"] is None and game.lat is not None and game.lon is not None:
+            entry["lat"], entry["lon"] = game.lat, game.lon
+        entry["address"] = entry["address"] or game.address
+
+    for entry in venues.values():
+        lat, lon = entry["lat"], entry["lon"]
+        entry["has_coords"] = (
+            isinstance(lat, (int, float)) and isinstance(lon, (int, float))
+            and -90 <= lat <= 90 and -180 <= lon <= 180
+        )
+        if not entry["has_coords"]:
+            entry["lat"] = entry["lon"] = None
+
+    return sorted(venues.values(), key=lambda entry: (-entry["games"], entry["title"]))
+
+
 def _variants_by_family(games):
     """Which format names sit under each family, for the dependent filter."""
     variants = {}
@@ -193,6 +232,7 @@ def build_city(slug, data_dir="data", out_dir=os.path.join("app", "data")):
             "themes": _distinct(game.theme for game in scored),
             "difficulties": _distinct(game.difficulty for game in scored),
         },
+        "venues": _venues(games),
         "games": game_payloads,
         "rows": rows,
         "teams": teams,

@@ -15,7 +15,7 @@ from dashboard.model import (
 
 
 def record(game_id, date, title="Квиз, плиз! BAKU", template="Квиз, плиз!", results=None,
-           city="Баку", slug="baku"):
+           city="Баку", slug="baku", venue="Paulaner", lat=40.38, lon=49.87):
     return {
         "id": game_id,
         "date": date,
@@ -23,7 +23,7 @@ def record(game_id, date, title="Квиз, плиз! BAKU", template="Квиз, 
         "game_number": "1",
         "city": {"id": 158, "name": city, "slug": slug},
         "country": {"id": 30, "name": "Азербайджан"},
-        "place": {"id": 1, "title": "Paulaner", "address": "Baku"},
+        "place": {"id": 1, "title": venue, "address": "Baku", "lat": lat, "lon": lon},
         "template": {"id": 1, "title": template, "level": "medium"},
         "format": {"Тема": "обо всём", "Рейтинг": "классика", "Сложность": "нормальная"},
         "league": "классика",
@@ -149,6 +149,64 @@ class FormatFamilyTest(unittest.TestCase):
         ])
         self.assertEqual([game.game_family for game in games],
                          ["[music party]", "[music party]", "Квиз, плиз!"])
+
+
+class VenueTest(unittest.TestCase):
+    def setUp(self):
+        self.root = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.root)
+        self.data = os.path.join(self.root, "data")
+        self.out = os.path.join(self.root, "out")
+
+    def _build(self, records):
+        games_dir = os.path.join(self.data, "baku", "games")
+        os.makedirs(games_dir, exist_ok=True)
+        for entry in records:
+            with open(os.path.join(games_dir, "%s.json" % entry["id"]), "w", encoding="utf-8") as handle:
+                json.dump(entry, handle, ensure_ascii=False)
+        build_city("baku", self.data, self.out)
+        with open(os.path.join(self.out, "baku.json"), encoding="utf-8") as handle:
+            return json.load(handle)["venues"]
+
+    def test_aggregates_games_and_dates_per_venue(self):
+        venues = self._build([
+            record("a", "2026-07-01T19:30:00", venue="SAFRANI", lat=40.39, lon=49.84,
+                   results=[result(1, "A", 10, [10])]),
+            record("b", "2026-08-01T19:30:00", venue="SAFRANI", lat=40.39, lon=49.84),
+            record("c", "2026-09-01T19:30:00", venue="Avenue", lat=40.40, lon=49.87,
+                   results=[result(1, "A", 12, [12])]),
+        ])
+        by_name = {venue["title"]: venue for venue in venues}
+        self.assertEqual(by_name["SAFRANI"]["games"], 2)
+        self.assertEqual(by_name["SAFRANI"]["scored"], 1)      # one has no scoreboard
+        self.assertEqual(by_name["SAFRANI"]["first"][:10], "2026-07-01")
+        self.assertEqual(by_name["SAFRANI"]["last"][:10], "2026-08-01")
+        self.assertEqual(venues[0]["title"], "SAFRANI")        # busiest first
+
+    def test_unusable_coordinates_are_flagged_not_plotted(self):
+        # The source really does ship a longitude in the latitude field with no
+        # longitude at all; plotting that would put the venue somewhere wrong.
+        venues = self._build([
+            record("a", "2026-07-01T19:30:00", venue="Roomka", lat=49.87335, lon=None),
+            record("b", "2026-07-02T19:30:00", venue="Avenue", lat=40.40, lon=49.87),
+        ])
+        by_name = {venue["title"]: venue for venue in venues}
+        self.assertFalse(by_name["Roomka"]["has_coords"])
+        self.assertIsNone(by_name["Roomka"]["lat"])
+        self.assertIsNone(by_name["Roomka"]["lon"])
+        self.assertTrue(by_name["Avenue"]["has_coords"])
+
+    def test_out_of_range_coordinates_are_rejected(self):
+        venues = self._build([record("a", "2026-07-01T19:30:00", venue="X", lat=200, lon=49.8)])
+        self.assertFalse(venues[0]["has_coords"])
+
+    def test_coordinates_are_taken_from_whichever_game_has_them(self):
+        venues = self._build([
+            record("a", "2026-07-01T19:30:00", venue="Bar", lat=None, lon=None),
+            record("b", "2026-07-08T19:30:00", venue="Bar", lat=40.38, lon=49.87),
+        ])
+        self.assertTrue(venues[0]["has_coords"])
+        self.assertEqual(venues[0]["games"], 2)
 
 
 class AnalyticsTest(unittest.TestCase):

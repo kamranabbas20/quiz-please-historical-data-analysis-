@@ -117,6 +117,10 @@ Four views:
   position after each round, and the game's full final table.
 - **Форматы** — one row per quiz format: games, average score, average place,
   win rate, top-3 rate, average percentile, consistency.
+- **Площадки** — where the games were held: a map of the city's venues (circle
+  area = games held there, blue where the selected team played), a timeline of
+  when each venue was in use, and a sortable table. Clicking a pin or a row
+  filters every other view to that venue.
 - **Сравнение команд** — up to three opponents beside the selected team, with
   head-to-head games and who finished higher.
 
@@ -146,6 +150,20 @@ deliberately structural, not semantic: `[про кино] Гарри Потте�
 of the `Гарри Поттер [Хогвартс]` series. The Форматы tab has a toggle that
 expands families back into individual editions, and `game_type` keeps the
 original name on every row.
+
+### The venue map
+
+There is no basemap behind the pins, and that is deliberate: map tiles are
+images served from another host, which the offline single-file build cannot load
+and an embedded viewer blocks outright. So the map shows what the data itself
+supports — venues in their true relative positions, north up, with a scale bar to
+read distances from. Longitude is scaled by cos(latitude) so the city is not
+stretched sideways, and both axes share one scale so a centimetre means the same
+in every direction.
+
+Three of Baku's sixteen venues have unusable coordinates in the source — a
+longitude sitting in the latitude field and no longitude at all. They are marked
+`has_coords: false` and listed under the map rather than plotted somewhere wrong.
 
 ### Metrics
 
@@ -256,6 +274,8 @@ A game JSON:
                "rounds":    [5, 5, 6.5, …],   // aligned with the game's `rounds`
                "round_pct": [100, 83, …] } ],
   "teams": [ { "key", "name", "names": [ … ], "ids": [ … ], "games", "first", "last" } ],
+  "venues": [ { "title", "address", "lat", "lon", "has_coords",
+                "games", "scored", "first", "last" } ],
   "standings": [ { "team", "team_key", "league", "league_code", "position",
                    "points", "games", "rank_title" } ]
 }
@@ -304,7 +324,7 @@ There are ~101,000 finished games across 244 cities;
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -p 'test_*.py'   # 60 tests: scraper, model, analytics, build
+python3 -m unittest discover -s tests -p 'test_*.py'   # 64 tests: scraper, model, analytics, build
 node --test tests/test_stats.mjs                       # 10 tests: dashboard statistics
 
 # browser tests need the app running on :8765

@@ -157,6 +157,34 @@ await page.waitForTimeout(250);
 record('collapsing returns to family rows',
   (await page.$$eval('table tbody tr', (n) => n.length)) === familyRows);
 
+/* 5c. The venue map: pins render, and clicking one filters everything. */
+await page.click('.tab[data-view="venues"]');
+await page.waitForTimeout(400);
+const pins = await page.$$eval('.map-pin', (n) => n.length);
+record('map draws a pin per located venue', pins > 1, pins);
+record('map has a scale bar', (await page.$$eval('.chart svg text', (n) =>
+  n.map((t) => t.textContent).filter((t) => /км|м$/.test(t)))).length > 0);
+
+const venueRowsBefore = await page.$$eval('.card table tbody tr', (n) => n.length);
+await page.click('.map-pin circle[fill="transparent"]');
+await page.waitForTimeout(350);
+const venueFilter = await page.$eval('#venue', (el) => el.value);
+record('clicking a pin sets the venue filter', Boolean(venueFilter), venueFilter);
+
+await page.click('.tab[data-view="games"]');
+await page.waitForTimeout(300);
+const venuesInTable = await page.$$eval('#games-table tbody tr',
+  (nodes) => [...new Set(nodes.map((n) => n.children[8].textContent))]);
+record('venue filter narrows the games to that venue',
+  venuesInTable.length === 1 && venuesInTable[0] === venueFilter,
+  { filter: venueFilter, shown: venuesInTable });
+
+await page.click('#reset');
+await page.waitForTimeout(300);
+record('reset clears the venue filter', (await page.$eval('#venue', (el) => el.value)) === '');
+record('venue table still lists every venue',
+  venueRowsBefore > 0, venueRowsBefore);
+
 /* 6. Team search narrows the dropdown without losing the selection. */
 const beforeSearch = await page.$$eval('#team option', (nodes) => nodes.length);
 const selectedBefore = await page.$eval('#team', (el) => el.value);

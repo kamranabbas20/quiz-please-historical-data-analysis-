@@ -429,6 +429,201 @@ export function columnChart(holder, tooltip, { items, color = SERIES[0], formatV
   }
 }
 
+/* A map of venues, drawn from coordinates alone.
+ *
+ * There is no basemap: tiles are images from another host, which the page
+ * cannot load offline and an embedded viewer blocks outright. So the map is
+ * what the data can honestly support -- venues in their true relative
+ * positions, north up, with a scale bar to read distances off. Longitude is
+ * scaled by cos(latitude) so the city is not stretched sideways, and the two
+ * axes share one scale so distances are comparable in every direction.
+ */
+export function mapChart(holder, tooltip, {
+  points, width = 900, height = 470, onSelect, selectedKey,
+}) {
+  const usable = points.filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lon));
+  if (!usable.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = 'Нет площадок с координатами';
+    holder.appendChild(empty);
+    return;
+  }
+
+  const pad = { top: 20, right: 18, bottom: 42, left: 18 };
+  // A map must not be stretched, so it keeps its aspect ratio and takes its
+  // height from its width -- unlike the plots, which stretch to their box.
+  const svg = el('svg', {
+    viewBox: `0 0 ${width} ${height}`, role: 'img', preserveAspectRatio: 'xMidYMid meet',
+  }, holder);
+
+  const meanLat = usable.reduce((sum, p) => sum + p.lat, 0) / usable.length;
+  const kx = Math.cos((meanLat * Math.PI) / 180);
+  const project = (point) => ({ x: point.lon * kx, y: -point.lat });
+
+  const projected = usable.map((point) => ({ point, ...project(point) }));
+  const xs = projected.map((p) => p.x);
+  const ys = projected.map((p) => p.y);
+  const spanX = Math.max(...xs) - Math.min(...xs) || 1e-4;
+  const spanY = Math.max(...ys) - Math.min(...ys) || 1e-4;
+
+  const plotW = width - pad.left - pad.right;
+  const plotH = height - pad.top - pad.bottom;
+  // One scale for both axes, or the map would misreport distances.
+  const scale = Math.min(plotW / (spanX * 1.12), plotH / (spanY * 1.12));
+  const midX = (Math.max(...xs) + Math.min(...xs)) / 2;
+  const midY = (Math.max(...ys) + Math.min(...ys)) / 2;
+  const toX = (x) => pad.left + plotW / 2 + (x - midX) * scale;
+  const toY = (y) => pad.top + plotH / 2 + (y - midY) * scale;
+
+  const maxGames = Math.max(...usable.map((point) => point.value || 0), 1);
+  const radius = (value) => 5 + 17 * Math.sqrt((value || 0) / maxGames);   // area ∝ games
+
+  // Scale bar: pick a round number of kilometres that fits the plot.
+  const kmPerDegree = 111.32;
+  const pxPerKm = (scale / kmPerDegree);
+  const candidates = [0.25, 0.5, 1, 2, 5, 10, 20];
+  const km = candidates.find((value) => value * pxPerKm > plotW * 0.18) || candidates[candidates.length - 1];
+  const barW = km * pxPerKm;
+  const barY = height - 20;
+  const barX = pad.left + 4;
+  el('line', { x1: barX, x2: barX + barW, y1: barY, y2: barY, stroke: 'var(--text-muted)', 'stroke-width': 2 }, svg);
+  for (const x of [barX, barX + barW]) {
+    el('line', { x1: x, x2: x, y1: barY - 4, y2: barY + 4, stroke: 'var(--text-muted)', 'stroke-width': 2 }, svg);
+  }
+  const barLabel = el('text', { x: barX + barW + 8, y: barY + 4, class: 'axis' }, svg);
+  barLabel.setAttribute('fill', 'var(--text-muted)');
+  barLabel.style.fontSize = '11px';
+  barLabel.textContent = km < 1 ? `${km * 1000} м` : `${km} км`;
+
+  // North arrow: the map has no labels of its own, so say which way is up.
+  const northX = width - pad.right - 10;
+  const northY = pad.top + 6;
+  el('line', { x1: northX, x2: northX, y1: northY + 20, y2: northY, stroke: 'var(--text-muted)', 'stroke-width': 1.5 }, svg);
+  el('polygon', {
+    points: `${northX},${northY - 4} ${northX - 4},${northY + 5} ${northX + 4},${northY + 5}`,
+    fill: 'var(--text-muted)',
+  }, svg);
+  const northLabel = el('text', { x: northX, y: northY + 32, 'text-anchor': 'middle', class: 'axis' }, svg);
+  northLabel.setAttribute('fill', 'var(--text-muted)');
+  northLabel.style.fontSize = '10px';
+  northLabel.textContent = 'С';
+
+  // Biggest first, so small venues stay clickable on top of large ones -- and
+  // so the busiest venue wins the label where two would overlap.
+  const ordered = [...projected].sort((a, b) => (b.point.value || 0) - (a.point.value || 0));
+  const placed = [];
+  for (const entry of ordered) {
+    const { point } = entry;
+    const cx = toX(entry.x);
+    const cy = toY(entry.y);
+    const r = radius(point.value);
+    const selected = selectedKey && point.key === selectedKey;
+
+    const group = el('g', { class: 'map-pin', tabindex: onSelect ? 0 : null }, svg);
+    el('circle', {
+      cx, cy, r, fill: point.color || SERIES[0],
+      'fill-opacity': point.dim ? 0.25 : 0.55,
+      stroke: 'var(--surface-1)', 'stroke-width': 2,
+    }, group);
+    if (selected) {
+      el('circle', {
+        cx, cy, r: r + 5, fill: 'none', stroke: point.color || SERIES[0], 'stroke-width': 2,
+      }, group);
+    }
+    // A hit area big enough to actually hit, whatever the circle's size.
+    const hit = el('circle', { cx, cy, r: Math.max(r + 6, 14), fill: 'transparent' }, group);
+
+    const show = () => showTooltip(tooltip, holder, cx / width, cy / height, point.label, point.rows || []);
+    hit.addEventListener('pointerenter', show);
+    group.addEventListener('focus', show);
+    hit.addEventListener('pointerleave', () => { tooltip.hidden = true; });
+    group.addEventListener('blur', () => { tooltip.hidden = true; });
+    if (onSelect) {
+      hit.addEventListener('click', () => onSelect(point));
+      group.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); onSelect(point); }
+      });
+    }
+
+    // Label the venues that carry the history, and only where the label fits:
+    // venues cluster downtown, and stacked labels are worse than none.
+    if (point.name && (point.value >= maxGames * 0.06 || selected)) {
+      const text = point.name.length > 22 ? `${point.name.slice(0, 21)}…` : point.name;
+      const width = text.length * 6.1;
+      const box = { x1: cx - width / 2, x2: cx + width / 2, y1: cy - r - 17, y2: cy - r - 4 };
+      const clashes = placed.some((other) => !(
+        box.x2 < other.x1 - 2 || box.x1 > other.x2 + 2
+        || box.y2 < other.y1 - 2 || box.y1 > other.y2 + 2
+      ));
+      if (!clashes) {
+        placed.push(box);
+        const label = el('text', {
+          x: cx, y: cy - r - 6, 'text-anchor': 'middle', class: 'axis',
+        }, svg);
+        label.setAttribute('fill', 'var(--text-secondary)');
+        label.style.fontSize = '11px';
+        label.textContent = text;
+      }
+    }
+  }
+}
+
+/* When each venue was in use: one bar per venue, from first game to last. */
+export function periodBars(holder, tooltip, { items, formatDate }) {
+  const rowHeight = 24;
+  const labelWidth = 150;
+  const height = Math.max(80, items.length * rowHeight + 34);
+  const ctx = frame(holder, { height, padding: { left: labelWidth, right: 20, top: 8, bottom: 26 } });
+
+  const times = items.flatMap((item) => [item.from, item.to]).filter(Boolean).map((d) => new Date(d).getTime());
+  const min = Math.min(...times);
+  const max = Math.max(...times);
+  const scale = (time) => ctx.pad.left + ((time - min) / (max - min || 1)) * ctx.plotW;
+
+  // Year gridlines: the only tick that means anything over a multi-year span.
+  const firstYear = new Date(min).getFullYear();
+  const lastYear = new Date(max).getFullYear();
+  for (let year = firstYear; year <= lastYear + 1; year += 1) {
+    const time = new Date(`${year}-01-01T00:00:00`).getTime();
+    if (time < min || time > max) continue;
+    const x = scale(time);
+    el('line', { class: 'grid-line', x1: x, x2: x, y1: ctx.pad.top, y2: ctx.height - ctx.pad.bottom }, ctx.svg);
+    const label = el('text', { x, y: ctx.height - ctx.pad.bottom + 15, 'text-anchor': 'middle', class: 'axis' }, ctx.svg);
+    label.setAttribute('fill', 'var(--text-muted)');
+    label.style.fontSize = '11px';
+    label.textContent = String(year);
+  }
+
+  items.forEach((item, index) => {
+    const y = ctx.pad.top + index * rowHeight;
+    const barHeight = 10;
+    const x1 = scale(new Date(item.from).getTime());
+    const x2 = scale(new Date(item.to).getTime());
+    const width = Math.max(3, x2 - x1);
+
+    const label = el('text', { x: ctx.pad.left - 10, y: y + barHeight, 'text-anchor': 'end', class: 'axis' }, ctx.svg);
+    label.setAttribute('fill', 'var(--text-secondary)');
+    label.style.fontSize = '11px';
+    label.textContent = item.label.length > 20 ? `${item.label.slice(0, 19)}…` : item.label;
+
+    el('rect', { x: x1, y, width, height: barHeight, rx: 4, fill: item.color || SERIES[0] }, ctx.svg);
+
+    const hit = el('rect', {
+      x: ctx.pad.left - labelWidth, y: y - 5, width: ctx.width, height: rowHeight, fill: 'transparent',
+    }, ctx.svg);
+    hit.addEventListener('pointerenter', () => showTooltip(
+      tooltip, holder, (x1 + width / 2) / ctx.width, y / ctx.height, item.label,
+      [
+        { label: 'Игр', value: String(item.value), color: item.color || SERIES[0] },
+        { label: 'Первая', value: formatDate(item.from) },
+        { label: 'Последняя', value: formatDate(item.to) },
+      ],
+    ));
+    hit.addEventListener('pointerleave', () => { tooltip.hidden = true; });
+  });
+}
+
 /* Grouped columns: the team's round scores beside the field's average. */
 export function groupedColumns(holder, tooltip, { groups, series, formatValue = String }) {
   const ctx = frame(holder, { height: 230, padding: { bottom: 40 } });

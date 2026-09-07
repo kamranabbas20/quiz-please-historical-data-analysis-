@@ -171,7 +171,7 @@ class Game(object):
                  "game_type", "league", "theme", "difficulty", "format", "venue",
                  "address", "price", "currency", "url", "rounds", "results",
                  "teams_count", "best_total", "worst_total", "mean_total",
-                 "results_source", "game_family")
+                 "results_source", "game_family", "lat", "lon")
 
     def __init__(self, **fields):
         for name in self.__slots__:
@@ -240,6 +240,8 @@ def game_from_record(record):
         format=fields.get("Формат"),
         venue=venue.get("title"),
         address=venue.get("address"),
+        lat=venue.get("lat"),
+        lon=venue.get("lon"),
         price=record.get("price"),
         currency=record.get("currency"),
         url=record.get("url"),

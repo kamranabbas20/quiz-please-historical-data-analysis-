@@ -137,8 +137,12 @@ def main(argv):
             failures.append("%s: в таблице %d строк, в источнике %d игр"
                             % (team, len(shown["gameRows"]), want["games"]))
 
-        # Game-type rows must sum back to the same number of games.
-        type_games = sum(int(row[1]) for row in shown["typeRows"] if len(row) > 1 and row[1].isdigit())
+        # Game-type rows must sum back to the same number of games. The column
+        # is found by header, since the table's columns have changed before.
+        headers = shown.get("typeHeaders") or []
+        games_column = headers.index("Игр") if "Игр" in headers else 1
+        type_games = sum(int(row[games_column]) for row in shown["typeRows"]
+                         if len(row) > games_column and row[games_column].isdigit())
         if type_games != want["games"]:
             failures.append("%s: по форматам %d игр, всего %d" % (team, type_games, want["games"]))
 
