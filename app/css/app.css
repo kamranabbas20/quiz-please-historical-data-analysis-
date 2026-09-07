@@ -196,6 +196,9 @@ tbody tr.is-selected { background: var(--surface-2); box-shadow: inset 2px 0 0 v
 .mono { font-variant-numeric: tabular-nums; }
 .section-title { font-size: 15px; margin: 22px 0 10px; }
 .row-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.row-actions select {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px;
+}
 .checkline { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .checkline label { display: inline-flex; gap: 5px; align-items: center; background: var(--surface-2);
   border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; cursor: pointer; font-size: 13px; }

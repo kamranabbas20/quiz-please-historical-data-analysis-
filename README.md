@@ -31,14 +31,16 @@ web server. There is no backend.
 ### One file, no server
 
 ```bash
-python3 -m dashboard.bundle          # -> dist/dashboard.html
+python3 -m dashboard.bundle          # -> dist/quiz-please-baku.html
 ```
 
 Inlines the stylesheet, concatenates the modules and embeds the datasets as
 `window.__QP_DATA__`, which `app/js/data.js` uses in place of fetching. The
-result opens by double-clicking it — no server, no network — and is a single
-file to send someone. `--fragment` omits the document skeleton for hosts that
-supply their own, and `--title` overrides the page name.
+result opens by double-clicking it — no server needed — and is a single file to
+send someone. The only thing it reaches for is basemap tiles, which the viewer's
+browser fetches; everything else, including all 3,954 results, is in the file.
+`--fragment` omits the document skeleton for hosts that supply their own, and
+`--title` overrides the page name.
 
 ---
 
@@ -158,10 +160,12 @@ zoom that still fits every venue (z13 for Baku). The tiles are fetched by the
 viewer's browser, not bundled — they are someone else's images, and copying them
 into the file would both bloat it and redistribute data the project does not own.
 
-**The basemap is therefore optional by design.** Where tiles cannot load — an
-offline machine, a sandbox that blocks third-party images, an embedded viewer
-with a strict CSP — the tiles are removed, the attribution goes with them, the
-note says so, and the map keeps working as venues in their true relative
+Three providers are tried in turn — OpenStreetMap, CARTO, OpenStreetMap.de — so
+one blocked host does not cost the reader the basemap, and a picker on the map
+lets them force a source or turn it off. **The basemap is optional by design.**
+Where none can load — an offline machine, a network that blocks tile hosts, an
+embedded viewer with a strict CSP — the tiles and attribution are removed, the
+map says so on itself, and it keeps working as venues in their true relative
 positions with a scale bar and a north arrow. `tests/browser/map_alignment.mjs`
 guards the part that would silently break: it recovers the layout origin from a
 tile's own `{z}/{x}/{y}` href and checks every pin lands where its latitude and
@@ -350,6 +354,7 @@ node tests/browser/interactions.mjs    # filters, single-game teams, comparison,
 node tests/browser/looks.mjs           # dark mode + phone width, no horizontal overflow
 node tests/browser/bundle.mjs          # the single-file build, loaded from file:// with no server
 node tests/browser/map_alignment.mjs   # venue pins line up with the basemap's tile grid
+node tests/browser/basemap_fallback.mjs  # the provider cascade, the picker, and the no-tiles fallback
 python3 tests/validate_against_source.py Колобки Ванси Noldor
 ```
 

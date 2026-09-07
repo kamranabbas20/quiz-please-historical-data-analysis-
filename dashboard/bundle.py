@@ -128,7 +128,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(prog="python -m dashboard.bundle",
                                      description=__doc__.split("\n")[0])
     parser.add_argument("--app-dir", default=APP_DIR)
-    parser.add_argument("-o", "--out-file", default=os.path.join("dist", "dashboard.html"))
+    parser.add_argument("-o", "--out-file",
+                        default=os.path.join("dist", "quiz-please-baku.html"))
     parser.add_argument("--fragment", action="store_true",
                         help="omit <html>/<head>/<body>, for a host that wraps the page")
     parser.add_argument("--title", help="override the page title")

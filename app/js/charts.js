@@ -19,11 +19,32 @@ const NS = 'http://www.w3.org/2000/svg';
  * else's images, and embedding them would both bloat the file and copy data we
  * do not own. Where they cannot load — an offline file, a sandbox that blocks
  * third-party images — the map falls back to venues on a plain ground. */
-export const TILES = (typeof window !== 'undefined' && window.__QP_TILES__) || {
-  url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-  attribution: '© OpenStreetMap',
-  maxZoom: 19,
-};
+/* Several providers, tried in order. One host being unreachable — a blocked
+ * domain, an ad blocker, a corporate proxy — should not cost the reader the
+ * basemap, so if every tile of one provider fails the next one is tried. All
+ * are OpenStreetMap-derived and free to use at this volume, with attribution. */
+export const TILE_PROVIDERS = (typeof window !== 'undefined' && window.__QP_TILES__) || [
+  {
+    name: 'OpenStreetMap',
+    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap',
+    maxZoom: 19,
+  },
+  {
+    name: 'CARTO light',
+    url: 'https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap · © CARTO',
+    maxZoom: 19,
+  },
+  {
+    name: 'OpenStreetMap.de',
+    url: 'https://tile.openstreetmap.de/{z}/{x}/{y}.png',
+    attribution: '© OpenStreetMap',
+    maxZoom: 18,
+  },
+];
+
+export const TILES = TILE_PROVIDERS[0];
 
 const TILE_SIZE = 256;
 
@@ -465,7 +486,7 @@ export function columnChart(holder, tooltip, { items, color = SERIES[0], formatV
  */
 export function mapChart(holder, tooltip, {
   points, width = 900, height = 680, onSelect, selectedKey,
-  tiles = TILES, noBasemap = false, onTilesFailed,
+  providers = TILE_PROVIDERS, noBasemap = false, onTilesFailed, onTilesLoaded,
 }) {
   const usable = points.filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lon));
   if (!usable.length) {
@@ -498,7 +519,7 @@ export function mapChart(holder, tooltip, {
   // Just enough slack to keep pins off the edge: any more costs a zoom level,
   // and a zoom level is the difference between streets and a coloured blur.
   const margin = 1.08;
-  let zoom = tiles.maxZoom || 19;
+  let zoom = Math.min(...providers.map((provider) => provider.maxZoom || 19), 19);
   while (zoom > 1) {
     const spanX = (lonToTileX(bounds.maxLon, zoom) - lonToTileX(bounds.minLon, zoom)) * TILE_SIZE;
     const spanY = (latToTileY(bounds.minLat, zoom) - latToTileY(bounds.maxLat, zoom)) * TILE_SIZE;
@@ -518,19 +539,19 @@ export function mapChart(holder, tooltip, {
   const projected = usable.map((point) => ({ point, x: point.lon, y: point.lat }));
   const scale = TILE_SIZE * 2 ** zoom / 360;   // pixels per degree of longitude
 
-  // The basemap: only the tiles the plot actually shows. They are clipped to
-  // the plot area and sit under everything else.
-  if (!noBasemap && tiles.url) {
+  // The basemap: only the tiles the plot actually shows, clipped to the plot
+  // area and under everything else. If a provider fails wholesale, the next one
+  // is tried before giving up on a basemap at all.
+  if (!noBasemap && providers.length) {
     const clipId = `map-clip-${Math.random().toString(36).slice(2)}`;
     const defs = el('defs', {}, svg);
     const clip = el('clipPath', { id: clipId }, defs);
     el('rect', { x: pad.left, y: pad.top, width: plotW, height: plotH, rx: 6 }, clip);
 
-    const layer = el('g', { 'clip-path': `url(#${clipId})`, class: 'map-tiles' }, svg);
+    const base = el('g', { 'clip-path': `url(#${clipId})`, class: 'map-tiles' }, svg);
     el('rect', {
-      x: pad.left, y: pad.top, width: plotW, height: plotH, rx: 6,
-      fill: 'var(--surface-2)',
-    }, layer);
+      x: pad.left, y: pad.top, width: plotW, height: plotH, rx: 6, fill: 'var(--surface-2)',
+    }, base);
 
     const count = 2 ** zoom;
     const firstX = Math.floor((pad.left - originX) / TILE_SIZE);
@@ -538,54 +559,67 @@ export function mapChart(holder, tooltip, {
     const firstY = Math.floor((pad.top - originY) / TILE_SIZE);
     const lastY = Math.floor((pad.top + plotH - originY) / TILE_SIZE);
 
-    let pending = 0;
-    let failed = 0;
-    let credit = null;
-    for (let tx = firstX; tx <= lastX; tx += 1) {
-      for (let ty = firstY; ty <= lastY; ty += 1) {
-        if (ty < 0 || ty >= count) continue;
-        const wrapped = ((tx % count) + count) % count;
-        const href = tiles.url
-          .replace('{z}', zoom).replace('{x}', wrapped).replace('{y}', ty);
-        const image = el('image', {
-          href,
-          x: tx * TILE_SIZE + originX,
-          y: ty * TILE_SIZE + originY,
-          width: TILE_SIZE,
-          height: TILE_SIZE,
-          // Tiles are reference, not the data: keep them quiet under the marks.
-          opacity: 0.85,
-        }, layer);
-        // SVG 1.1 browsers (older Safari) only honour the xlink form.
-        image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', href);
-        pending += 1;
-        image.addEventListener('error', () => {
-          failed += 1;
-          image.remove();
-          // If none of them arrive there is no basemap to credit, and the
-          // caller gets to explain the plain ground.
-          if (failed === pending) {
-            if (credit) credit.remove();
-            // Say it on the map itself, not only in the caption: a blank frame
-            // with no explanation reads as a broken page.
-            const badge = el('text', {
-              x: pad.left + plotW / 2, y: pad.top + 18, 'text-anchor': 'middle', class: 'axis',
-            }, svg);
-            badge.setAttribute('fill', 'var(--text-muted)');
-            badge.style.fontSize = '11px';
-            badge.textContent = 'Подложка карты не загрузилась — показаны только координаты площадок';
-            if (onTilesFailed) onTilesFailed();
-          }
-        });
+    const mount = (index) => {
+      if (index >= providers.length) {
+        // Nothing reachable: say it on the map, not just in the caption.
+        const badge = el('text', {
+          x: pad.left + plotW / 2, y: pad.top + 18, 'text-anchor': 'middle', class: 'axis',
+        }, svg);
+        badge.setAttribute('fill', 'var(--text-muted)');
+        badge.style.fontSize = '11px';
+        badge.textContent = 'Подложка карты не загрузилась — показаны только координаты площадок';
+        if (onTilesFailed) onTilesFailed();
+        return;
       }
-    }
 
-    credit = el('text', {
-      x: pad.left + plotW - 6, y: pad.top + plotH - 6, 'text-anchor': 'end', class: 'axis',
-    }, svg);
-    credit.setAttribute('fill', 'var(--text-muted)');
-    credit.style.fontSize = '10px';
-    credit.textContent = tiles.attribution;
+      const provider = providers[index];
+      const layer = el('g', { class: 'map-tiles-layer' }, base);
+      const credit = el('text', {
+        x: pad.left + plotW - 6, y: pad.top + plotH - 6, 'text-anchor': 'end', class: 'axis',
+      }, svg);
+      credit.setAttribute('fill', 'var(--text-muted)');
+      credit.style.fontSize = '10px';
+      credit.textContent = provider.attribution;
+
+      let pending = 0;
+      let failed = 0;
+      const giveUp = () => {
+        layer.remove();
+        credit.remove();
+        mount(index + 1);
+      };
+
+      for (let tx = firstX; tx <= lastX; tx += 1) {
+        for (let ty = firstY; ty <= lastY; ty += 1) {
+          if (ty < 0 || ty >= count) continue;
+          const wrapped = ((tx % count) + count) % count;
+          const href = provider.url
+            .replace('{z}', zoom).replace('{x}', wrapped).replace('{y}', ty);
+          const image = el('image', {
+            href,
+            x: tx * TILE_SIZE + originX,
+            y: ty * TILE_SIZE + originY,
+            width: TILE_SIZE,
+            height: TILE_SIZE,
+            // Tiles are reference, not the data: keep them quiet under the marks.
+            opacity: 0.85,
+          }, layer);
+          // SVG 1.1 browsers (older Safari) only honour the xlink form.
+          image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', href);
+          pending += 1;
+          image.addEventListener('error', () => {
+            failed += 1;
+            if (failed === pending) giveUp();
+          });
+          image.addEventListener('load', () => {
+            if (onTilesLoaded) onTilesLoaded(provider);
+          }, { once: true });
+        }
+      }
+      if (!pending) giveUp();
+    };
+
+    mount(0);
   }
 
   const maxGames = Math.max(...usable.map((point) => point.value || 0), 1);
@@ -597,11 +631,15 @@ export function mapChart(holder, tooltip, {
   const kmPerDegree = 111.32 * Math.cos((meanLat * Math.PI) / 180);
   const pxPerKm = scale / kmPerDegree;
   const candidates = [0.25, 0.5, 1, 2, 5, 10, 20];
-  const km = candidates.find((value) => value * pxPerKm > plotW * 0.18) || candidates[candidates.length - 1];
+  const km = candidates.find((value) => value * pxPerKm > plotW * 0.18)
+    || candidates[candidates.length - 1];
   const barW = km * pxPerKm;
   const barY = height - 20;
   const barX = pad.left + 4;
-  el('line', { x1: barX, x2: barX + barW, y1: barY, y2: barY, stroke: 'var(--text-muted)', 'stroke-width': 2 }, svg);
+  el('line', {
+    x1: barX, x2: barX + barW, y1: barY, y2: barY,
+    stroke: 'var(--text-muted)', 'stroke-width': 2,
+  }, svg);
   for (const x of [barX, barX + barW]) {
     el('line', { x1: x, x2: x, y1: barY - 4, y2: barY + 4, stroke: 'var(--text-muted)', 'stroke-width': 2 }, svg);
   }
@@ -610,7 +648,7 @@ export function mapChart(holder, tooltip, {
   barLabel.style.fontSize = '11px';
   barLabel.textContent = km < 1 ? `${km * 1000} м` : `${km} км`;
 
-  // North arrow: the map has no labels of its own, so say which way is up.
+  // North arrow: the map carries no labels of its own, so say which way is up.
   const northX = width - pad.right - 10;
   const northY = pad.top + 6;
   el('line', { x1: northX, x2: northX, y1: northY + 20, y2: northY, stroke: 'var(--text-muted)', 'stroke-width': 1.5 }, svg);

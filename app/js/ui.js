@@ -8,7 +8,8 @@
 
 import { applyFilters, loadCity, loadIndex, optionsFor, teamRows } from './data.js';
 import {
-  SERIES, barChart, chartCard, columnChart, groupedColumns, lineChart, mapChart, periodBars,
+  SERIES, TILE_PROVIDERS, barChart, chartCard, columnChart, groupedColumns, lineChart,
+  mapChart, periodBars,
 } from './charts.js';
 import {
   byGameType, cumulativeProgress, formatDate, formatNumber, formatPercent,
@@ -29,6 +30,7 @@ const state = {
   selectedGame: null,
   sort: { games: { key: 'date', dir: 'desc' }, types: { key: 'games', dir: 'desc' } },
   typeLevel: 'family',   // 'family' groups editions together, 'type' splits them
+  basemap: 'auto',       // 'auto' tries each tile provider in turn, or a name, or 'none'
 };
 
 const dom = {};
@@ -37,6 +39,7 @@ export async function start() {
   cacheDom();
   wireStaticControls();
   applyStoredTheme();
+  applyStoredBasemap();
 
   try {
     state.index = await loadIndex();
@@ -110,6 +113,13 @@ function wireStaticControls() {
     update();
   });
   dom.themeToggle.addEventListener('click', toggleTheme);
+}
+
+function applyStoredBasemap() {
+  try {
+    const stored = localStorage.getItem('qp-basemap');
+    if (stored) state.basemap = stored;
+  } catch { /* private mode */ }
 }
 
 function applyStoredTheme() {
@@ -804,10 +814,14 @@ function renderVenues(container, rows) {
   }));
 
   // The map leads this view, so it gets the full width rather than a column.
+  const chosen = state.basemap === 'auto'
+    ? TILE_PROVIDERS
+    : TILE_PROVIDERS.filter((provider) => provider.name === state.basemap);
+
   const mapCard = chartCard({
     title: 'Где играли в Баку',
     note: 'Размер круга — число игр на площадке. Синие — где играла выбранная команда. '
-      + 'Подложка — OpenStreetMap, загружается вашим браузером.',
+      + 'Подложка загружается вашим браузером с сервера карт.',
     legend: [
       { label: `Играла ${teamName}`.trim(), color: SERIES[0], shape: 'rect' },
       { label: 'Остальные площадки', color: SERIES[1], shape: 'rect' },
@@ -815,7 +829,16 @@ function renderVenues(container, rows) {
     render: (holder, tooltip) => mapChart(holder, tooltip, {
       points,
       selectedKey: state.filters.venue,
-      noBasemap: state.noBasemap,
+      providers: chosen,
+      noBasemap: state.basemap === 'none',
+      onTilesLoaded: (provider) => {
+        const note = mapCard.querySelector('.card-note');
+        if (note && !note.dataset.credited) {
+          note.dataset.credited = '1';
+          note.textContent = 'Размер круга — число игр на площадке. Синие — где играла '
+            + `выбранная команда. Подложка: ${provider.attribution}.`;
+        }
+      },
       // Tiles come from a third party, so plan for them not arriving: an
       // offline file or a sandbox that blocks other hosts still gets a map,
       // just without streets under it.
@@ -823,8 +846,8 @@ function renderVenues(container, rows) {
         const note = mapCard.querySelector('.card-note');
         if (note) {
           note.textContent = 'Размер круга — число игр на площадке. Синие — где играла '
-            + 'выбранная команда. Подложка карты недоступна (нет доступа к tile.openstreetmap.org), '
-            + 'показаны только координаты площадок: север сверху, масштаб внизу.';
+            + 'выбранная команда. Ни один сервер карт не ответил — возможно, они заблокированы '
+            + 'в вашей сети. Показаны только координаты площадок: север сверху, масштаб внизу.';
         }
       },
       onSelect: (point) => {
@@ -843,6 +866,34 @@ function renderVenues(container, rows) {
       ]),
     ),
   });
+
+  // Let the reader pick a source: one host may be blocked where another is not.
+  const picker = document.createElement('div');
+  picker.className = 'row-actions';
+  const pickerLabel = document.createElement('label');
+  pickerLabel.className = 'muted';
+  pickerLabel.setAttribute('for', 'basemap');
+  pickerLabel.textContent = 'Подложка:';
+  const select = document.createElement('select');
+  select.id = 'basemap';
+  for (const option of [
+    { value: 'auto', label: 'Автоматически' },
+    ...TILE_PROVIDERS.map((provider) => ({ value: provider.name, label: provider.name })),
+    { value: 'none', label: 'Без подложки' },
+  ]) {
+    const node = document.createElement('option');
+    node.value = option.value;
+    node.textContent = option.label;
+    select.appendChild(node);
+  }
+  select.value = state.basemap;
+  select.addEventListener('change', () => {
+    state.basemap = select.value;
+    try { localStorage.setItem('qp-basemap', state.basemap); } catch { /* private mode */ }
+    update();
+  });
+  picker.append(pickerLabel, select);
+  mapCard.insertBefore(picker, mapCard.querySelector('.chart'));
   container.appendChild(mapCard);
 
   const grid = document.createElement('div');
