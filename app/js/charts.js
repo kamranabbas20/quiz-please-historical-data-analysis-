@@ -556,6 +556,8 @@ export function mapChart(holder, tooltip, {
           // Tiles are reference, not the data: keep them quiet under the marks.
           opacity: 0.85,
         }, layer);
+        // SVG 1.1 browsers (older Safari) only honour the xlink form.
+        image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', href);
         pending += 1;
         image.addEventListener('error', () => {
           failed += 1;
@@ -563,7 +565,15 @@ export function mapChart(holder, tooltip, {
           // If none of them arrive there is no basemap to credit, and the
           // caller gets to explain the plain ground.
           if (failed === pending) {
-            credit.remove();
+            if (credit) credit.remove();
+            // Say it on the map itself, not only in the caption: a blank frame
+            // with no explanation reads as a broken page.
+            const badge = el('text', {
+              x: pad.left + plotW / 2, y: pad.top + 18, 'text-anchor': 'middle', class: 'axis',
+            }, svg);
+            badge.setAttribute('fill', 'var(--text-muted)');
+            badge.style.fontSize = '11px';
+            badge.textContent = 'Подложка карты не загрузилась — показаны только координаты площадок';
             if (onTilesFailed) onTilesFailed();
           }
         });
