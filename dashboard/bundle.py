@@ -63,6 +63,14 @@ def build_bundle(app_dir=APP_DIR, out_file=os.path.join("dist", "dashboard.html"
     with open(os.path.join(app_dir, "css", "app.css"), encoding="utf-8") as handle:
         css = handle.read()
 
+    # The logo ships inline in the page, so the single file needs no assets.
+    logo_path = os.path.join(app_dir, "assets", "logo-quizplease.svg")
+    if os.path.exists(logo_path):
+        with open(logo_path, encoding="utf-8") as handle:
+            logo = handle.read()
+        html = html.replace('<span class="brand-logo" data-src="assets/logo-quizplease.svg"></span>',
+                            '<span class="brand-logo">%s</span>' % logo)
+
     body = html[html.index("<body>") + len("<body>"):html.index("</body>")]
     # Drop the module bootstrap; the bundle calls start() itself at the end.
     body = re.sub(r'<script type="module">.*?</script>', "", body, flags=re.S).strip()

@@ -1,5 +1,14 @@
 # quiz-please-historical-data-analysis
 
+> **Source and rights.** Every game, result, rating, team name and venue in this
+> repository comes from [«Квиз, плиз!»](https://baku.quizplease.com/) and belongs
+> to its rights holders. All rights in the games, questions, results, trademark
+> and logo are theirs. The logo in `app/assets/logo-quizplease.svg` is taken from
+> their site and used solely to identify the source of the data. This is an
+> independent, unofficial analysis of published results — not affiliated with the
+> organisers and not endorsed by them. Each game in the dashboard links back to
+> its own page on the site, so any figure can be checked against the original.
+
 Two things live here:
 
 1. **A scraper** for [Quiz Please](https://quizplease.com) game results (`quizplease/`).
@@ -392,6 +401,19 @@ from `data/baku/games/*.json` — code that shares nothing with the app — driv
 the real page in Chromium, and compares the two. `tests/test_multicity.py` builds
 a throwaway two-city dataset and checks that switching city really does swap the
 teams, the filters and the coverage line.
+
+## Credits
+
+| | |
+|---|---|
+| Games, schedules, results | [baku.quizplease.com](https://baku.quizplease.com/) — «Квиз, плиз!» |
+| All-time team standings | [baku.quizplease.com/rating](https://baku.quizplease.com/rating) |
+| Logo | © Quiz Please, from their site, used to credit the source |
+| Basemap | © OpenStreetMap contributors, © CARTO (tiles fetched by the viewer) |
+
+The dashboard carries the same credit: the source is named above the fold, the
+footer names the rights holders and the map provider along with the date the data
+was collected, and every row in the games table links to the page it came from.
 
 ## Notes and limits
 

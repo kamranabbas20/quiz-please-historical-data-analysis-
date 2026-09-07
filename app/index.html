@@ -10,11 +10,22 @@
 <body>
   <div class="page">
     <header class="masthead">
-      <h1>История результатов команд</h1>
-      <span class="sub" id="coverage"></span>
+      <a class="brand" href="https://baku.quizplease.com/" target="_blank" rel="noopener noreferrer"
+         title="Открыть сайт «Квиз, плиз!» Баку">
+        <span class="brand-logo" data-src="assets/logo-quizplease.svg"></span>
+      </a>
+      <div class="masthead-title">
+        <h1>История результатов команд</h1>
+        <span class="sub" id="coverage"></span>
+      </div>
       <span class="spacer"></span>
       <button class="theme-toggle" id="themeToggle" type="button">Тема</button>
     </header>
+    <p class="source-line">
+      Неофициальный проект. Все данные — игры, результаты, рейтинги, названия команд и площадок —
+      принадлежат «Квиз, плиз!» и взяты с
+      <a href="https://baku.quizplease.com/" target="_blank" rel="noopener noreferrer">baku.quizplease.com</a>.
+    </p>
 
     <!-- One filter row, above everything it scopes: город → команда → формат → период -->
     <section class="filters" aria-label="Фильтры">
@@ -72,6 +83,27 @@
     </nav>
 
     <main id="main"></main>
+
+    <footer class="credits">
+      <p>
+        <strong>Источник данных:</strong>
+        <a href="https://baku.quizplease.com/" target="_blank" rel="noopener noreferrer">«Квиз, плиз!» Баку</a>
+        — расписание и результаты игр, и
+        <a href="https://baku.quizplease.com/rating" target="_blank" rel="noopener noreferrer">рейтинг команд</a>
+        — сыгранные игры и очки за всё время. Каждая игра в таблице ссылается на свою страницу
+        на сайте, где результат опубликован в оригинале.
+      </p>
+      <p>
+        Все права на игры, вопросы, результаты, товарный знак и логотип «Квиз, плиз!» принадлежат
+        их правообладателям. Логотип приведён только как указание на источник данных.
+        Это независимый любительский разбор опубликованных результатов, не связанный
+        с организаторами и не одобренный ими.
+      </p>
+      <p class="credits-muted">
+        Подложка карты — © OpenStreetMap contributors (или выбранный провайдер тайлов).
+        Данные собраны <span id="scrapedAt">—</span>.
+      </p>
+    </footer>
   </div>
 
   <script type="module">

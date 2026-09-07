@@ -37,6 +37,7 @@ const dom = {};
 
 export async function start() {
   cacheDom();
+  loadLogo();
   wireStaticControls();
   applyStoredTheme();
   applyStoredBasemap();
@@ -61,6 +62,23 @@ export async function start() {
     return;
   }
   await selectCity(first.slug);
+}
+
+/* The served app fetches the logo; the single-file build has it inlined
+ * already, so this is a no-op there. */
+async function loadLogo() {
+  const holder = document.querySelector('.brand-logo');
+  if (!holder || !holder.dataset.src || holder.childElementCount) return;
+  try {
+    const response = await fetch(holder.dataset.src);
+    if (!response.ok) return;
+    const markup = await response.text();
+    const parsed = new DOMParser().parseFromString(markup, 'image/svg+xml');
+    const svg = parsed.querySelector('svg');
+    if (svg) holder.appendChild(document.importNode(svg, true));
+  } catch {
+    // No logo is better than a broken one; the text credit still names the source.
+  }
 }
 
 function cacheDom() {
@@ -177,6 +195,7 @@ async function selectCity(slug) {
   syncFilterInputs();
   refreshDependentFilters();
   renderCoverage();
+  renderScrapedAt();
   dom.main.classList.remove('loading');
   update();
 }
@@ -251,6 +270,12 @@ function syncFilterInputs() {
   for (const id of ['family', 'gameType', 'league', 'season', 'venue', 'from', 'to']) {
     if (dom[id]) dom[id].value = state.filters[id] || '';
   }
+}
+
+function renderScrapedAt() {
+  const node = document.getElementById('scrapedAt');
+  if (!node || !state.dataset.generated_at) return;
+  node.textContent = formatDate(state.dataset.generated_at);
 }
 
 function renderCoverage() {
@@ -530,6 +555,18 @@ function renderGames(container, rows) {
     { key: 'score_pct', label: '% от лучшего', get: (row) => row.score_pct ?? -1, render: (row) => formatNumber(row.score_pct, 1) },
     { key: 'percentile', label: 'Процентиль', get: (row) => row.percentile ?? -1, render: (row) => formatNumber(row.percentile, 1) },
     { key: 'venue', label: 'Площадка', get: (row) => row.game.venue || '', render: (row) => row.game.venue || '—', left: true },
+    { key: 'source', label: 'Источник', get: () => 0, left: true,
+      render: (row) => {
+        // Every row can be checked against the page it was taken from.
+        if (!row.game.url) return '—';
+        const link = document.createElement('a');
+        link.href = row.game.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'страница игры';
+        link.addEventListener('click', (event) => event.stopPropagation());
+        return link;
+      } },
   ];
 
   const sorted = sortRows(rows, columns, state.sort.games);

@@ -26,6 +26,19 @@ const kpi = (label) => page.$$eval('.kpi', (nodes, text) => {
   return found ? found.querySelector('.value').textContent : null;
 }, label);
 
+/* 0. Attribution: the source must be named, and every row traceable to it. */
+record('source logo is rendered', (await page.$$eval('.brand-logo svg', (n) => n.length)) === 1);
+record('logo links to the source site',
+  (await page.$eval('.brand', (el) => el.href)).includes('quizplease.com'));
+const sourceLine = await page.$eval('.source-line', (el) => el.textContent);
+record('source is named above the fold', /quizplease\.com/.test(sourceLine));
+record('project is marked unofficial', /Неофициальн/.test(sourceLine));
+const credits = await page.$eval('.credits', (el) => el.textContent);
+record('credits name the rights holder', /принадлежат/.test(credits) && /Квиз, плиз!/.test(credits));
+record('credits name the map provider', /OpenStreetMap/.test(credits));
+record('credits carry the collection date',
+  /\d{2}\.\d{2}\.\d{4}/.test(await page.$eval('#scrapedAt', (el) => el.textContent)));
+
 /* 1. City switching drives the team list. */
 if (cityOptions.length > 1) {
   const first = await teamsOf();
@@ -86,6 +99,10 @@ if (typeOptions.length) {
   const tableRows = await page.$$eval('#games-table tbody tr', (nodes) => nodes.length);
   record('games table matches the filtered count', tableRows === filtered,
     { table: tableRows, kpi: filtered });
+  const sourceLinks = await page.$$eval('#games-table tbody a',
+    (nodes) => nodes.map((a) => a.href).filter((href) => href.includes('/game/')));
+  record('every listed game links to its page on the source site',
+    sourceLinks.length > 0, sourceLinks.slice(0, 1));
   const distinctTypes = await page.$$eval('#games-table tbody tr',
     (nodes) => [...new Set(nodes.map((node) => node.children[1].textContent))]);
   // Rows show the specific format, which may be any edition of the family.
