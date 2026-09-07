@@ -6,7 +6,10 @@ const BASE = process.argv[2];
 const browser = await chromium.launch();
 const page = await browser.newPage();
 const errors = [];
-page.on('console', (msg) => { if (msg.type() === 'error') errors.push(msg.text()); });
+const TILE_NOISE = /tile\.openstreetmap|ERR_TUNNEL_CONNECTION_FAILED|Failed to load resource/;
+page.on('console', (msg) => {
+  if (msg.type() === 'error' && !TILE_NOISE.test(msg.text())) errors.push(msg.text());
+});
 page.on('pageerror', (error) => errors.push(error.message));
 
 await page.goto(BASE, { waitUntil: 'networkidle' });

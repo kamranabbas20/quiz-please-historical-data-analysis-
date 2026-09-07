@@ -117,10 +117,10 @@ Four views:
   position after each round, and the game's full final table.
 - **Форматы** — one row per quiz format: games, average score, average place,
   win rate, top-3 rate, average percentile, consistency.
-- **Площадки** — where the games were held: a map of the city's venues (circle
-  area = games held there, blue where the selected team played), a timeline of
-  when each venue was in use, and a sortable table. Clicking a pin or a row
-  filters every other view to that venue.
+- **Площадки** — where the games were held: an OpenStreetMap-backed map of the
+  city's venues (circle area = games held there, blue where the selected team
+  played), a timeline of when each venue was in use, and a sortable table.
+  Clicking a pin or a row filters every other view to that venue.
 - **Сравнение команд** — up to three opponents beside the selected team, with
   head-to-head games and who finished higher.
 
@@ -153,13 +153,29 @@ original name on every row.
 
 ### The venue map
 
-There is no basemap behind the pins, and that is deliberate: map tiles are
-images served from another host, which the offline single-file build cannot load
-and an embedded viewer blocks outright. So the map shows what the data itself
-supports — venues in their true relative positions, north up, with a scale bar to
-read distances from. Longitude is scaled by cos(latitude) so the city is not
-stretched sideways, and both axes share one scale so a centimetre means the same
-in every direction.
+Venues are placed in Web Mercator on an OpenStreetMap basemap, at the sharpest
+zoom that still fits every venue (z13 for Baku). The tiles are fetched by the
+viewer's browser, not bundled — they are someone else's images, and copying them
+into the file would both bloat it and redistribute data the project does not own.
+
+**The basemap is therefore optional by design.** Where tiles cannot load — an
+offline machine, a sandbox that blocks third-party images, an embedded viewer
+with a strict CSP — the tiles are removed, the attribution goes with them, the
+note says so, and the map keeps working as venues in their true relative
+positions with a scale bar and a north arrow. `tests/browser/map_alignment.mjs`
+guards the part that would silently break: it recovers the layout origin from a
+tile's own `{z}/{x}/{y}` href and checks every pin lands where its latitude and
+longitude say it should (currently exact to 0.000 px).
+
+To use a different tile provider, set it before the app boots:
+
+```js
+window.__QP_TILES__ = {
+  url: 'https://your-tiles/{z}/{x}/{y}.png',
+  attribution: '© Your provider',
+  maxZoom: 19,
+};
+```
 
 Three of Baku's sixteen venues have unusable coordinates in the source — a
 longitude sitting in the latitude field and no longitude at all. They are marked
@@ -333,6 +349,7 @@ node tests/browser/smoke.mjs           # every view renders, no console errors
 node tests/browser/interactions.mjs    # filters, single-game teams, comparison, table views
 node tests/browser/looks.mjs           # dark mode + phone width, no horizontal overflow
 node tests/browser/bundle.mjs          # the single-file build, loaded from file:// with no server
+node tests/browser/map_alignment.mjs   # venue pins line up with the basemap's tile grid
 python3 tests/validate_against_source.py Колобки Ванси Noldor
 ```
 

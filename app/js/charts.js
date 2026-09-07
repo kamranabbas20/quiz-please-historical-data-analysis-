@@ -12,6 +12,31 @@
  */
 
 const NS = 'http://www.w3.org/2000/svg';
+
+/* Basemap tiles. Overridable so a deployment can point at its own provider:
+ *   window.__QP_TILES__ = { url: 'https://…/{z}/{x}/{y}.png', attribution: '…' }
+ * Tiles are fetched by the viewer's browser, not bundled: they are somebody
+ * else's images, and embedding them would both bloat the file and copy data we
+ * do not own. Where they cannot load — an offline file, a sandbox that blocks
+ * third-party images — the map falls back to venues on a plain ground. */
+export const TILES = (typeof window !== 'undefined' && window.__QP_TILES__) || {
+  url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  attribution: '© OpenStreetMap',
+  maxZoom: 19,
+};
+
+const TILE_SIZE = 256;
+
+/* Web Mercator, in tile units at a given zoom (x and y in [0, 2^z]). */
+export function lonToTileX(lon, zoom) {
+  return ((lon + 180) / 360) * 2 ** zoom;
+}
+
+export function latToTileY(lat, zoom) {
+  const radians = (lat * Math.PI) / 180;
+  const merc = Math.log(Math.tan(radians) + 1 / Math.cos(radians));
+  return ((1 - merc / Math.PI) / 2) * 2 ** zoom;
+}
 export const SERIES = ['var(--series-1)', 'var(--series-2)', 'var(--series-3)', 'var(--series-4)'];
 
 function el(name, attrs = {}, parent = null) {
@@ -439,7 +464,8 @@ export function columnChart(holder, tooltip, { items, color = SERIES[0], formatV
  * axes share one scale so distances are comparable in every direction.
  */
 export function mapChart(holder, tooltip, {
-  points, width = 900, height = 470, onSelect, selectedKey,
+  points, width = 900, height = 680, onSelect, selectedKey,
+  tiles = TILES, noBasemap = false, onTilesFailed,
 }) {
   const usable = points.filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lon));
   if (!usable.length) {
@@ -457,31 +483,109 @@ export function mapChart(holder, tooltip, {
     viewBox: `0 0 ${width} ${height}`, role: 'img', preserveAspectRatio: 'xMidYMid meet',
   }, holder);
 
-  const meanLat = usable.reduce((sum, p) => sum + p.lat, 0) / usable.length;
-  const kx = Math.cos((meanLat * Math.PI) / 180);
-  const project = (point) => ({ x: point.lon * kx, y: -point.lat });
-
-  const projected = usable.map((point) => ({ point, ...project(point) }));
-  const xs = projected.map((p) => p.x);
-  const ys = projected.map((p) => p.y);
-  const spanX = Math.max(...xs) - Math.min(...xs) || 1e-4;
-  const spanY = Math.max(...ys) - Math.min(...ys) || 1e-4;
-
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
-  // One scale for both axes, or the map would misreport distances.
-  const scale = Math.min(plotW / (spanX * 1.12), plotH / (spanY * 1.12));
-  const midX = (Math.max(...xs) + Math.min(...xs)) / 2;
-  const midY = (Math.max(...ys) + Math.min(...ys)) / 2;
-  const toX = (x) => pad.left + plotW / 2 + (x - midX) * scale;
-  const toY = (y) => pad.top + plotH / 2 + (y - midY) * scale;
+
+  // Web Mercator, so the venues line up with standard map tiles. Pick the
+  // largest zoom whose extent still fits the plot: that is the sharpest
+  // basemap that shows every venue.
+  const bounds = {
+    minLat: Math.min(...usable.map((p) => p.lat)),
+    maxLat: Math.max(...usable.map((p) => p.lat)),
+    minLon: Math.min(...usable.map((p) => p.lon)),
+    maxLon: Math.max(...usable.map((p) => p.lon)),
+  };
+  // Just enough slack to keep pins off the edge: any more costs a zoom level,
+  // and a zoom level is the difference between streets and a coloured blur.
+  const margin = 1.08;
+  let zoom = tiles.maxZoom || 19;
+  while (zoom > 1) {
+    const spanX = (lonToTileX(bounds.maxLon, zoom) - lonToTileX(bounds.minLon, zoom)) * TILE_SIZE;
+    const spanY = (latToTileY(bounds.minLat, zoom) - latToTileY(bounds.maxLat, zoom)) * TILE_SIZE;
+    if (spanX * margin <= plotW && spanY * margin <= plotH) break;
+    zoom -= 1;
+  }
+
+  const worldX = (lon) => lonToTileX(lon, zoom) * TILE_SIZE;
+  const worldY = (lat) => latToTileY(lat, zoom) * TILE_SIZE;
+  const centreX = (worldX(bounds.minLon) + worldX(bounds.maxLon)) / 2;
+  const centreY = (worldY(bounds.minLat) + worldY(bounds.maxLat)) / 2;
+  const originX = pad.left + plotW / 2 - centreX;
+  const originY = pad.top + plotH / 2 - centreY;
+  const toX = (lon) => worldX(lon) + originX;
+  const toY = (lat) => worldY(lat) + originY;
+
+  const projected = usable.map((point) => ({ point, x: point.lon, y: point.lat }));
+  const scale = TILE_SIZE * 2 ** zoom / 360;   // pixels per degree of longitude
+
+  // The basemap: only the tiles the plot actually shows. They are clipped to
+  // the plot area and sit under everything else.
+  if (!noBasemap && tiles.url) {
+    const clipId = `map-clip-${Math.random().toString(36).slice(2)}`;
+    const defs = el('defs', {}, svg);
+    const clip = el('clipPath', { id: clipId }, defs);
+    el('rect', { x: pad.left, y: pad.top, width: plotW, height: plotH, rx: 6 }, clip);
+
+    const layer = el('g', { 'clip-path': `url(#${clipId})`, class: 'map-tiles' }, svg);
+    el('rect', {
+      x: pad.left, y: pad.top, width: plotW, height: plotH, rx: 6,
+      fill: 'var(--surface-2)',
+    }, layer);
+
+    const count = 2 ** zoom;
+    const firstX = Math.floor((pad.left - originX) / TILE_SIZE);
+    const lastX = Math.floor((pad.left + plotW - originX) / TILE_SIZE);
+    const firstY = Math.floor((pad.top - originY) / TILE_SIZE);
+    const lastY = Math.floor((pad.top + plotH - originY) / TILE_SIZE);
+
+    let pending = 0;
+    let failed = 0;
+    let credit = null;
+    for (let tx = firstX; tx <= lastX; tx += 1) {
+      for (let ty = firstY; ty <= lastY; ty += 1) {
+        if (ty < 0 || ty >= count) continue;
+        const wrapped = ((tx % count) + count) % count;
+        const href = tiles.url
+          .replace('{z}', zoom).replace('{x}', wrapped).replace('{y}', ty);
+        const image = el('image', {
+          href,
+          x: tx * TILE_SIZE + originX,
+          y: ty * TILE_SIZE + originY,
+          width: TILE_SIZE,
+          height: TILE_SIZE,
+          // Tiles are reference, not the data: keep them quiet under the marks.
+          opacity: 0.85,
+        }, layer);
+        pending += 1;
+        image.addEventListener('error', () => {
+          failed += 1;
+          image.remove();
+          // If none of them arrive there is no basemap to credit, and the
+          // caller gets to explain the plain ground.
+          if (failed === pending) {
+            credit.remove();
+            if (onTilesFailed) onTilesFailed();
+          }
+        });
+      }
+    }
+
+    credit = el('text', {
+      x: pad.left + plotW - 6, y: pad.top + plotH - 6, 'text-anchor': 'end', class: 'axis',
+    }, svg);
+    credit.setAttribute('fill', 'var(--text-muted)');
+    credit.style.fontSize = '10px';
+    credit.textContent = tiles.attribution;
+  }
 
   const maxGames = Math.max(...usable.map((point) => point.value || 0), 1);
   const radius = (value) => 5 + 17 * Math.sqrt((value || 0) / maxGames);   // area ∝ games
 
   // Scale bar: pick a round number of kilometres that fits the plot.
-  const kmPerDegree = 111.32;
-  const pxPerKm = (scale / kmPerDegree);
+  // Kilometres per degree of longitude shrink with latitude.
+  const meanLat = (bounds.minLat + bounds.maxLat) / 2;
+  const kmPerDegree = 111.32 * Math.cos((meanLat * Math.PI) / 180);
+  const pxPerKm = scale / kmPerDegree;
   const candidates = [0.25, 0.5, 1, 2, 5, 10, 20];
   const km = candidates.find((value) => value * pxPerKm > plotW * 0.18) || candidates[candidates.length - 1];
   const barW = km * pxPerKm;

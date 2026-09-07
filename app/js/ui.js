@@ -804,10 +804,10 @@ function renderVenues(container, rows) {
   }));
 
   // The map leads this view, so it gets the full width rather than a column.
-  container.appendChild(chartCard({
+  const mapCard = chartCard({
     title: 'Где играли в Баку',
     note: 'Размер круга — число игр на площадке. Синие — где играла выбранная команда. '
-      + 'Без подложки: только координаты площадок, север сверху, масштаб внизу.',
+      + 'Подложка — OpenStreetMap, загружается вашим браузером.',
     legend: [
       { label: `Играла ${teamName}`.trim(), color: SERIES[0], shape: 'rect' },
       { label: 'Остальные площадки', color: SERIES[1], shape: 'rect' },
@@ -815,6 +815,18 @@ function renderVenues(container, rows) {
     render: (holder, tooltip) => mapChart(holder, tooltip, {
       points,
       selectedKey: state.filters.venue,
+      noBasemap: state.noBasemap,
+      // Tiles come from a third party, so plan for them not arriving: an
+      // offline file or a sandbox that blocks other hosts still gets a map,
+      // just without streets under it.
+      onTilesFailed: () => {
+        const note = mapCard.querySelector('.card-note');
+        if (note) {
+          note.textContent = 'Размер круга — число игр на площадке. Синие — где играла '
+            + 'выбранная команда. Подложка карты недоступна (нет доступа к tile.openstreetmap.org), '
+            + 'показаны только координаты площадок: север сверху, масштаб внизу.';
+        }
+      },
       onSelect: (point) => {
         // Clicking a pin filters everything below to that venue, and clicking
         // the selected one clears it again.
@@ -830,7 +842,8 @@ function renderVenues(container, rows) {
         venue.lat.toFixed(5), venue.lon.toFixed(5),
       ]),
     ),
-  }));
+  });
+  container.appendChild(mapCard);
 
   const grid = document.createElement('div');
   grid.className = 'grid';

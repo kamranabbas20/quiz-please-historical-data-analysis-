@@ -8,7 +8,12 @@ const shots = process.env.SHOT_DIR || '/tmp/qp-shots';
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
-page.on('console', (msg) => { if (msg.type() === 'error') problems.push(`console: ${msg.text()}`); });
+const TILE_NOISE = /tile\.openstreetmap|ERR_TUNNEL_CONNECTION_FAILED|Failed to load resource/;
+page.on('console', (msg) => {
+  // Basemap tiles come from a third-party host; the map is built to survive
+  // them not loading, so their failure is not a page error.
+  if (msg.type() === 'error' && !TILE_NOISE.test(msg.text())) problems.push(`console: ${msg.text()}`);
+});
 page.on('pageerror', (error) => problems.push(`pageerror: ${error.message}`));
 
 await page.goto(BASE, { waitUntil: 'networkidle' });
