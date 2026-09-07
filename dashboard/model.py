@@ -19,7 +19,8 @@ import re
 import unicodedata
 
 __all__ = [
-    "SEASONS", "Game", "TeamGame", "build_dataset", "season_of", "team_key",
+    "SEASONS", "Game", "TeamGame", "assign_families", "build_dataset",
+    "format_candidate", "season_of", "team_key",
 ]
 
 _WHITESPACE = re.compile(r"\s+")
@@ -45,6 +46,88 @@ def team_key(name):
     text = unicodedata.normalize("NFKC", name).replace(" ", " ")
     text = _WHITESPACE.sub(" ", text).strip(" \t\r\n.,;:!-–—_")
     return text.casefold()
+
+
+_YEAR_SUFFIX = re.compile(r"\s+(19|20)\d{2}$")
+
+
+def format_candidate(title):
+    """The family a format name belongs to, from the name's own shape.
+
+    Quiz Please names formats by convention, and the convention carries the
+    grouping:
+
+    * `[music party] летние хиты` -> `[music party]` — a bracketed tag at the
+      front is the format; whatever follows is that night's edition.
+    * `Гарри Поттер [Хогвартс] 3 курс` -> `Гарри Поттер` — when the name starts
+      with words instead, those words are the format and the bracket is the
+      edition.
+    * `[HELLO 2025]` -> `[HELLO]` — a bare year at the end of the tag is an
+      edition marker too. `[я из 2000-х]` keeps its year: it is part of the
+      name, not an edition.
+
+    Nothing here knows any particular format's name, so a city running formats
+    this one has never seen groups them the same way.
+    """
+    if not title:
+        return ""
+    text = " ".join(str(title).replace("\xa0", " ").split())
+
+    if text.startswith("[") and "]" in text:
+        tag = text[1:text.index("]")]
+        return "[%s]" % _YEAR_SUFFIX.sub("", tag).strip()
+    if "[" in text:
+        head = text[:text.index("[")].strip()
+        if head:
+            return head
+    return text
+
+
+def _series_key(name):
+    """First and last word, for spotting `ОТКРЫТИЕ <season> СЕЗОНА`-style runs."""
+    words = name.split()
+    return (words[0].casefold(), words[-1].casefold()) if len(words) >= 3 else None
+
+
+def assign_families(titles, min_series=3):
+    """Map every format name to its family, using the whole corpus.
+
+    Two passes need to see all the names at once:
+
+    * a name that is another name plus more words is an edition of it
+      (`Квиз, плиз! Ru/Az` under `Квиз, плиз!`), and
+    * three or more names sharing their first and last word are a series
+      (the four `ОТКРЫТИЕ … СЕЗОНА` openings), which collapse to those two
+      words.
+    """
+    candidates = dict((title, format_candidate(title)) for title in titles)
+    distinct = sorted(set(candidates.values()), key=len)
+
+    merged = {}
+    for name in distinct:
+        for shorter in distinct:
+            if shorter != name and name.startswith(shorter + " "):
+                merged[name] = shorter
+                break
+
+    by_series = {}
+    for name in distinct:
+        key = _series_key(merged.get(name, name))
+        if key:
+            by_series.setdefault(key, set()).add(merged.get(name, name))
+    series = {}
+    for members in by_series.values():
+        if len(members) >= min_series:
+            sample = sorted(members)[0].split()
+            label = "%s %s" % (sample[0], sample[-1])
+            for member in members:
+                series[member] = label
+
+    families = {}
+    for title, candidate in candidates.items():
+        candidate = merged.get(candidate, candidate)
+        families[title] = series.get(candidate, candidate)
+    return families
 
 
 def season_of(iso_date):
@@ -88,7 +171,7 @@ class Game(object):
                  "game_type", "league", "theme", "difficulty", "format", "venue",
                  "address", "price", "currency", "url", "rounds", "results",
                  "teams_count", "best_total", "worst_total", "mean_total",
-                 "results_source")
+                 "results_source", "game_family")
 
     def __init__(self, **fields):
         for name in self.__slots__:
@@ -200,4 +283,9 @@ def build_dataset(records):
     """
     games = [game_from_record(record) for record in records if record.get("id")]
     games.sort(key=lambda game: (game.date or "", game.id))
+
+    # Families are a property of the whole catalogue, not of one game.
+    families = assign_families({game.game_type for game in games if game.game_type})
+    for game in games:
+        game.game_family = families.get(game.game_type) or game.game_type
     return games

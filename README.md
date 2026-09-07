@@ -97,11 +97,12 @@ Two more data facts worth knowing before reading any number:
 
 ## The dashboard
 
-Filters run top-down — **город → команда → формат → лига → сезон → период** — in
-one row that scopes every panel below it. Changing the city reloads that city's
-dataset and rebuilds the team list; changing the team rebuilds the format,
-league and season options from that team's own games, each with a count, so no
-filter can produce an empty view.
+Filters run top-down — **город → команда → формат → вариант → лига → сезон →
+период** — in one row that scopes every panel below it. Changing the city
+reloads that city's dataset and rebuilds the team list; changing the team
+rebuilds the format, league and season options from that team's own games, each
+with a count, so no filter can produce an empty view. The variant filter appears
+only for a format that was actually run in more than one edition.
 
 Four views:
 
@@ -122,6 +123,29 @@ Four views:
 Every chart has a hover/keyboard readout **and** a table view, so no value is
 reachable only by pointing at it. The palette is validated for colour-vision
 deficiency in both light and dark themes.
+
+### Format families
+
+The site names a format once and then adds that night's edition to the end, so
+the raw list is mostly one-offs: Baku has run 83 differently-named formats, but
+15 of them are `[music party]` and 6 are `Квиз, плиз!`. The dashboard groups
+them into 44 families, from the naming convention itself:
+
+| Name | Family | Rule |
+|---|---|---|
+| `[music party] летние хиты` | `[music party]` | a bracketed tag at the front is the format |
+| `Гарри Поттер [Хогвартс] 3 курс` | `Гарри Поттер` | words before the bracket are the format |
+| `[HELLO 2025]` | `[HELLO]` | a bare year ending the tag is an edition |
+| `Квиз, плиз! Ru/Az` | `Квиз, плиз!` | a name that is another name plus more words is an edition of it |
+| `ОТКРЫТИЕ ЗИМНЕГО СЕЗОНА` | `ОТКРЫТИЕ СЕЗОНА` | 3+ names sharing their first and last word are a series |
+
+No format name is hard-coded — the rules read the shape of the name, so a city
+running formats Baku has never held groups them the same way. The grouping is
+deliberately structural, not semantic: `[про кино] Гарри Поттер` stays under
+`[про кино]` because it is a *про кино* night with a Harry Potter theme, not part
+of the `Гарри Поттер [Хогвартс]` series. The Форматы tab has a toggle that
+expands families back into individual editions, and `game_type` keeps the
+original name on every row.
 
 ### Metrics
 
@@ -218,8 +242,9 @@ A game JSON:
   "city":     { "slug": "baku", "name": "Баку", "currency": "₼" },
   "coverage": { "games_total": 285, "games_with_results": 17, "result_rows": 143,
                 "teams": 53, "date_from": …, "scored_from": …, "scored_to": … },
-  "filters":  { "game_types": […], "leagues": […], "seasons": […], "venues": […] },
-  "games": [ { "id", "date", "season", "title", "game_number", "game_type", "league",
+  "filters":  { "families": […], "variants_by_family": { "[music party]": […] },
+                "game_types": […], "leagues": […], "seasons": […], "venues": […] },
+  "games": [ { "id", "date", "season", "title", "game_number", "game_type", "game_family", "league",
                "theme", "difficulty", "format", "venue", "address", "price", "currency",
                "url", "rounds": ["round_1", …], "round_labels": ["Раунд 1", …],
                "teams_count", "best_total", "worst_total", "mean_total", "has_results",
@@ -279,7 +304,7 @@ There are ~101,000 finished games across 244 cities;
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -p 'test_*.py'   # 52 tests: scraper, model, analytics, build
+python3 -m unittest discover -s tests -p 'test_*.py'   # 60 tests: scraper, model, analytics, build
 node --test tests/test_stats.mjs                       # 10 tests: dashboard statistics
 
 # browser tests need the app running on :8765

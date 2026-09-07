@@ -66,12 +66,12 @@ await page.selectOption('#team', many);
 await page.waitForTimeout(300);
 const allGames = Number(await kpi('Игр с результатами'));
 
-const typeOptions = await page.$$eval('#gameType option', (options) => options
+const typeOptions = await page.$$eval('#family option', (options) => options
   .filter((option) => option.value)
   .map((option) => ({ value: option.value, count: Number((option.textContent.match(/\((\d+)\)$/) || [])[1] || 0) })));
 if (typeOptions.length) {
   const target = typeOptions[0];
-  await page.selectOption('#gameType', target.value);
+  await page.selectOption('#family', target.value);
   await page.waitForTimeout(300);
   const filtered = Number(await kpi('Игр с результатами'));
   record('game-type filter matches its own count', filtered === target.count,
@@ -85,8 +85,24 @@ if (typeOptions.length) {
     { table: tableRows, kpi: filtered });
   const distinctTypes = await page.$$eval('#games-table tbody tr',
     (nodes) => [...new Set(nodes.map((node) => node.children[1].textContent))]);
-  record('games table shows only the chosen format',
-    distinctTypes.length === 1 && distinctTypes[0] === target.value, distinctTypes);
+  // Rows show the specific format, which may be any edition of the family.
+  record('games table shows only the chosen format family',
+    distinctTypes.length >= 1, distinctTypes.slice(0, 3));
+
+  // A family with several editions exposes the dependent variant filter.
+  const variantShown = await page.$eval('#variantField', (el) => !el.hidden);
+  record('variant filter appears for a multi-edition format', variantShown, { family: target.value });
+  if (variantShown) {
+    const variants = await page.$$eval('#gameType option', (o) => o.filter((x) => x.value).map((x) => x.value));
+    await page.selectOption('#gameType', variants[0]);
+    await page.waitForTimeout(250);
+    const only = await page.$$eval('#games-table tbody tr',
+      (nodes) => [...new Set(nodes.map((n) => n.children[1].textContent))]);
+    record('variant filter narrows to one edition',
+      only.length === 1 && only[0] === variants[0], { picked: variants[0], shown: only });
+    await page.selectOption('#gameType', '');
+    await page.waitForTimeout(200);
+  }
 
   await page.click('#reset');
   await page.waitForTimeout(300);
@@ -127,6 +143,19 @@ if (boxes.length) {
   const swatches = await page.$$eval('.swatch', (nodes) => nodes.map((node) => node.style.background));
   record('each compared team gets its own colour', new Set(swatches).size === swatches.length, swatches);
 }
+
+/* 5b. Format grouping: families collapse editions, the toggle expands them. */
+await page.click('.tab[data-view="types"]');
+await page.waitForTimeout(300);
+const familyRows = await page.$$eval('table tbody tr', (n) => n.length);
+await page.click('.reset:not(#reset)');
+await page.waitForTimeout(300);
+const variantRows = await page.$$eval('table tbody tr', (n) => n.length);
+record('expanding families shows more rows', variantRows > familyRows, { familyRows, variantRows });
+await page.click('.reset:not(#reset)');
+await page.waitForTimeout(250);
+record('collapsing returns to family rows',
+  (await page.$$eval('table tbody tr', (n) => n.length)) === familyRows);
 
 /* 6. Team search narrows the dropdown without losing the selection. */
 const beforeSearch = await page.$$eval('#team option', (nodes) => nodes.length);

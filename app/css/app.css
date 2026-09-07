@@ -94,6 +94,8 @@ a { color: var(--series-1); }
   padding: 12px 14px; margin: 14px 0 6px; box-shadow: var(--shadow);
 }
 .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+/* `display:flex` beats the UA's [hidden] rule, so say it again for hidden fields. */
+.field[hidden] { display: none; }
 .field > label { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); }
 .field select, .field input {
   background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;

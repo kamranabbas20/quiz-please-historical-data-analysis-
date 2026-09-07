@@ -108,16 +108,27 @@ export function summarize(rows) {
   };
 }
 
-/* One summary row per quiz format, for the game-type comparison table. */
-export function byGameType(rows) {
+/* One summary row per quiz format. `level` picks the grain: 'family' groups
+ * the site's format families ([music party] and its fifteen editions as one),
+ * 'type' keeps every individual format name. */
+export function byGameType(rows, level = 'family') {
+  const pick = level === 'type'
+    ? (game) => game.game_type
+    : (game) => game.game_family || game.game_type;
+
   const groups = new Map();
   for (const row of rows) {
-    const key = (row.game && row.game.game_type) || '—';
+    const key = (row.game && pick(row.game)) || '—';
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(row);
   }
   return [...groups.entries()]
-    .map(([gameType, groupRows]) => ({ gameType, rows: groupRows, ...summarize(groupRows) }))
+    .map(([gameType, groupRows]) => ({
+      gameType,
+      rows: groupRows,
+      variants: new Set(groupRows.map((row) => row.game.game_type)).size,
+      ...summarize(groupRows),
+    }))
     .sort((a, b) => (b.avgPercentile ?? -1) - (a.avgPercentile ?? -1) || b.games - a.games);
 }
 

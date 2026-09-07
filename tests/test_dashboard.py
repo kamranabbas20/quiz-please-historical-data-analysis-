@@ -9,7 +9,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dashboard.analytics import annotate_game, percentile_of, round_maxima
 from dashboard.build import build_all, build_city, discover_cities
-from dashboard.model import build_dataset, game_from_record, season_of, team_key
+from dashboard.model import (
+    assign_families, build_dataset, format_candidate, game_from_record, season_of, team_key,
+)
 
 
 def record(game_id, date, title="Квиз, плиз! BAKU", template="Квиз, плиз!", results=None,
@@ -95,6 +97,58 @@ class ModelTest(unittest.TestCase):
 
     def test_records_without_an_id_are_dropped(self):
         self.assertEqual(build_dataset([{"date": "2026-07-01T19:30:00"}]), [])
+
+
+class FormatFamilyTest(unittest.TestCase):
+    """Formats are grouped by the site's own naming convention, not a lookup."""
+
+    def test_bracketed_tag_is_the_format(self):
+        self.assertEqual(format_candidate("[music party] летние хиты"), "[music party]")
+        self.assertEqual(format_candidate("[music party]"), "[music party]")
+        self.assertEqual(format_candidate("[кино и музыка] 2016-й"), "[кино и музыка]")
+
+    def test_words_before_a_bracket_are_the_format(self):
+        self.assertEqual(format_candidate("Гарри Поттер [Хогвартс] 3 курс"), "Гарри Поттер")
+        self.assertEqual(format_candidate("Квиз, плиз! [секретная тема]"), "Квиз, плиз!")
+
+    def test_trailing_year_in_the_tag_is_an_edition(self):
+        self.assertEqual(format_candidate("[HELLO 2025]"), "[HELLO]")
+        # ...but a year that is part of the name stays put.
+        self.assertEqual(format_candidate("[я из 2000-х]"), "[я из 2000-х]")
+        self.assertEqual(format_candidate("[music party] 2010-е"), "[music party]")
+
+    def test_similar_names_are_not_merged(self):
+        families = assign_families(["[топовые фильмы]", "[топовые фильмы и сериалы]",
+                                    "[music party]", "[super music party]"])
+        self.assertEqual(len(set(families.values())), 4)
+
+    def test_longer_name_folds_into_the_shorter_one(self):
+        families = assign_families(["Квиз, плиз!", "Квиз, плиз! Ru/Az BAKU", "Квиз, плиз! [новички]"])
+        self.assertEqual(set(families.values()), {"Квиз, плиз!"})
+
+    def test_a_run_sharing_first_and_last_word_is_a_series(self):
+        openings = ["ОТКРЫТИЕ ЗИМНЕГО СЕЗОНА", "ОТКРЫТИЕ ВЕСЕННЕГО СЕЗОНА",
+                    "ОТКРЫТИЕ ЛЕТНЕГО СЕЗОНА", "ОТКРЫТИЕ ОСЕННЕГО СЕЗОНА"]
+        self.assertEqual(set(assign_families(openings).values()), {"ОТКРЫТИЕ СЕЗОНА"})
+        # Two of them are a coincidence, not a series.
+        pair = assign_families(openings[:2])
+        self.assertEqual(len(set(pair.values())), 2)
+
+    def test_empty_and_missing_names(self):
+        self.assertEqual(format_candidate(None), "")
+        self.assertEqual(format_candidate(""), "")
+
+    def test_families_land_on_the_games(self):
+        games = build_dataset([
+            record("a", "2026-07-01T19:30:00", template="[music party] рок",
+                   results=[result(1, "A", 10, [10])]),
+            record("b", "2026-07-08T19:30:00", template="[music party] изи",
+                   results=[result(1, "A", 10, [10])]),
+            record("c", "2026-07-15T19:30:00", template="Квиз, плиз!",
+                   results=[result(1, "A", 10, [10])]),
+        ])
+        self.assertEqual([game.game_family for game in games],
+                         ["[music party]", "[music party]", "Квиз, плиз!"])
 
 
 class AnalyticsTest(unittest.TestCase):

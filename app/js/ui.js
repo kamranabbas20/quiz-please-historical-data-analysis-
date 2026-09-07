@@ -23,11 +23,12 @@ const state = {
   city: null,
   team: null,
   compare: [],
-  filters: { gameType: '', league: '', season: '', venue: '', from: '', to: '' },
+  filters: { family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '' },
   teamQuery: '',
   view: 'overview',
   selectedGame: null,
-  sort: { games: { key: 'date', dir: 'desc' }, types: { key: 'avgPercentile', dir: 'desc' } },
+  sort: { games: { key: 'date', dir: 'desc' }, types: { key: 'games', dir: 'desc' } },
+  typeLevel: 'family',   // 'family' groups editions together, 'type' splits them
 };
 
 const dom = {};
@@ -60,8 +61,9 @@ export async function start() {
 }
 
 function cacheDom() {
-  for (const id of ['city', 'team', 'teamSearch', 'gameType', 'league', 'season', 'from', 'to',
-    'reset', 'main', 'tabs', 'scopeNote', 'themeToggle', 'coverage']) {
+  for (const id of ['city', 'team', 'teamSearch', 'family', 'gameType', 'variantField',
+    'league', 'season', 'from', 'to', 'reset', 'main', 'tabs', 'scopeNote',
+    'themeToggle', 'coverage']) {
     dom[id] = document.getElementById(id);
   }
 }
@@ -81,17 +83,21 @@ function wireStaticControls() {
     refreshDependentFilters();
     update();
   });
-  for (const id of ['gameType', 'league', 'season', 'from', 'to']) {
+  for (const id of ['family', 'gameType', 'league', 'season', 'from', 'to']) {
     dom[id].addEventListener('change', () => {
       state.filters[id] = dom[id].value;
+      // Picking a different family invalidates the variant chosen under the old one.
+      if (id === 'family') state.filters.gameType = '';
       state.selectedGame = null;
+      refreshDependentFilters();
       update();
     });
   }
   dom.reset.addEventListener('click', () => {
-    state.filters = { gameType: '', league: '', season: '', venue: '', from: '', to: '' };
+    state.filters = { family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '' };
     state.selectedGame = null;
     syncFilterInputs();
+    refreshDependentFilters();
     update();
   });
   dom.tabs.addEventListener('click', (event) => {
@@ -149,7 +155,7 @@ async function selectCity(slug) {
   dom.city.value = slug;
   state.compare = [];
   state.selectedGame = null;
-  state.filters = { gameType: '', league: '', season: '', venue: '', from: '', to: '' };
+  state.filters = { family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '' };
 
   // Teams depend on the city, and are discovered from its scoreboards.
   state.teamQuery = '';
@@ -170,7 +176,7 @@ async function selectCity(slug) {
 function refreshDependentFilters() {
   const rows = state.team ? teamRows(state.dataset, state.team) : [];
   const specs = [
-    ['gameType', (row) => row.game.game_type, 'Все форматы'],
+    ['family', (row) => row.game.game_family || row.game.game_type, 'Все форматы'],
     ['league', (row) => row.game.league, 'Все лиги'],
     ['season', (row) => row.game.season, 'Все сезоны'],
   ];
@@ -184,6 +190,25 @@ function refreshDependentFilters() {
     }
     dom[id].value = state.filters[id];
     dom[id].parentElement.hidden = options.length === 0;
+  }
+
+  // The variant list only exists inside a family, and only when there is a
+  // choice to make -- most formats were run once.
+  const inFamily = state.filters.family
+    ? rows.filter((row) => (row.game.game_family || row.game.game_type) === state.filters.family)
+    : [];
+  const variants = optionsFor(inFamily, (row) => row.game.game_type);
+  dom.variantField.hidden = variants.length < 2;
+  if (variants.length < 2) {
+    state.filters.gameType = '';
+  } else {
+    fillSelect(dom.gameType, variants.map((option) => ({
+      value: option.value, label: `${option.value} (${option.count})`,
+    })), 'Все варианты');
+    if (state.filters.gameType && !variants.some((o) => o.value === state.filters.gameType)) {
+      state.filters.gameType = '';
+    }
+    dom.gameType.value = state.filters.gameType;
   }
 
   const dates = rows.map((row) => (row.date || '').slice(0, 10)).filter(Boolean);
@@ -212,7 +237,7 @@ function fillTeamSelect() {
 }
 
 function syncFilterInputs() {
-  for (const id of ['gameType', 'league', 'season', 'from', 'to']) {
+  for (const id of ['family', 'gameType', 'league', 'season', 'from', 'to']) {
     if (dom[id]) dom[id].value = state.filters[id] || '';
   }
 }
@@ -389,7 +414,7 @@ function renderOverview(container, rows) {
         .map((bin) => [`${bin.from}–${bin.to}`, String(bin.count)])),
   }));
 
-  const types = byGameType(rows);
+  const types = byGameType(rows, 'family');
   grid.appendChild(chartCard({
     title: 'Средний процентиль по форматам',
     note: formatBarsNote(types),
@@ -665,9 +690,12 @@ function renderTypes(container, rows) {
     container.appendChild(message('Нет игр', 'Ни одна игра не подходит под выбранные фильтры.'));
     return;
   }
-  const entries = byGameType(rows);
+  const entries = byGameType(rows, state.typeLevel);
   const columns = [
-    { key: 'gameType', label: 'Формат', get: (entry) => entry.gameType, render: (entry) => entry.gameType, left: true },
+    { key: 'gameType', label: state.typeLevel === 'family' ? 'Формат' : 'Вариант формата',
+      get: (entry) => entry.gameType, render: (entry) => entry.gameType, left: true },
+    { key: 'variants', label: 'Вариантов', get: (entry) => entry.variants,
+      render: (entry) => (entry.variants > 1 ? String(entry.variants) : '—') },
     { key: 'games', label: 'Игр', get: (entry) => entry.games, render: (entry) => String(entry.games) },
     { key: 'avgScore', label: 'Средний балл', get: (entry) => entry.avgScore ?? -1, render: (entry) => formatNumber(entry.avgScore, 1) },
     { key: 'avgPosition', label: 'Среднее место', get: (entry) => entry.avgPosition ?? 1e6, render: (entry) => formatNumber(entry.avgPosition, 1) },
@@ -684,8 +712,28 @@ function renderTypes(container, rows) {
   heading.textContent = 'Сравнение форматов';
   const note = document.createElement('div');
   note.className = 'card-note';
-  note.textContent = 'Процентиль сравним между форматами, абсолютный балл — нет.';
-  card.append(heading, note, buildTable(columns, sorted, {
+  note.textContent = state.typeLevel === 'family'
+    ? 'Издания одного формата собраны вместе: «[music party] летние хиты» и «[music party] рок» — это один формат. Процентиль сравним между форматами, абсолютный балл — нет.'
+    : 'Каждое издание отдельной строкой. Процентиль сравним между форматами, абсолютный балл — нет.';
+
+  const actions = document.createElement('div');
+  actions.className = 'row-actions';
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'reset';
+  toggle.textContent = state.typeLevel === 'family'
+    ? 'Показать отдельные варианты'
+    : 'Свернуть в форматы';
+  toggle.addEventListener('click', () => {
+    state.typeLevel = state.typeLevel === 'family' ? 'type' : 'family';
+    update();
+  });
+  const counts = document.createElement('span');
+  counts.className = 'muted';
+  counts.textContent = `${entries.length} ${plural(entries.length, 'строка', 'строки', 'строк')}`;
+  actions.append(toggle, counts);
+
+  card.append(heading, note, actions, buildTable(columns, sorted, {
     sortState: state.sort.types,
     onSort: (key) => { toggleSort(state.sort.types, key); update(); },
   }));

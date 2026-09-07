@@ -21,9 +21,9 @@ from .model import build_dataset, team_key
 
 __all__ = ["build_city", "build_all", "discover_cities"]
 
-GAME_FIELDS = ("id", "date", "season", "title", "game_number", "game_type", "league",
-               "theme", "difficulty", "format", "venue", "address", "price",
-               "currency", "url")
+GAME_FIELDS = ("id", "date", "season", "title", "game_number", "game_type",
+               "game_family", "league", "theme", "difficulty", "format", "venue",
+               "address", "price", "currency", "url")
 
 
 def discover_cities(data_dir):
@@ -71,6 +71,16 @@ def _load_standings(city_dir):
 def _distinct(values):
     """Sorted distinct non-empty values -- the app's filter options."""
     return sorted({value for value in values if value})
+
+
+def _variants_by_family(games):
+    """Which format names sit under each family, for the dependent filter."""
+    variants = {}
+    for game in games:
+        if not game.game_family:
+            continue
+        variants.setdefault(game.game_family, set()).add(game.game_type)
+    return dict((family, sorted(names)) for family, names in sorted(variants.items()))
 
 
 def _game_payload(game):
@@ -172,6 +182,10 @@ def build_city(slug, data_dir="data", out_dir=os.path.join("app", "data")):
             "scored_to": scored[-1].date if scored else None,
         },
         "filters": {
+            # Families first: the site names a format once and then adds an
+            # edition per night, so the raw list is mostly one-offs.
+            "families": _distinct(game.game_family for game in scored),
+            "variants_by_family": _variants_by_family(scored),
             "game_types": _distinct(game.game_type for game in scored),
             "leagues": _distinct(game.league for game in scored),
             "seasons": _distinct(game.season for game in scored),

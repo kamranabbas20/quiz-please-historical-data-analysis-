@@ -117,6 +117,7 @@ export function optionsFor(rows, pick) {
 export function applyFilters(rows, filters) {
   return rows.filter((row) => {
     const game = row.game;
+    if (filters.family && (game.game_family || game.game_type) !== filters.family) return false;
     if (filters.gameType && game.game_type !== filters.gameType) return false;
     if (filters.league && game.league !== filters.league) return false;
     if (filters.season && game.season !== filters.season) return false;

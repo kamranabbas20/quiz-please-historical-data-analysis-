@@ -24,7 +24,7 @@ const report = {
   cities,
   errors,
   teamsFirst: await options('#team'),
-  typesFirst: await options('#gameType'),
+  typesFirst: await options('#family'),
   coverageFirst: await page.$eval('#coverage', (el) => el.textContent),
 };
 
@@ -32,7 +32,7 @@ await page.selectOption('#city', cities[1]);
 await page.waitForTimeout(500);
 
 report.teamsSecond = await options('#team');
-report.typesSecond = await options('#gameType');
+report.typesSecond = await options('#family');
 report.coverageSecond = await page.$eval('#coverage', (el) => el.textContent);
 report.kpiGamesSecond = await kpi('Игр с результатами');
 report.selectedCity = await page.$eval('#city', (el) => el.value);
