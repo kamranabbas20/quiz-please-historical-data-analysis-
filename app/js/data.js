@@ -10,7 +10,13 @@ const DATA_DIR = 'data';
 const cache = new Map();          // slug -> prepared dataset
 let indexPromise = null;
 
+/* The single-file build (dashboard/bundle.py) embeds the datasets instead of
+ * fetching them, so the page works from a file:// URL or anywhere it is pasted.
+ * Everything downstream is identical either way. */
+const embedded = typeof window !== 'undefined' ? window.__QP_DATA__ : null;
+
 export function loadIndex() {
+  if (embedded) return Promise.resolve(embedded.index);
   if (!indexPromise) {
     indexPromise = fetchJson(`${DATA_DIR}/index.json`).catch((error) => {
       indexPromise = null;
@@ -22,6 +28,13 @@ export function loadIndex() {
 
 export async function loadCity(slug) {
   if (cache.has(slug)) return cache.get(slug);
+  if (embedded) {
+    const raw = embedded.cities[slug];
+    if (!raw) throw new Error(`no embedded dataset for ${slug}`);
+    const dataset = prepare(raw);
+    cache.set(slug, dataset);
+    return dataset;
+  }
   const promise = fetchJson(`${DATA_DIR}/${encodeURIComponent(slug)}.json`).then(prepare);
   cache.set(slug, promise);
   try {

@@ -28,6 +28,18 @@ python3 -m http.server 8765 --directory app
 To deploy, publish the `app/` directory as static files — GitHub Pages, S3, any
 web server. There is no backend.
 
+### One file, no server
+
+```bash
+python3 -m dashboard.bundle          # -> dist/dashboard.html
+```
+
+Inlines the stylesheet, concatenates the modules and embeds the datasets as
+`window.__QP_DATA__`, which `app/js/data.js` uses in place of fetching. The
+result opens by double-clicking it — no server, no network — and is a single
+file to send someone. `--fragment` omits the document skeleton for hosts that
+supply their own, and `--title` overrides the page name.
+
 ---
 
 ## What the data actually is
@@ -143,6 +155,8 @@ dashboard/           cleaning, normalisation, analytics
   model.py           the internal data model: Game + TeamGame, team keys, seasons
   analytics.py       per-game derived metrics (percentile, % of best, round shares)
   build.py           data/ -> app/data/*.json
+
+  bundle.py          app + data -> one self-contained HTML file
 
 app/                 visualisation and UI (static)
   js/data.js         loading, indexing, caching, filtering
@@ -273,6 +287,7 @@ python3 -m http.server 8765 --directory app &
 node tests/browser/smoke.mjs           # every view renders, no console errors
 node tests/browser/interactions.mjs    # filters, single-game teams, comparison, table views
 node tests/browser/looks.mjs           # dark mode + phone width, no horizontal overflow
+node tests/browser/bundle.mjs          # the single-file build, loaded from file:// with no server
 python3 tests/validate_against_source.py Колобки Ванси Noldor
 ```
 

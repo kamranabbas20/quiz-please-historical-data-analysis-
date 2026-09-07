@@ -1,0 +1,51 @@
+/* Verifies the single-file build works from disk, with no server at all.
+ * Usage: node tests/browser/bundle.mjs [path-to-dashboard.html] */
+import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
+import path from 'node:path';
+
+const file = path.resolve(process.argv[2] || 'dist/dashboard.html');
+const checks = [];
+const record = (name, ok, detail) => checks.push({ name, ok: Boolean(ok), detail });
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1400, height: 1100 } });
+const errors = [];
+page.on('console', (msg) => { if (msg.type() === 'error') errors.push(msg.text()); });
+page.on('pageerror', (error) => errors.push(error.message));
+// Nothing may be fetched: the whole point is that the file is self-contained.
+const requests = [];
+page.on('request', (request) => { if (!request.url().startsWith('file://')) requests.push(request.url()); });
+
+await page.goto(`file://${file}`, { waitUntil: 'load' });
+await page.waitForSelector('.kpi .value', { timeout: 15000 });
+
+record('no network requests', requests.length === 0, requests.slice(0, 3));
+record('teams discovered', (await page.$$eval('#team option', (n) => n.length)) > 100);
+record('charts rendered', (await page.$$eval('.chart svg', (n) => n.length)) >= 6);
+record('coverage line present', (await page.$eval('#coverage', (el) => el.textContent)).includes('258'));
+
+const kpi = (label) => page.$$eval('.kpi', (nodes, text) => {
+  const found = nodes.find((node) => node.querySelector('.label').textContent === text);
+  return found ? found.querySelector('.value').textContent : null;
+}, label);
+record('KPI games matches the dataset', (await kpi('Игр с результатами')) === '209', await kpi('Игр с результатами'));
+
+for (const view of ['games', 'types', 'compare']) {
+  await page.click(`.tab[data-view="${view}"]`);
+  await page.waitForTimeout(250);
+  record(`view ${view} renders`, (await page.$$eval('.card', (n) => n.length)) > 0);
+}
+await page.click('.tab[data-view="games"]');
+await page.waitForSelector('tbody tr.selectable');
+await page.click('tbody tr.selectable');
+await page.waitForSelector('#game-detail');
+record('game detail opens', (await page.$$eval('#game-detail .chart svg', (n) => n.length)) >= 1);
+
+await page.click('.tab[data-view="overview"]');
+await page.waitForTimeout(200);
+await page.screenshot({ path: '/tmp/qp-shots/bundle.png', fullPage: true });
+
+await browser.close();
+const failed = checks.filter((c) => !c.ok);
+console.log(JSON.stringify({ checks, errors, failed: failed.length }, null, 1));
+process.exit(failed.length || errors.length ? 1 : 0);
