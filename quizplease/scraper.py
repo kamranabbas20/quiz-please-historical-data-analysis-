@@ -182,43 +182,127 @@ def _number(value):
     return int(number) if number.is_integer() else number
 
 
+_ROUND_HEADER = re.compile(r"^(?:(\d+)\s*раунд|раунд\s*(\d+))", re.I)
+
+_PLACE_HEADERS = ("место", "#")
+_RANK_HEADERS = ("ранг",)
+_TEAM_HEADERS = ("название команды", "команда", "название")
+_TOTAL_HEADERS = ("итого", "сумма", "всего", "результат")
+
+
+def _header_text(cell):
+    """Normalise a header cell: nbsp, stray spacing, case."""
+    if cell is None:
+        return ""
+    return " ".join(str(cell).replace("\xa0", " ").split()).strip().casefold()
+
+
+def _classify_header(cells):
+    """Map a header row to column roles, or return None if it is not one.
+
+    The scoreboards drift over the years: rounds come before or after the
+    total, they are headed "1 раунд" or "Раунд 1", and some formats add their
+    own columns (a Hogwarts house, say). Roles are matched by name so column
+    order never matters.
+    """
+    roles = {"rounds": {}, "extras": {}}
+    for index, cell in enumerate(cells):
+        text = _header_text(cell)
+        if not text:
+            continue
+        match = _ROUND_HEADER.match(text)
+        if match:
+            number = int(match.group(1) or match.group(2))
+            roles["rounds"].setdefault(number, index)
+            continue
+        if text in _PLACE_HEADERS and "place" not in roles:
+            roles["place"] = index
+        elif text in _RANK_HEADERS and "rank" not in roles:
+            roles["rank"] = index
+        elif text in _TEAM_HEADERS and "team" not in roles:
+            roles["team"] = index
+        elif text in _TOTAL_HEADERS and "total" not in roles:
+            roles["total"] = index
+        else:
+            roles["extras"].setdefault(text, index)
+
+    if "team" not in roles:
+        return None
+    if "total" not in roles and not roles["rounds"]:
+        return None
+    return roles
+
+
+def _find_header(rows, search_depth=15):
+    for index, row in enumerate(rows[:search_depth]):
+        roles = _classify_header(row)
+        if roles:
+            return index, roles
+    return None, None
+
+
+def _cell(row, index):
+    if index is None or index >= len(row):
+        return None
+    return row[index]
+
+
 def parse_results_table(rows):
-    """Flatten a scoreboard sheet into per-team dicts."""
+    """Flatten a published scoreboard sheet into per-team dicts.
+
+    Handles every layout the site has published: the current one, the older
+    "N раунд" headers with the total at either end, extra per-format columns,
+    and the junk rows ("Ошибка при вводе данных") and blank padding that follow
+    some tables.
+    """
     if not rows:
         return []
-    header = [(cell or "").strip() for cell in rows[0]]
-    round_columns = [(index, name) for index, name in enumerate(header)
-                     if re.match(r"^Раунд\s*\d+$", name)]
+    start, roles = _find_header(rows)
+    if roles is None:
+        return []
 
-    def column(*titles):
-        for title in titles:
-            if title in header:
-                return header.index(title)
-        return None
-
-    place_column = column("Место")
-    rank_column = column("Ранг")
-    team_column = column("Название команды", "Команда")
-    total_column = column("Итого", "Сумма")
-
+    round_numbers = sorted(roles["rounds"])
     results = []
-    for row in rows[1:]:
-        name = (row[team_column] or "").strip() if team_column is not None else ""
+    for row in rows[start + 1:]:
+        name = _cell(row, roles.get("team"))
+        name = " ".join(str(name).replace("\xa0", " ").split()) if name is not None else ""
         if not name:
             continue
-        rank = (row[rank_column] or "").strip() if rank_column is not None else None
+
+        place = _number(_cell(row, roles.get("place")))
+        total = _number(_cell(row, roles.get("total")))
+        # A real row is identified by a number, not by having text in the team
+        # column -- the notes some files append below the table have both.
+        if place is None and total is None:
+            continue
+
+        rank = _cell(row, roles.get("rank"))
+        rank = str(rank).strip() if rank not in (None, "") else None
+
         rounds = {}
-        for index, title in round_columns:
-            rounds[title.replace("Раунд ", "round_")] = _number(row[index])
+        for number in round_numbers:
+            rounds["round_%d" % number] = _number(_cell(row, roles["rounds"][number]))
+        if total is None:
+            scored = [value for value in rounds.values() if value is not None]
+            total = sum(scored) if scored else None
+
+        extras = {}
+        for label, index in roles["extras"].items():
+            value = _cell(row, index)
+            if value not in (None, ""):
+                extras[label] = str(value).strip()
+
         results.append({
-            "place": _number(row[place_column]) if place_column is not None else None,
+            "place": int(place) if isinstance(place, int) else place,
             "team": name,
             "team_id": None,   # the .xlsx scoreboards do not carry team ids
-            "rank": rank or None,
+            "rank": rank,
             "rank_title": RANK_TITLES.get(rank),
-            "total": _number(row[total_column]) if total_column is not None else None,
+            "total": total,
             "rounds": rounds,
+            "extras": extras or None,
         })
+
     results.sort(key=lambda item: (item["place"] is None, item["place"]))
     return results
 

@@ -45,9 +45,281 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F04%2F6802984e2908c.xlsx",
   "photos": [],
   "created_at": "2025-05-15T12:48:23+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:22:14.431702+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 56,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 53,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 12,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 51,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 9,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 51,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 9,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "ЗОЖкин кот",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 43,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 43,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 10,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 40,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 8,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 40,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 10,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Безлимит на косяки",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 36,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Последние из англикан",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 36,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "В квизе только девушки",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 25,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "ToBeContinued",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 25,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 2,
+        "round_4": 7,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 2
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Штрих-коты",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 0,
+        "round_6": 0,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "Белочки",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 1,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 1,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 15,
+      "team": "Лупа получил за Пупу, а Пупа за Лупу",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 1,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 0,
+        "round_3": 0,
+        "round_4": 1,
+        "round_5": 0,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:28.643839+00:00"
 }

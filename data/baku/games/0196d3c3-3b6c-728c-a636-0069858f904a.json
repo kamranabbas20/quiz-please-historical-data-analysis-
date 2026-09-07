@@ -45,9 +45,263 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F07%2F66a3e699cbc53.xlsx",
   "photos": [],
   "created_at": "2025-05-15T11:45:09+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:24:01.032389+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "У нас было название",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 44,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Культур-мультур",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 44,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 10,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 41,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 1,
+        "round_6": 2,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 41,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 1,
+        "round_6": 2,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 41,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 9,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 39,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 10,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 38,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 35,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 5,
+        "round_4": 7,
+        "round_5": 2,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Witches & Co",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 34,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 3,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 1,
+        "round_6": 4,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Слон В.",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 34,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 12,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 5
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Telepuziki",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 0,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Family look",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 20,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 0,
+        "round_6": 0,
+        "round_7": 6
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 20,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 3,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "ChaosDot.s",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 16,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 1,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 4
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:59.133535+00:00"
 }

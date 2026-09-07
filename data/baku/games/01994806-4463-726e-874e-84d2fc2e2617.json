@@ -45,9 +45,173 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F06%2F684877382bc80.xlsx",
   "photos": [],
   "created_at": "2025-09-14T11:39:54+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:21:52.617769+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "kim6",
+      "rank_title": null,
+      "total": 51.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5.5,
+        "round_3": 4,
+        "round_4": 7,
+        "round_5": 4.5,
+        "round_6": 5.5,
+        "round_7": 20
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 43.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 7.5,
+        "round_5": 4.5,
+        "round_6": 7.5,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Тащим, как можем",
+      "team_id": null,
+      "rank": "kim2",
+      "rank_title": null,
+      "total": 36.5,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4.5,
+        "round_3": 2,
+        "round_4": 4.5,
+        "round_5": 3,
+        "round_6": 4.5,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Скрытый потанцевал",
+      "team_id": null,
+      "rank": "kim2",
+      "rank_title": null,
+      "total": 33,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 4.5,
+        "round_5": 4.5,
+        "round_6": 2,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Без шансов",
+      "team_id": null,
+      "rank": "kim2",
+      "rank_title": null,
+      "total": 29,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "XOD VER",
+      "team_id": null,
+      "rank": "kim2",
+      "rank_title": null,
+      "total": 28.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 3.5,
+        "round_6": 4,
+        "round_7": 5
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 26.5,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 3,
+        "round_3": 6,
+        "round_4": 1,
+        "round_5": 3.5,
+        "round_6": 3,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Monopolisti",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 13.5,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 2,
+        "round_3": 0,
+        "round_4": 1,
+        "round_5": 3.5,
+        "round_6": 2,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Крабоносы",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 4.5,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 0,
+        "round_3": 0,
+        "round_4": 0,
+        "round_5": 2.5,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:22.031385+00:00"
 }

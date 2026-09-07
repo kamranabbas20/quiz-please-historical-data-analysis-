@@ -98,6 +98,70 @@ class NormalizeTest(unittest.TestCase):
         self.assertEqual(extract_nuxt_state(html)["data"]["game"]["status"], "ok")
 
 
+class LegacyResultsTest(unittest.TestCase):
+    """The published .xlsx layout has drifted over the years."""
+
+    def test_rounds_before_total_and_n_raund_headers(self):
+        rows = [
+            ["Место", "Ранг", "Название команды ", "1 раунд", "2 раунд ", "Итого"],
+            ["1", None, "Дикие громкие орки", "6", "5", "11"],
+            ["2", "kim1", "Noldor", "5", "5.5", "10.5"],
+        ]
+        results = parse_results_table(rows)
+        self.assertEqual([r["team"] for r in results], ["Дикие громкие орки", "Noldor"])
+        self.assertEqual(results[0]["rounds"], {"round_1": 6, "round_2": 5})
+        self.assertEqual(results[1]["total"], 10.5)
+        self.assertEqual(results[1]["rank"], "kim1")     # league rank code, no title known
+        self.assertIsNone(results[1]["rank_title"])
+        self.assertIsNone(results[1]["team_id"])
+
+    def test_extra_format_columns_are_kept(self):
+        rows = [
+            ["Место", "Ранг", "Факультет", "Название команды", "1 раунд", "Итого"],
+            ["1", "chuck", "1Gryffindor", "Колобки", "5", "5"],
+        ]
+        results = parse_results_table(rows)
+        self.assertEqual(results[0]["extras"], {"факультет": "1Gryffindor"})
+        self.assertEqual(results[0]["rank_title"], "Чак Норрис")
+
+    def test_trailing_notes_and_padding_are_ignored(self):
+        rows = [
+            ["Место", "Ранг", "Название команды", "Итого", "1 раунд"],
+            ["1", None, "Колобки", "55", "6"],
+            ["5 раунд", "Все верно!", None, None, None],
+            ["7 раунд", "Ошибка при вводе данных", None, None, None],
+            [None, None, None, None, None],
+        ]
+        results = parse_results_table(rows)
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["team"], "Колобки")
+
+    def test_nbsp_and_reordered_round_columns(self):
+        rows = [
+            ["Место", "Название команды", "3 раунд\xa0", "1 раунд", "2 раунд", "Итого"],
+            ["1", "A", "3", "1", "2", "6"],
+        ]
+        results = parse_results_table(rows)
+        # Rounds are keyed by their header number, not by column order.
+        self.assertEqual(results[0]["rounds"], {"round_1": 1, "round_2": 2, "round_3": 3})
+
+    def test_total_is_summed_when_the_sheet_omits_it(self):
+        rows = [["Место", "Название команды", "1 раунд", "2 раунд"], ["1", "A", "4", "5.5"]]
+        self.assertEqual(parse_results_table(rows)[0]["total"], 9.5)
+
+    def test_header_further_down_the_sheet(self):
+        rows = [
+            ["Квиз, плиз! BAKU", None, None],
+            [None, None, None],
+            ["Место", "Название команды", "Итого"],
+            ["1", "A", "10"],
+        ]
+        self.assertEqual(len(parse_results_table(rows)), 1)
+
+    def test_sheet_without_a_recognisable_header(self):
+        self.assertEqual(parse_results_table([["что-то", "иное"], ["1", "2"]]), [])
+
+
 class ResultsTest(unittest.TestCase):
     def test_parses_rows(self):
         results = parse_results_table(RESULT_ROWS)

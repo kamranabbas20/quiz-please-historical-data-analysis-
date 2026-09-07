@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-09-06T22:29:29.145300+00:00",
+ "generated_at": "2026-09-07T04:02:22.972081+00:00",
  "cities": [
   {
    "slug": "baku",
    "name": "Баку",
    "file": "baku.json",
    "games": 285,
-   "games_with_results": 17,
-   "teams": 53,
-   "date_from": "2026-06-30T19:30:00",
+   "games_with_results": 258,
+   "teams": 682,
+   "date_from": "2023-04-01T18:30:00",
    "date_to": "2026-09-04T19:30:00",
-   "bytes": 400629
+   "bytes": 1976605
   }
  ]
 }

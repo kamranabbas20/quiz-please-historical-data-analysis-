@@ -82,6 +82,9 @@ def _game_payload(game):
     payload["worst_total"] = game.worst_total
     payload["mean_total"] = game.mean_total
     payload["has_results"] = bool(game.results)
+    # Where the scoreboard came from: the JSON endpoint (recent games, with team
+    # ids) or the published .xlsx (the back catalogue, without them).
+    payload["results_source"] = game.results_source
     return payload
 
 
@@ -100,6 +103,7 @@ def _row_payload(game, row):
         "gap_to_mean": extras.get("gap_to_mean"),
         "rank": row.rank,
         "rank_title": row.rank_title,
+        "attributes": row.attributes or None,
         # Aligned with the game's `rounds` list so the app never has to match keys.
         "rounds": [row.rounds.get(name) for name in game.rounds],
         "round_pct": [extras.get("round_pct", {}).get(name) for name in game.rounds],

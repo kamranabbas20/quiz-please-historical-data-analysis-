@@ -45,9 +45,182 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2026%2F05%2F69fa28e83f401.xlsx",
   "photos": [],
   "created_at": "2026-05-02T08:42:19+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:19:41.700596+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-сити",
+      "team_id": null,
+      "rank": "kim7",
+      "rank_title": null,
+      "total": 69,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 12,
+        "round_3": 7,
+        "round_4": 11,
+        "round_5": 8,
+        "round_6": 10,
+        "round_7": 12,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "НеВалдис Пельш",
+      "team_id": null,
+      "rank": "kim6",
+      "rank_title": null,
+      "total": 68,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 12,
+        "round_3": 7,
+        "round_4": 11,
+        "round_5": 10,
+        "round_6": 9,
+        "round_7": 10,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "kim6",
+      "rank_title": null,
+      "total": 68,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 12,
+        "round_3": 8,
+        "round_4": 12,
+        "round_5": 8,
+        "round_6": 8,
+        "round_7": 10,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Крошки-Мормошки",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 65.5,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 12,
+        "round_3": 9,
+        "round_4": 8,
+        "round_5": 9,
+        "round_6": 8.5,
+        "round_7": 10,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 58,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 10,
+        "round_3": 6,
+        "round_4": 10,
+        "round_5": 8,
+        "round_6": 9,
+        "round_7": 6,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Meta-Ersa",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 52.5,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 8,
+        "round_5": 9,
+        "round_6": 8.5,
+        "round_7": 6,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Остатки Роскоши",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 50.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 11,
+        "round_5": 7,
+        "round_6": 6.5,
+        "round_7": 6,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Белочки",
+      "team_id": null,
+      "rank": "kim1",
+      "rank_title": null,
+      "total": 44.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 3,
+        "round_4": 5,
+        "round_5": 8,
+        "round_6": 6.5,
+        "round_7": 7,
+        "round_8": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Леди Мага",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 36,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 10,
+        "round_3": 1,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 5,
+        "round_7": 4,
+        "round_8": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T03:59:49.241379+00:00"
 }

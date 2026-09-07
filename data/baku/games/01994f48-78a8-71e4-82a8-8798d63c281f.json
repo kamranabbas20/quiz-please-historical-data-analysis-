@@ -45,9 +45,211 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F10%2F68dc48b3be5b9.xlsx",
   "photos": [],
   "created_at": "2025-09-15T21:29:33+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:21:10.517772+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 59,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 9,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 5,
+        "round_7": 22
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 2,
+      "team": "Как приручить Драко",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 8,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 20
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 3,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 8,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 5,
+        "round_7": 20
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 4,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 42,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 16
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    },
+    {
+      "place": 5,
+      "team": "Философские Дамы",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 41,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 2,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 5,
+        "round_7": 18
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 6,
+      "team": "Драко с Милфой",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 40,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 6,
+        "round_3": 2,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 3,
+        "round_7": 16
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 7,
+      "team": "Гарри Поттер и съемная комната",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 39,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 6,
+        "round_3": 7,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 10
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 8,
+      "team": "Крысы из Хогсмида",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 1,
+        "round_3": 3,
+        "round_4": 1,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 7
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    },
+    {
+      "place": 9,
+      "team": "Отряд Дамблдора",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 17,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 0,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 4
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 10,
+      "team": "Гриффиндочки",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 5,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 0,
+        "round_3": 0,
+        "round_4": 0,
+        "round_5": 1,
+        "round_6": 1,
+        "round_7": 1
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:11.005736+00:00"
 }

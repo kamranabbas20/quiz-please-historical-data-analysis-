@@ -45,9 +45,191 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F08%2F66bf91dfca879.xlsx",
   "photos": [],
   "created_at": "2025-05-15T11:50:38+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:23:46.077989+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 53,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 3,
+        "round_4": 10,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Слон В.",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 52,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 51,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 11,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 47,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 46,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 2,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 45,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 7,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 45,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 43,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "ToBeContinued",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 40,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Kroshki",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 6,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 3
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:55.479401+00:00"
 }

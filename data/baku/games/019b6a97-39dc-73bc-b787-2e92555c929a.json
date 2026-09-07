@@ -45,9 +45,173 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2026%2F01%2F695d75c53953a.xlsx",
   "photos": [],
   "created_at": "2025-12-29T14:50:54+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:20:35.342641+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Гарри Поттер и съемная комната",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 5,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Философские дамы",
+      "team_id": null,
+      "rank": "kim2",
+      "rank_title": null,
+      "total": 54.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 5.5,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Как приручить Драко",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 54.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 5.5,
+        "round_7": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Отряд Дамблдора",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 51.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 7,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 5.5,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Драко с Милфой",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 46.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 5.5,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Факультет Хорошего Настроения",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 36.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 5.5,
+        "round_7": 8
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Запах Гарри",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 26,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 6
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:01.652840+00:00"
 }

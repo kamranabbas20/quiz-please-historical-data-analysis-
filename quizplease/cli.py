@@ -39,6 +39,9 @@ def build_parser():
     city.add_argument("--refresh", action="store_true",
                       help="re-fetch games already on disk")
     city.add_argument("--quiet", action="store_true", help="only print the summary")
+    city.add_argument("--workers", type=int, default=1, metavar="N",
+                      help="fetch N games at once (default: 1). Keep it modest — "
+                           "each game costs two or three requests to someone's server.")
 
     standings = sub.add_parser(
         "standings", help="all-time rating standings for a city (points, games played)")
@@ -93,7 +96,7 @@ def _harvest_cities(args, api):
         try:
             summary = harvest_city(slug, out_dir=args.out_dir, api=api,
                                    refresh=args.refresh, limit=args.limit,
-                                   on_progress=progress)
+                                   on_progress=progress, workers=max(1, args.workers))
         except ApiError as error:
             print("error: %s" % error, file=sys.stderr)
             failures += 1

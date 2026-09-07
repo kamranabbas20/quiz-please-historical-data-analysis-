@@ -45,9 +45,227 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F11%2F672e525c8a4bc.xlsx",
   "photos": [],
   "created_at": "2025-05-15T12:14:10+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:23:17.258322+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 53,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 7,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 52,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 3,
+        "round_4": 11,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 49,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 46,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 38,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 36,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 1,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 34,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 6,
+        "round_3": 1,
+        "round_4": 7,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "ToBeContinued",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 32,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Сочные дальневосточные",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 0,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Ширин Чай",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 23,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 0,
+        "round_4": 0,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "vKontakte+",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 17,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 1,
+        "round_4": 2,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Джуманжи",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 4,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 0,
+        "round_3": 0,
+        "round_4": 1,
+        "round_5": 1,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:46.435799+00:00"
 }

@@ -128,7 +128,23 @@ if (boxes.length) {
   record('each compared team gets its own colour', new Set(swatches).size === swatches.length, swatches);
 }
 
-/* 6. Table view twin exists for charts. */
+/* 6. Team search narrows the dropdown without losing the selection. */
+const beforeSearch = await page.$$eval('#team option', (nodes) => nodes.length);
+const selectedBefore = await page.$eval('#team', (el) => el.value);
+const firstName = await page.$eval('#team option', (el) => el.textContent.split(' — ')[0]);
+await page.fill('#teamSearch', firstName.slice(0, 3));
+await page.waitForTimeout(200);
+const afterSearch = await page.$$eval('#team option', (nodes) => nodes.length);
+record('team search narrows the list', afterSearch <= beforeSearch, { beforeSearch, afterSearch });
+record('team search keeps the selected team', await page.$eval('#team', (el) => el.value) === selectedBefore);
+await page.fill('#teamSearch', 'zzzzz-нет-такой');
+await page.waitForTimeout(200);
+record('unmatched search still shows the selected team',
+  (await page.$$eval('#team option', (nodes) => nodes.length)) >= 1);
+await page.fill('#teamSearch', '');
+await page.waitForTimeout(200);
+
+/* 7. Table view twin exists for charts. */
 await page.click('.tab[data-view="overview"]');
 await page.waitForSelector('.table-toggle');
 const toggles = await page.$$('.table-toggle');

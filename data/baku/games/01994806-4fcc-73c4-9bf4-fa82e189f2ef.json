@@ -45,9 +45,209 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F06%2F68433288ad2c1.xlsx",
   "photos": [],
   "created_at": "2025-09-14T11:39:57+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:21:54.292209+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 63,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 5,
+        "round_3": 7,
+        "round_4": 9,
+        "round_5": 8,
+        "round_6": 8,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 61,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 8,
+        "round_6": 7,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 59,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 57,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 7,
+        "round_5": 8,
+        "round_6": 8,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 56,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 9,
+        "round_5": 6,
+        "round_6": 5,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 53,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 8,
+        "round_5": 4,
+        "round_6": 7,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 48,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 7,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 8,
+        "round_6": 8,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Кошкин Дом",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 47,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 2,
+        "round_6": 6,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Сказки Дедушки Приуса",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 40,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 2,
+        "round_6": 5,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Monopolisti",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 39,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 0,
+        "round_6": 5,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Сочные дальневосточные",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 33,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 1,
+        "round_4": 4,
+        "round_5": 0,
+        "round_6": 6,
+        "round_7": 10
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:22.262013+00:00"
 }

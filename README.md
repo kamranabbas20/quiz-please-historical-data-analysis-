@@ -14,8 +14,8 @@ Both are pure standard library / vanilla JS: no `requests`, no `pandas`, no
 
 ```bash
 # 1. scrape a city (already done for Baku — data/baku/ is committed)
-python3 -m quizplease --delay 0.15 city baku
-python3 -m quizplease --delay 0.15 standings baku     # all-time rating tables
+python3 -m quizplease --delay 0.05 city baku --workers 5
+python3 -m quizplease --delay 0.05 standings baku     # all-time rating tables
 
 # 2. compile the browser dataset
 python3 -m dashboard.build
@@ -32,30 +32,50 @@ web server. There is no backend.
 
 ## What the data actually is
 
-The site publishes **round-by-round scoreboards only for roughly the last six
-months**. Older games are listed with venue, format and date, but their results
-are not exposed by any public endpoint — verified by sampling Moscow's full
-8,534-game history back to 2021.
-
-For Baku that means:
+Scoreboards go back to the start. For Baku:
 
 | | |
 |---|---|
 | Games in the schedule | 285 (April 2023 → September 2026) |
-| Games with a published scoreboard | 17 (June → September 2026) |
-| Team-game rows | 143 |
-| Distinct teams | 53 |
+| Games with a published scoreboard | 258 |
+| Team-game rows | 3,954 |
+| Distinct teams | 682 |
+| Seasons covered | 15 |
 | All-time rating standings | 766 team/league rows, up to 196 games per team |
 
-So the dashboard shows deep detail for a shallow window, and uses the rating
-standings for the lifetime context ("17 games here, 242 all-time"). Adding
-cities widens it — see *Adding another city*.
+The 27 games with no scoreboard have nothing published for them at all —
+`result.table` is null and no rounds are recorded — so they are kept in the
+dataset as games without results rather than silently dropped.
 
-Two data facts worth knowing before reading any number:
+**Two scoreboard sources, and one parameter that matters.** `/api/games/view/{id}`
+omits the `result` object unless the request asks for it:
+
+```
+GET /api/games/view/{id}?relationships[]=result
+```
+
+Without that parameter the field comes back `null` for every game, and the only
+scoreboards left are the ones `/api/games/{id}/results` serves — which covers
+roughly the last six months. That looks exactly like "the site only publishes
+recent results", and it is wrong: with the parameter, Baku has scoreboards back
+to its first game in 2023, and Moscow back to 2021. The scraper asks for the
+relationship and prefers whichever source is richer:
+
+| Source | Coverage | Team ids | Layout |
+|---|---|---|---|
+| `/api/games/{id}/results` | ~last 6 months | yes | stable JSON |
+| `result.table` (.xlsx) | the whole back catalogue | no | drifts between seasons |
+
+The .xlsx layout has changed over the years — rounds before or after the total,
+`1 раунд` vs `Раунд 1`, per-format extra columns (a Hogwarts house), trailing
+notes below the table — so the parser matches columns by name and never by
+position. `results_source` on each game records which source it came from.
+
+Two more data facts worth knowing before reading any number:
 
 - **A team has one id per rating league** (classic vs. film-and-music), so ids
-  do not identify a team across formats. Teams are keyed by their **name**, with
-  the ids kept as aliases.
+  do not identify a team across formats — and the .xlsx scoreboards carry no ids
+  at all. Teams are keyed by their **name**, with any ids kept as aliases.
 - **No theoretical maximum score is published.** "% от лучшего" is measured
   against the best total actually achieved in that game, so the winner is always
   100%. It answers "how close to the best team in the room", not "how close to
@@ -188,10 +208,12 @@ A game JSON:
   "games": [ { "id", "date", "season", "title", "game_number", "game_type", "league",
                "theme", "difficulty", "format", "venue", "address", "price", "currency",
                "url", "rounds": ["round_1", …], "round_labels": ["Раунд 1", …],
-               "teams_count", "best_total", "worst_total", "mean_total", "has_results" } ],
+               "teams_count", "best_total", "worst_total", "mean_total", "has_results",
+               "results_source": "api" | "xlsx" | null } ],
   "rows":  [ { "game_id", "team", "team_key", "team_ids": [ … ], "position", "total",
                "percentile", "score_pct", "gap_to_best", "gap_to_mean",
                "rank", "rank_title",
+               "attributes": { "факультет": "1Gryffindor" },  // per-format extra columns
                "rounds":    [5, 5, 6.5, …],   // aligned with the game's `rounds`
                "round_pct": [100, 83, …] } ],
   "teams": [ { "key", "name", "names": [ … ], "ids": [ … ], "games", "first", "last" } ],
@@ -209,14 +231,17 @@ the most common one.
 ## Updating the dataset with new games
 
 ```bash
-python3 -m quizplease --delay 0.15 city baku    # only new games are fetched
-python3 -m quizplease --delay 0.15 standings baku
-python3 -m dashboard.build                      # rewrites app/data/
+python3 -m quizplease --delay 0.05 city baku --workers 5   # only new games are fetched
+python3 -m quizplease --delay 0.05 standings baku
+python3 -m dashboard.build                                 # rewrites app/data/
 ```
 
 `city` is resumable and incremental: games already on disk are skipped, so a
-weekly run costs one listing request plus two per new game. `--refresh`
+weekly run costs one listing request plus two or three per new game. `--refresh`
 re-fetches everything; a game that fails is reported and the run continues.
+`--workers N` fetches N games at once — the time is nearly all latency, so this
+is the difference between 5 games a minute and 60. Keep it modest; it is
+someone else's server.
 
 The app picks the rebuilt files up on reload — no code change, no configuration.
 
@@ -229,16 +254,18 @@ python3 -m quizplease --delay 0.15 standings tbilisi
 python3 -m dashboard.build
 ```
 
-The city appears in the dropdown automatically. Scraping costs two API calls per
-game, so use `--delay`, and expect a city the size of Moscow (8.5k games) to take
-hours. Scoreboard coverage varies: sample a city before committing to it.
+The city appears in the dropdown automatically. Scraping costs two or three
+requests per game, so use `--delay` and `--workers`, and expect a city the size
+of Moscow (8,534 games, with scoreboards back to 2021) to take hours even so.
+There are ~101,000 finished games across 244 cities;
+`python3 -m quizplease cities --counts` prints the current breakdown.
 
 ---
 
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -p 'test_*.py'   # 45 tests: scraper, model, analytics, build
+python3 -m unittest discover -s tests -p 'test_*.py'   # 52 tests: scraper, model, analytics, build
 node --test tests/test_stats.mjs                       # 10 tests: dashboard statistics
 
 # browser tests need the app running on :8765
@@ -265,3 +292,6 @@ teams, the filters and the coverage line.
   reports the total; the client remembers it.
 - A game with no published scoreboard is still kept, so coverage can be stated
   honestly rather than silently dropped.
+- Field sizes have shrunk a lot in Baku — 30+ teams a game in 2023, 6–12 in
+  2026 — so a finishing position means different things in different years.
+  That is exactly why the percentile, not the place, is the comparable measure.

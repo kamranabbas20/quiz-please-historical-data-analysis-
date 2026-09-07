@@ -45,9 +45,173 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F02%2F67b8bc6658e5b.xlsx",
   "photos": [],
   "created_at": "2025-05-15T12:37:00+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:22:39.344761+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 47,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 10,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 46,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 8,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 39,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 39,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 2,
+        "round_4": 10,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 39,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 10,
+        "round_5": 4,
+        "round_6": 6,
+        "round_7": 5
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Прилетели на концерт One Republic",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 37,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 3,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 35,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 5
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Сказки Дедушки Приуса",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 1,
+        "round_3": 2,
+        "round_4": 2,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 2
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "МОМЕНТООО МОРИИИ",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 10,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 1,
+        "round_3": 2,
+        "round_4": 0,
+        "round_5": 5,
+        "round_6": 0,
+        "round_7": 1
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:35.561174+00:00"
 }

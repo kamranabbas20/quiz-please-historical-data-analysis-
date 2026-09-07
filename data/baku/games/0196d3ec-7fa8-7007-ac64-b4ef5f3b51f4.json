@@ -45,9 +45,281 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F01%2F6799245c6f39a.xlsx",
   "photos": [],
   "created_at": "2025-05-15T12:30:13+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:22:48.804005+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 52,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 6,
+        "round_6": 5,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 51.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 5.5,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Философские дамы",
+      "team_id": null,
+      "rank": "kim2",
+      "rank_title": null,
+      "total": 49,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 4,
+        "round_5": 6,
+        "round_6": 5,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Гарри Поттер и съемная комната",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 44.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 4.5,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Где Ёж?",
+      "team_id": null,
+      "rank": "kim1",
+      "rank_title": null,
+      "total": 44.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 2.5,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Подлизерин",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 43.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 5.5,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Примерные Сестры",
+      "team_id": null,
+      "rank": "kim1",
+      "rank_title": null,
+      "total": 43,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 5,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "kim5",
+      "rank_title": null,
+      "total": 42.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 6,
+        "round_6": 4.5,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Мэттью Макгонагалл",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 40.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 1.5,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Культур-мультур",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 38,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Те, кому нельзя наливать",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 31,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 3,
+        "round_5": 3,
+        "round_6": 3,
+        "round_7": 8
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Помяни моё слово Поттер",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 23.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 1,
+        "round_6": 3.5,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Без шансов",
+      "team_id": null,
+      "rank": "kim1",
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 4,
+        "round_5": 1,
+        "round_6": 3,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "Принцессы полукровки",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 1,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 1,
+        "round_6": 3,
+        "round_7": 5
+      },
+      "extras": null
+    },
+    {
+      "place": 15,
+      "team": "LKAB",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 13,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 1,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 2
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:38.387198+00:00"
 }

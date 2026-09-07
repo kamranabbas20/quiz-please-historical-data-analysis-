@@ -117,9 +117,16 @@ class QuizPleaseApi(object):
                 return
             page += 1
 
-    def game(self, game_id):
-        """The full record for one game -- same object the game page renders."""
-        return self._data(self.get("/api/games/view/%s" % game_id), "game view")
+    def game(self, game_id, relationships=("result",)):
+        """The full record for one game -- same object the game page renders.
+
+        `relationships[]` is not optional in practice: without it the response
+        omits `result`, which is where the published scoreboard file lives. The
+        site's own page requests it, and games older than the JSON results
+        endpoint's coverage have a scoreboard *only* there.
+        """
+        params = {"relationships[]": list(relationships)} if relationships else None
+        return self._data(self.get("/api/games/view/%s" % game_id, params), "game view")
 
     def results(self, game_id):
         """Scoreboard rows for a finished game; empty when none was published."""

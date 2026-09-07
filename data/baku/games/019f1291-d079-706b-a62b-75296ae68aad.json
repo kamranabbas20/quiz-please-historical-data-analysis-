@@ -45,7 +45,7 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 10,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/gameresults/286ac94c9a987a84b35d9632c23d2ecf8ffbdcf4ee443ebcf3ede36e3f366ade.xlsx",
   "photos": [],
   "created_at": "2026-06-29T08:49:33+00:00",
   "results": [
@@ -215,5 +215,6 @@
       }
     }
   ],
-  "scraped_at": "2026-09-06T22:19:02.872826+00:00"
+  "results_source": "api",
+  "scraped_at": "2026-09-07T03:59:39.547555+00:00"
 }

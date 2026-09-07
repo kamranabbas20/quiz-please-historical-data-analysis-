@@ -45,9 +45,231 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F11%2F6925fd23711cc.xlsx",
   "photos": [],
   "created_at": "2025-10-22T13:50:43+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:20:51.298531+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 61,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 7,
+        "round_4": 5,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 24
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 2,
+      "team": "Как приручить Драко",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 57,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 8,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 22
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 3,
+      "team": "Драко с Милфой",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 56,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 8,
+        "round_4": 4,
+        "round_5": 8,
+        "round_6": 5,
+        "round_7": 23
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 4,
+      "team": "Философские Дамы",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 51,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 7,
+        "round_4": 4,
+        "round_5": 7,
+        "round_6": 5,
+        "round_7": 19
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 5,
+      "team": "Гарри Поттер и съемная комната",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 49,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 7,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 19
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 6,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 44,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 5,
+        "round_3": 7,
+        "round_4": 4,
+        "round_5": 6,
+        "round_6": 5,
+        "round_7": 14
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 7,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 42,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 3,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 16
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    },
+    {
+      "place": 8,
+      "team": "Ежедневный порок",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 32,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 1,
+        "round_5": 5,
+        "round_6": 5,
+        "round_7": 9
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 9,
+      "team": "Отряд Дамблдора",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 26,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 2,
+        "round_3": 7,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 3,
+        "round_7": 6
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 10,
+      "team": "Smartinies",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 13,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 0,
+        "round_3": 4,
+        "round_4": 2,
+        "round_5": 1,
+        "round_6": 1,
+        "round_7": 3
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    },
+    {
+      "place": 11,
+      "team": "Тёмные личности",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 12,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 1,
+        "round_3": 4,
+        "round_4": 1,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 1
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:06.350452+00:00"
 }

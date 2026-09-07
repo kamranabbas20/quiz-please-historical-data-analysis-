@@ -52,9 +52,137 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2026%2F03%2F69b06d275a48d.xlsx",
   "photos": [],
   "created_at": "2026-02-24T15:09:06+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:20:05.138151+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "kim5",
+      "rank_title": null,
+      "total": 62.5,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 6,
+        "round_3": 8,
+        "round_4": 10,
+        "round_5": 6,
+        "round_6": 6.5,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Лоразепам",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 59,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 6,
+        "round_3": 7,
+        "round_4": 10,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 57.5,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 9,
+        "round_5": 6,
+        "round_6": 6.5,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "kim5",
+      "rank_title": null,
+      "total": 57,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 6,
+        "round_3": 7,
+        "round_4": 7,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Город24",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 56.5,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 7,
+        "round_3": 4,
+        "round_4": 9,
+        "round_5": 7,
+        "round_6": 6.5,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "kim7",
+      "rank_title": null,
+      "total": 49,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 1,
+        "round_4": 9,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Скрытый Потанцевал",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 46.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 1,
+        "round_4": 8,
+        "round_5": 7,
+        "round_6": 6.5,
+        "round_7": 11
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T03:59:53.475206+00:00"
 }

@@ -45,9 +45,191 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2026%2F05%2F6a0c9d720edbd.xlsx",
   "photos": [],
   "created_at": "2026-05-02T08:42:19+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:19:34.983587+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 34,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 7.5,
+        "round_4": 4,
+        "round_5": 4.5,
+        "round_6": 7,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 31,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 7.5,
+        "round_4": 2,
+        "round_5": 6,
+        "round_6": 4.5,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 29.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 6.5,
+        "round_4": 2,
+        "round_5": 4,
+        "round_6": 6,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 26,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 3,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 25.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 4.5,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Бусидо",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 23,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 3.5,
+        "round_6": 3.5,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Low Poly",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 22,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 3.5,
+        "round_6": 2.5,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Шашак",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 22,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4.5,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 1.5,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 19,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 1,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Team Falcons",
+      "team_id": null,
+      "rank": "novich",
+      "rank_title": "Новичок",
+      "total": 18,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 1,
+        "round_5": 3.5,
+        "round_6": 2.5,
+        "round_7": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T03:59:45.429874+00:00"
 }

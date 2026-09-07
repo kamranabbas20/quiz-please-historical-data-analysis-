@@ -45,9 +45,231 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F06%2F685aec0944caf.xlsx",
   "photos": [],
   "created_at": "2025-09-15T20:52:11+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:21:48.736163+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 48,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 8,
+        "round_7": 16
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 2,
+      "team": "Те-кого-нельзя-было-звать",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 43,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 4,
+        "round_6": 7,
+        "round_7": 13
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 3,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 37,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 5,
+        "round_3": 2,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 8,
+        "round_7": 9
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 4,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 34,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 5,
+        "round_5": 6,
+        "round_6": 5,
+        "round_7": 8
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 5,
+      "team": "Sky Crew",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 31,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 3,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 12
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 6,
+      "team": "Гарри Поттер и съемная комната",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 28,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 5,
+        "round_5": 3,
+        "round_6": 5,
+        "round_7": 6
+      },
+      "extras": {
+        "факультет": "1Gryffindor"
+      }
+    },
+    {
+      "place": 7,
+      "team": "Философские Дамы",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 5,
+        "round_3": 0,
+        "round_4": 3,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 11
+      },
+      "extras": {
+        "факультет": "4Ravenclaw"
+      }
+    },
+    {
+      "place": 8,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 5
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    },
+    {
+      "place": 9,
+      "team": "Ведуньи",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 23,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 3,
+        "round_3": 1,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 1,
+        "round_7": 6
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    },
+    {
+      "place": 10,
+      "team": "Дамблдурочки",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 2,
+        "round_3": 1,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 4
+      },
+      "extras": {
+        "факультет": "3Slytherin"
+      }
+    },
+    {
+      "place": 11,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 16,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 2,
+        "round_3": 1,
+        "round_4": 5,
+        "round_5": 3,
+        "round_6": 1,
+        "round_7": 4
+      },
+      "extras": {
+        "факультет": "2Hufflepuff"
+      }
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:20.912436+00:00"
 }

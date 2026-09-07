@@ -52,9 +52,191 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2026%2F02%2F69a1e3baca95b.xlsx",
   "photos": [],
   "created_at": "2026-02-13T10:00:07+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:20:11.469287+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 104.5,
+      "rounds": {
+        "round_1": 12,
+        "round_2": 11,
+        "round_3": 6,
+        "round_4": 20,
+        "round_5": 13.5,
+        "round_6": 24,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 97.5,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 8.5,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 15,
+        "round_6": 21,
+        "round_7": 35
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 85.5,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 12,
+        "round_3": 4,
+        "round_4": 0,
+        "round_5": 13.5,
+        "round_6": 24,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 64,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 10.5,
+        "round_3": 4,
+        "round_4": 0,
+        "round_5": 9.5,
+        "round_6": 24,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Dream Team",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 48.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 0,
+        "round_5": 9.5,
+        "round_6": 6,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Сказки дедушки Приуса",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 47.5,
+      "rounds": {
+        "round_1": 2,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 0,
+        "round_5": 3.5,
+        "round_6": 27,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Паша, не пей!",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 42.5,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 4.5,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 40,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5.5,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 8.5,
+        "round_6": 12,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 33,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4.5,
+        "round_3": 10,
+        "round_4": 0,
+        "round_5": 13.5,
+        "round_6": 12,
+        "round_7": -13
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 26.5,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 0,
+        "round_5": 3.5,
+        "round_6": 12,
+        "round_7": -1
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T03:59:55.450978+00:00"
 }

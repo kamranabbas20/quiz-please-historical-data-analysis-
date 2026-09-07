@@ -45,9 +45,209 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2026%2F03%2F69bd95cf5fb61.xlsx",
   "photos": [],
   "created_at": "2026-02-24T15:09:06+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:20:00.499332+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 61,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 8,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 8,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 60.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 5,
+        "round_4": 6.5,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Скрытый Потанцевал",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 56,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 7,
+        "round_3": 5,
+        "round_4": 7,
+        "round_5": 3,
+        "round_6": 6,
+        "round_7": 20
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 56,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 8,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 8,
+        "round_3": 4,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Сказки дедушки Приуса",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 51.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 4,
+        "round_4": 6.5,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Да, Посол ты!",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 49.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 6,
+        "round_3": 3,
+        "round_4": 6.5,
+        "round_5": 2,
+        "round_6": 6,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Паша, не пей!",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 48,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 8,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 43.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 7,
+        "round_3": 1,
+        "round_4": 6.5,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Позже придумаем, но это не точно",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 38,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Килл Билл",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 28.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 4.5,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 5
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T03:59:52.144205+00:00"
 }

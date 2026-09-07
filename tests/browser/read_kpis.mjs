@@ -31,7 +31,7 @@ for (const needle of wanted) {
 
   await page.click('.tab[data-view="games"]');
   await page.waitForTimeout(200);
-  const rows = await page.$$eval('#games-table tbody tr', (nodes) => nodes.slice(0, 60).map(
+  const rows = await page.$$eval('#games-table tbody tr', (nodes) => nodes.map(
     (node) => [...node.querySelectorAll('td')].map((cell) => cell.textContent),
   ));
 

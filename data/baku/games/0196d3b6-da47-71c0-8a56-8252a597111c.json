@@ -45,9 +45,904 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
-  "photos": [],
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F05%2F6650e021f3517.xlsx",
+  "photos": [
+    {
+      "id": "files/2024%2F05%2F6653721cd6a72.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721cd6a72.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721d235e1.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721d235e1.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721d8e884.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721d8e884.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721db739c.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721db739c.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721de62cb.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721de62cb.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721e2fd51.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721e2fd51.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721e93f97.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721e93f97.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721ec85dc.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721ec85dc.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721f4efc2.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721f4efc2.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721f7a603.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721f7a603.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721fb0279.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721fb0279.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653721fdd290.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653721fdd290.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722032a6e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722032a6e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372206d109.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372206d109.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722091a7c.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722091a7c.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537220cc5b1.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537220cc5b1.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722102de4.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722102de4.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722149fe4.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722149fe4.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372216dc43.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372216dc43.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537221a0360.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537221a0360.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537221e42bc.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537221e42bc.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372224ad38.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372224ad38.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372227bf85.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372227bf85.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537222a72fa.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537222a72fa.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537222ca6f5.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537222ca6f5.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372230d5cf.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372230d5cf.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372234ab70.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372234ab70.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537223949a8.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537223949a8.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537223c8d47.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537223c8d47.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722404d28.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722404d28.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372245645d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372245645d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722491d1e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722491d1e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372250ecb4.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372250ecb4.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372255feb8.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372255feb8.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722596d73.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722596d73.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537225c2157.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537225c2157.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722603223.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722603223.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372264937a.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372264937a.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722671fe5.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722671fe5.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722699993.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722699993.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537226c9989.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537226c9989.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537226f3433.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537226f3433.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372276940e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372276940e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722799edf.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722799edf.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537227c409f.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537227c409f.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372280b504.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372280b504.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722837b7a.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722837b7a.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537228655f4.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537228655f4.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722885ce5.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722885ce5.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537228d00cf.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537228d00cf.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372290028b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372290028b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372291e677.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372291e677.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722953749.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722953749.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722986e97.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722986e97.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537229a6899.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537229a6899.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537229c8dc0.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537229c8dc0.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537229e8711.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537229e8711.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722a255d8.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722a255d8.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722a4807a.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722a4807a.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722a66b4b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722a66b4b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722a87541.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722a87541.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722ab3b98.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722ab3b98.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722aed8bc.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722aed8bc.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722b47660.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722b47660.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722b8604a.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722b8604a.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722bb1242.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722bb1242.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722bd650b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722bd650b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722c0db0b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722c0db0b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722c4257e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722c4257e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722c6aa84.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722c6aa84.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722c98528.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722c98528.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722cbd4fb.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722cbd4fb.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722ce6b11.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722ce6b11.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722d2a2bc.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722d2a2bc.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722d48639.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722d48639.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722d6a0b7.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722d6a0b7.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722d90658.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722d90658.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722dbc4fe.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722dbc4fe.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722de17cd.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722de17cd.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722eb6a02.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722eb6a02.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722f00e0b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722f00e0b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722f6c004.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722f6c004.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722f886aa.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722f886aa.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722fa0623.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722fa0623.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653722ff2577.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653722ff2577.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372304fc28.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372304fc28.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372308691f.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372308691f.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537230d4f1b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537230d4f1b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723109fbf.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723109fbf.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723130956.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723130956.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537231688a9.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537231688a9.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537231e8a2d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537231e8a2d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723238928.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723238928.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723272cf1.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723272cf1.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372328d886.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372328d886.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537232ae96d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537232ae96d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537232da78f.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537232da78f.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537233111e2.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537233111e2.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372333fa7d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372333fa7d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372336292e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372336292e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537233cceab.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537233cceab.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723404fda.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723404fda.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723437cf9.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723437cf9.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723456f19.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723456f19.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723491232.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723491232.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537234b10dd.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537234b10dd.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537234ce346.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537234ce346.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537234f0759.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537234f0759.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723525363.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723525363.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537235b541b.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537235b541b.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537235d9778.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537235d9778.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537236a9266.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537236a9266.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537236d28b2.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537236d28b2.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723703af9.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723703af9.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537237225ee.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537237225ee.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723762e72.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723762e72.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723792e60.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723792e60.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723822fc9.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723822fc9.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723851dfc.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723851dfc.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372387c46d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372387c46d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372389961f.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372389961f.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537238c38bd.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537238c38bd.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537238ef96f.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537238ef96f.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F665372393030d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F665372393030d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723973349.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723973349.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F66537239b9466.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F66537239b9466.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723a3312a.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723a3312a.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723a79426.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723a79426.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723aa3c18.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723aa3c18.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723acafd1.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723acafd1.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723af0385.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723af0385.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723b1eae9.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723b1eae9.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723b49045.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723b49045.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723b6d801.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723b6d801.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723b9a271.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723b9a271.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723bbb1a3.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723bbb1a3.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723bd92c6.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723bd92c6.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723c014e3.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723c014e3.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723c27cca.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723c27cca.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723c49976.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723c49976.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723c6fd50.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723c6fd50.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723c92e32.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723c92e32.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723cbbbb2.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723cbbbb2.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723cdf4e4.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723cdf4e4.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723d16686.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723d16686.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723d5149e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723d5149e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723d7e10d.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723d7e10d.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723da5aa3.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723da5aa3.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723dc0b3a.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723dc0b3a.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723dde11e.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723dde11e.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723e1f435.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723e1f435.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723e3d3f7.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723e3d3f7.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723e5bdc1.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723e5bdc1.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723e81c69.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723e81c69.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723e9ea1f.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723e9ea1f.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723ebf308.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723ebf308.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723eed656.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723eed656.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723f1d6b0.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723f1d6b0.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723f3da59.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723f3da59.jpg"
+    },
+    {
+      "id": "files/2024%2F05%2F6653723f59841.jpg",
+      "url": "https://main-api-images-cdn.quizplease.com/files/2024%2F05%2F6653723f59841.jpg"
+    }
+  ],
   "created_at": "2025-05-15T11:31:38+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:24:23.128842+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 55,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 12,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 49,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Слон В.",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 48,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Bosco di Badam",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 46,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 9,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 46,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 8,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Где Ёж?",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 44,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 9,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 44,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 8,
+        "round_5": 3,
+        "round_6": 6,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 43,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 11,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 8
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 39,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 6,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 38,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 37,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 5,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Культур-мультур",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 37,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Ширин чай",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 1,
+        "round_4": 6,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "Догоняй, кетчуп!",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 15,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 1,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 1
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:01:05.517582+00:00"
 }

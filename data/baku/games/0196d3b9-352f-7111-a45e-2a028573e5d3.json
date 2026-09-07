@@ -52,9 +52,245 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F05%2F665a1860d96d6.xlsx",
   "photos": [],
   "created_at": "2025-05-15T11:34:12+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:24:21.448016+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Слон В.",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 49.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 2.5,
+        "round_3": 6,
+        "round_4": 7,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 43.5,
+      "rounds": {
+        "round_1": 5.5,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Где Ёж?",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 42,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 1,
+        "round_3": 6,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Культур-мультур",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 41,
+      "rounds": {
+        "round_1": 5.5,
+        "round_2": 2.5,
+        "round_3": 5,
+        "round_4": 3,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 40.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 0.5,
+        "round_3": 6,
+        "round_4": 7,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Легенды Найт-сити",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 38.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 1.5,
+        "round_3": 5,
+        "round_4": 3,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 36,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 1,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 35.5,
+      "rounds": {
+        "round_1": 5.5,
+        "round_2": 1,
+        "round_3": 3,
+        "round_4": 6,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 33.5,
+      "rounds": {
+        "round_1": 5.5,
+        "round_2": 1,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Bosco di Badam",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 32.5,
+      "rounds": {
+        "round_1": 4.5,
+        "round_2": 1,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 29.5,
+      "rounds": {
+        "round_1": 4.5,
+        "round_2": 1,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 27.5,
+      "rounds": {
+        "round_1": 4.5,
+        "round_2": 0,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 20,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 0,
+        "round_3": 3,
+        "round_4": 1,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 7
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:01:04.190013+00:00"
 }

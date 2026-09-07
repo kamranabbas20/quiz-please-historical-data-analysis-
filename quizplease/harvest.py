@@ -6,21 +6,55 @@ wants). Harvesting is resumable -- games already on disk are skipped unless
 `refresh` is set, so an interrupted run costs nothing to restart.
 """
 
+import concurrent.futures
 import csv
 import datetime
+import io
 import json
 import os
 
 from .api import ApiError, QuizPleaseApi
 from .rating import RatingApi
 from .scraper import (
-    GAME_CSV_COLUMNS, RESULT_CSV_COLUMNS, dumps, game_csv_row, normalize_game,
-    normalize_results, result_csv_rows, round_names_of,
+    GAME_CSV_COLUMNS, RESULT_CSV_COLUMNS, ScrapeError, dumps, fetch, game_csv_row,
+    normalize_game, normalize_results, parse_results_table, result_csv_rows,
+    round_names_of,
 )
+from .xlsx import read_first_sheet
 
 __all__ = ["harvest_city", "load_city_games", "write_city_tables", "write_standings"]
 
 GAME_PAGE_URL = "https://%s.quizplease.com/game/%s"
+
+
+def scoreboard_for(api, record, on_note=None):
+    """The best scoreboard available for a game.
+
+    Two sources, in order of quality:
+
+    1. `/api/games/{id}/results` -- JSON, and the only one carrying team ids,
+       but it only covers games from roughly the last six months.
+    2. `result.table` -- the .xlsx the site has published for years. No team
+       ids, and the layout drifts between seasons, but it is the whole back
+       catalogue.
+
+    Returns `(rows, source)`.
+    """
+    rows = normalize_results(api.results(record["id"]))
+    if rows:
+        return rows, "api"
+
+    table_url = (record.get("result") or {}).get("table")
+    if not table_url:
+        return [], None
+    try:
+        workbook = fetch(table_url, binary=True)
+        rows = parse_results_table(read_first_sheet(io.BytesIO(workbook)))
+    except (ScrapeError, ValueError, KeyError) as error:
+        if on_note:
+            on_note("scoreboard unreadable: %s" % error)
+        return [], None
+    return rows, "xlsx" if rows else None
 
 
 def _city_context(city):
@@ -36,11 +70,17 @@ def _city_context(city):
 
 
 def harvest_city(slug, out_dir="data", api=None, refresh=False, limit=None,
-                 per_page=100, on_progress=None):
+                 per_page=100, on_progress=None, workers=1):
     """Scrape every finished game of one city into ``out_dir/<slug>``.
 
     Returns a summary dict. ``on_progress(index, total, record_or_none, note)``
-    is called after each game so callers can report progress their own way.
+    is called after each game, in listing order, so callers can report progress
+    their own way.
+
+    ``workers`` fetches that many games at once. Each game costs two or three
+    requests (record, scoreboard JSON, sometimes an .xlsx download), and the
+    time is nearly all latency, so a handful of workers turns a city the size
+    of Moscow from days into hours. Keep it small: this is someone's server.
     """
     api = api or QuizPleaseApi()
     city = api.city_by_slug(slug)
@@ -57,34 +97,58 @@ def harvest_city(slug, out_dir="data", api=None, refresh=False, limit=None,
     if limit:
         listed = listed[:limit]
 
-    scraped = skipped = failed = 0
-    for index, listing in enumerate(listed, start=1):
+    def fetch_one(listing):
+        """Fetch and write one game. Returns (record_or_None, note)."""
         game_id = listing.get("id")
         path = os.path.join(games_dir, "%s.json" % game_id)
 
         if not refresh and os.path.exists(path):
-            skipped += 1
-            if on_progress:
-                on_progress(index, len(listed), None, "cached")
-            continue
+            return None, "cached"
 
         try:
             game = api.game(game_id)
             record = normalize_game(game, GAME_PAGE_URL % (slug, game_id),
                                     city=city_info, country=country_info)
-            record["results"] = normalize_results(api.results(game_id))
+            note = []
+            record["results"], record["results_source"] = scoreboard_for(
+                api, game, on_note=note.append)
         except ApiError as error:
-            failed += 1
-            if on_progress:
-                on_progress(index, len(listed), None, "failed: %s" % error)
-            continue
+            return None, "failed: %s" % error
 
         record["scraped_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
         with open(path, "w", encoding="utf-8") as handle:
             handle.write(dumps(record) + "\n")
-        scraped += 1
-        if on_progress:
-            on_progress(index, len(listed), record, "scraped")
+
+        if record["results"]:
+            label = "scraped (%s, %d teams)" % (record["results_source"], len(record["results"]))
+        elif note:
+            label = "scraped (%s)" % note[0]
+        else:
+            label = "scraped (no scoreboard published)"
+        return record, label
+
+    scraped = skipped = failed = 0
+    if workers > 1:
+        pool = concurrent.futures.ThreadPoolExecutor(max_workers=workers)
+        # map keeps listing order, so progress still reads chronologically.
+        outcomes = pool.map(fetch_one, listed)
+    else:
+        pool = None
+        outcomes = (fetch_one(listing) for listing in listed)
+
+    try:
+        for index, (record, note) in enumerate(outcomes, start=1):
+            if record is not None:
+                scraped += 1
+            elif note == "cached":
+                skipped += 1
+            else:
+                failed += 1
+            if on_progress:
+                on_progress(index, len(listed), record, note)
+    finally:
+        if pool:
+            pool.shutdown()
 
     records = load_city_games(city_dir)
     tables = write_city_tables(city_dir, records)

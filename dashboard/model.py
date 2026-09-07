@@ -63,10 +63,10 @@ class TeamGame(object):
     """One team's outcome in one game -- the grain the whole app works at."""
 
     __slots__ = ("game_id", "team", "team_key", "team_ids", "position", "total",
-                 "rounds", "rank_title", "rank", "extras")
+                 "rounds", "rank_title", "rank", "attributes", "extras")
 
     def __init__(self, game_id, team, position, total, rounds, rank=None, rank_title=None,
-                 team_ids=()):
+                 team_ids=(), attributes=None):
         self.game_id = game_id
         self.team = team
         self.team_key = team_key(team)
@@ -76,6 +76,8 @@ class TeamGame(object):
         self.rounds = rounds or {}
         self.rank = rank
         self.rank_title = rank_title
+        # Per-format columns some scoreboards add (a Hogwarts house, say).
+        self.attributes = attributes or {}
         self.extras = {}   # filled in by dashboard.analytics.annotate_game
 
 
@@ -85,7 +87,8 @@ class Game(object):
     __slots__ = ("id", "city", "city_slug", "date", "season", "title", "game_number",
                  "game_type", "league", "theme", "difficulty", "format", "venue",
                  "address", "price", "currency", "url", "rounds", "results",
-                 "teams_count", "best_total", "worst_total", "mean_total")
+                 "teams_count", "best_total", "worst_total", "mean_total",
+                 "results_source")
 
     def __init__(self, **fields):
         for name in self.__slots__:
@@ -157,6 +160,7 @@ def game_from_record(record):
         price=record.get("price"),
         currency=record.get("currency"),
         url=record.get("url"),
+        results_source=record.get("results_source"),
         rounds=_round_names(results),
         teams_count=len(results),
         best_total=max(totals) if totals else None,
@@ -181,6 +185,7 @@ def game_from_record(record):
             rank=row.get("rank"),
             rank_title=row.get("rank_title"),
             team_ids=ids_by_team.get(team_key(row.get("team")), ()),
+            attributes=row.get("extras"),
         )
         for row in results
     ]

@@ -45,9 +45,371 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F11%2F692a0c01853be.xlsx",
   "photos": [],
   "created_at": "2025-10-22T13:50:45+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:20:49.722526+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 49,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 4,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 12
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 45,
+      "rounds": {
+        "round_1": 10,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 4,
+        "round_5": 10,
+        "round_6": 6,
+        "round_7": 5
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 44,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 5,
+        "round_3": 6,
+        "round_4": 5,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 41,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 8,
+        "round_6": 4,
+        "round_7": 8
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "ЗОЖкин кот",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 39,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 5,
+        "round_5": 10,
+        "round_6": 2,
+        "round_7": 7
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "nedosyag",
+      "rank_title": null,
+      "total": 38,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "La Мышь",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 37,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 7,
+        "round_6": 4,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Аутисты на аутсорсе",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 36,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 7,
+        "round_6": 4,
+        "round_7": 6
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Да, Посол ты!",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 36,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 6
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Скрытый Потанцевал",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 36,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 7,
+        "round_6": 6,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 32,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 5,
+        "round_4": 3,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 6
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Багодельня",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 30,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 1,
+        "round_3": 2,
+        "round_4": 3,
+        "round_5": 8,
+        "round_6": 4,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Совет Элронда",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 30,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "Агата Крести",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 26,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 4
+      },
+      "extras": null
+    },
+    {
+      "place": 15,
+      "team": "Дружба Народов",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 26,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 5,
+        "round_3": 2,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 0,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 16,
+      "team": "Ванси",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 24,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 6,
+        "round_6": 2,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 17,
+      "team": "Сказки дедушки Приуса",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 24,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 2,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 2
+      },
+      "extras": null
+    },
+    {
+      "place": 18,
+      "team": "Паша, не пей!",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 24,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 19,
+      "team": "Blue Water",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 18,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 0,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 2
+      },
+      "extras": null
+    },
+    {
+      "place": 20,
+      "team": "Code Blue",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 17,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 0,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 0,
+        "round_7": 4
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:05.660567+00:00"
 }

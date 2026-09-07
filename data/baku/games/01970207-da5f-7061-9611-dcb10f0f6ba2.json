@@ -53,9 +53,209 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F04%2F67fea51a3cb69.xlsx",
   "photos": [],
   "created_at": "2025-05-24T11:22:38+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:22:16.043197+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 72,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 14,
+        "round_3": 7,
+        "round_4": 9,
+        "round_5": 1,
+        "round_6": 7,
+        "round_7": 25
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 69,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 13,
+        "round_3": 7,
+        "round_4": 7,
+        "round_5": 6,
+        "round_6": 8,
+        "round_7": 23
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 61,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 9,
+        "round_3": 6,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 22
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 56,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 12,
+        "round_3": 8,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Отцы и дети",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 55,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 11,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 3,
+        "round_7": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 53.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 9,
+        "round_3": 8,
+        "round_4": 7,
+        "round_5": 2.5,
+        "round_6": 5,
+        "round_7": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Скрытый потанцевал",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 52.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 6,
+        "round_4": 8,
+        "round_5": 2.5,
+        "round_6": 3,
+        "round_7": 18
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Без шансов",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 42.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 11,
+        "round_3": 4,
+        "round_4": 1,
+        "round_5": 4.5,
+        "round_6": 5,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Штрих-коты",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 42,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 8,
+        "round_3": 5,
+        "round_4": 2,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "И так сойдет!",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 41,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 7,
+        "round_3": 5,
+        "round_4": 3,
+        "round_5": 2,
+        "round_6": 8,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "102-я",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 24.5,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 7,
+        "round_3": 3,
+        "round_4": 0,
+        "round_5": 2.5,
+        "round_6": 5,
+        "round_7": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:28.647897+00:00"
 }

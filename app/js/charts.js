@@ -218,9 +218,10 @@ export function lineChart(holder, tooltip, {
   const pad = (high - low) * 0.12 || 1;
   const domainMin = yMin ?? low - pad;
   const domainMax = yMax ?? high + pad;
-  const ticks = integerTicks
+  const ticks = (integerTicks
     ? integerTicksIn(domainMin, domainMax, 6)
-    : niceTicks(domainMin, domainMax, 5);
+    : niceTicks(domainMin, domainMax, 5)
+  ).filter((tick) => tick >= domainMin - 1e-9 && tick <= domainMax + 1e-9);
   const scaleY = (value) => {
     const t = (value - domainMin) / (domainMax - domainMin || 1);
     const y = ctx.pad.top + (1 - t) * ctx.plotH;
@@ -262,7 +263,8 @@ export function lineChart(holder, tooltip, {
         'stroke-dasharray': line.dashed ? '5 4' : null,
       }, ctx.svg);
     }
-    if (line.markers !== false) {
+    const showMarkers = line.markers !== false && points.length <= 60;
+    if (showMarkers) {
       line.values.forEach((value, index) => {
         if (!Number.isFinite(value)) return;
         el('circle', {

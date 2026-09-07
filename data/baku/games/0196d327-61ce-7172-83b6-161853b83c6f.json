@@ -45,9 +45,515 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F02%2F65c65f8cc3c67.xlsx",
   "photos": [],
   "created_at": "2025-05-15T08:54:55+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:25:02.838730+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Крабовладельческий строй",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 39,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 11,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 39,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 10,
+        "round_5": 5,
+        "round_6": 6,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Команда R на службе зла!",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 38,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 6,
+        "round_4": 8,
+        "round_5": 6,
+        "round_6": 6,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Chronos",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 34,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 6,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Культур-мультур",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 34,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 11,
+        "round_5": 4,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 33,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Шерлок",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 31,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 6,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Где ёж?",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 31,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 6,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 29,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "GeekBrains",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 28,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 7,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Демоны Максвелла",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 27,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 5,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 2,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Закон Мерфи",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 4,
+        "round_4": 6,
+        "round_5": 2,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "One Diva",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 8,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "Эклер и ребята",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 5,
+        "round_4": 8,
+        "round_5": 4,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 15,
+      "team": "Byte Brawlers",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 25,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 8,
+        "round_5": 1,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 16,
+      "team": "Легенды Найт-сити",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 25,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 6,
+        "round_5": 5,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 17,
+      "team": "Белые и пушистые",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 23,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 6,
+        "round_5": 3,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 18,
+      "team": "Скрабл",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 2,
+        "round_6": 4,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 19,
+      "team": "Без шансов",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 1,
+        "round_4": 10,
+        "round_5": 1,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 20,
+      "team": "Кавабанга",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 21,
+      "team": "Мы есть Грут",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 22,
+      "team": "Примерные сёстры",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 5,
+        "round_3": 2,
+        "round_4": 4,
+        "round_5": 2,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 23,
+      "team": "Сочные дальневосточные",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 18,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 2,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 24,
+      "team": "Занесенные ветром",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 15,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 1,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 1,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 25,
+      "team": "Белочки",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 11,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 0,
+        "round_4": 3,
+        "round_5": 1,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 26,
+      "team": "Dream Team",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 11,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 1,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 27,
+      "team": "Мени сахламаг олар, гагаш",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 11,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 1,
+        "round_5": 1,
+        "round_6": 0,
+        "round_7": 0
+      },
+      "extras": null
+    },
+    {
+      "place": 28,
+      "team": "Счастливы вместе",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 4,
+      "rounds": {
+        "round_1": 0,
+        "round_2": 0,
+        "round_3": 0,
+        "round_4": 2,
+        "round_5": 0,
+        "round_6": 2,
+        "round_7": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:01:16.492568+00:00"
 }

@@ -53,9 +53,83 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F08%2F66bceff717130.xlsx",
   "photos": [],
   "created_at": "2025-05-15T11:48:56+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:23:47.883312+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "ЗОЖкин Кот",
+      "team_id": null,
+      "rank": "serg",
+      "rank_title": null,
+      "total": 31,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 6,
+        "round_4": 3,
+        "round_5": 5,
+        "round_6": 0,
+        "round_7": 10
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Грозная семейка",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 31,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 5,
+        "round_3": 4,
+        "round_4": 2,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Бывает и хуже",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 20,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 3
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Без шансов",
+      "team_id": null,
+      "rank": "liet",
+      "rank_title": null,
+      "total": 19,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 1,
+        "round_3": 2,
+        "round_4": 2,
+        "round_5": 5,
+        "round_6": 2,
+        "round_7": 4
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:55.407299+00:00"
 }

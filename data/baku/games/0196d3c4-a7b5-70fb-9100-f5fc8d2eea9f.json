@@ -45,9 +45,263 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2024%2F07%2F66a92fe02f83e.xlsx",
   "photos": [],
   "created_at": "2025-05-15T11:46:42+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:23:59.427201+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Team Раки",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 44,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 20
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Полный Пи",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 41.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 4,
+        "round_4": 5,
+        "round_5": 2,
+        "round_6": 4.5,
+        "round_7": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Noldor",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 40.5,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 4,
+        "round_6": 2.5,
+        "round_7": 19
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "Где Ёж?",
+      "team_id": null,
+      "rank": "gener",
+      "rank_title": null,
+      "total": 39,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 2,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Колобки",
+      "team_id": null,
+      "rank": "chuck",
+      "rank_title": "Чак Норрис",
+      "total": 37,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 5,
+        "round_4": 5,
+        "round_5": 3,
+        "round_6": 3,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "А я говорил",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 36,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 3,
+        "round_5": 3,
+        "round_6": 4,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 35,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 4,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 4,
+        "round_6": 3,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Поттер-Инки",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 34.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 3,
+        "round_3": 4,
+        "round_4": 4,
+        "round_5": 5,
+        "round_6": 4.5,
+        "round_7": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Littlestitious",
+      "team_id": null,
+      "rank": "rambo",
+      "rank_title": "Рэмбо",
+      "total": 33.5,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 3,
+        "round_3": 3,
+        "round_4": 4,
+        "round_5": 2,
+        "round_6": 2.5,
+        "round_7": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "Кот Везде$сущий",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 32,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 2,
+        "round_6": 3,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "Гарри Поттер и Съемная комната",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 30.5,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 4,
+        "round_5": 1,
+        "round_6": 2.5,
+        "round_7": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "Философские Дамы",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 27,
+      "rounds": {
+        "round_1": 4,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 2,
+        "round_5": 2,
+        "round_6": 3,
+        "round_7": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 13,
+      "team": "Warner Sisters",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 21,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 3,
+        "round_3": 2,
+        "round_4": 3,
+        "round_5": 2,
+        "round_6": 2,
+        "round_7": 6
+      },
+      "extras": null
+    },
+    {
+      "place": 14,
+      "team": "ChaosDot.s",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 16.5,
+      "rounds": {
+        "round_1": 3,
+        "round_2": 2,
+        "round_3": 3,
+        "round_4": 3,
+        "round_5": 1,
+        "round_6": 1.5,
+        "round_7": 3
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:58.218929+00:00"
 }

@@ -24,6 +24,7 @@ const state = {
   team: null,
   compare: [],
   filters: { gameType: '', league: '', season: '', venue: '', from: '', to: '' },
+  teamQuery: '',
   view: 'overview',
   selectedGame: null,
   sort: { games: { key: 'date', dir: 'desc' }, types: { key: 'avgPercentile', dir: 'desc' } },
@@ -59,7 +60,7 @@ export async function start() {
 }
 
 function cacheDom() {
-  for (const id of ['city', 'team', 'gameType', 'league', 'season', 'from', 'to',
+  for (const id of ['city', 'team', 'teamSearch', 'gameType', 'league', 'season', 'from', 'to',
     'reset', 'main', 'tabs', 'scopeNote', 'themeToggle', 'coverage']) {
     dom[id] = document.getElementById(id);
   }
@@ -67,6 +68,12 @@ function cacheDom() {
 
 function wireStaticControls() {
   dom.city.addEventListener('change', () => selectCity(dom.city.value));
+  // A city can have hundreds of teams; the search narrows the dropdown rather
+  // than making the reader scroll it.
+  dom.teamSearch.addEventListener('input', () => {
+    state.teamQuery = dom.teamSearch.value;
+    fillTeamSelect();
+  });
   dom.team.addEventListener('change', () => {
     state.team = dom.team.value || null;
     state.selectedGame = null;
@@ -145,13 +152,11 @@ async function selectCity(slug) {
   state.filters = { gameType: '', league: '', season: '', venue: '', from: '', to: '' };
 
   // Teams depend on the city, and are discovered from its scoreboards.
+  state.teamQuery = '';
+  dom.teamSearch.value = '';
   const teams = state.dataset.teams;
-  fillSelect(dom.team, teams.map((team) => ({
-    value: team.key,
-    label: `${team.name} — ${team.games} ${plural(team.games, 'игра', 'игры', 'игр')}`,
-  })), teams.length ? undefined : 'Нет команд с результатами');
   state.team = teams.length ? teams[0].key : null;
-  if (state.team) dom.team.value = state.team;
+  fillTeamSelect();
 
   syncFilterInputs();
   refreshDependentFilters();
@@ -188,6 +193,22 @@ function refreshDependentFilters() {
     dom.to.min = dates[0];
     dom.to.max = dates[dates.length - 1];
   }
+}
+
+/* The team dropdown, narrowed by the search box. The selected team always stays
+ * in the list, so a search can never silently change what is being shown. */
+function fillTeamSelect() {
+  const query = state.teamQuery.trim().toLocaleLowerCase('ru');
+  const teams = state.dataset.teams.filter(
+    (team) => !query
+      || team.key === state.team
+      || team.names.some((name) => name.toLocaleLowerCase('ru').includes(query)),
+  );
+  fillSelect(dom.team, teams.map((team) => ({
+    value: team.key,
+    label: `${team.name} — ${team.games} ${plural(team.games, 'игра', 'игры', 'игр')}`,
+  })), teams.length ? undefined : 'Ничего не найдено');
+  if (state.team) dom.team.value = state.team;
 }
 
 function syncFilterInputs() {
@@ -290,6 +311,7 @@ function renderOverview(container, rows) {
     note: 'Абсолютные баллы сравнимы только внутри одного формата — форматы различаются числом раундов.',
     render: (holder, tooltip) => lineChart(holder, tooltip, {
       points,
+      yMin: 0,
       series: [{ label: 'Баллы', color: SERIES[0], values: rows.map((row) => row.total) }],
       formatValue: (value) => formatNumber(value, 1),
       onSelect: (point) => openGame(point.row),
@@ -351,7 +373,7 @@ function renderOverview(container, rows) {
     title: 'Распределение результата',
     note: '% от лучшего результата в той же игре.',
     render: (holder, tooltip) => {
-      const bins = histogram(rows.map((row) => row.score_pct), 50, 100, 5);
+      const bins = histogram(rows.map((row) => row.score_pct), 0, 100, 10);
       columnChart(holder, tooltip, {
         items: bins.map((bin) => ({
           label: `${bin.from}`,
@@ -363,24 +385,16 @@ function renderOverview(container, rows) {
       });
     },
     table: () => simpleTable(['Диапазон, %', 'Игр'],
-      histogram(rows.map((row) => row.score_pct), 50, 100, 5)
+      histogram(rows.map((row) => row.score_pct), 0, 100, 10)
         .map((bin) => [`${bin.from}–${bin.to}`, String(bin.count)])),
   }));
 
   const types = byGameType(rows);
   grid.appendChild(chartCard({
     title: 'Средний процентиль по форматам',
-    note: 'После названия — число игр в этом формате: средний процентиль по одной игре ничего не доказывает.',
+    note: formatBarsNote(types),
     render: (holder, tooltip) => barChart(holder, tooltip, {
-      items: types.map((entry) => ({
-        label: `${entry.gameType} · ${entry.games}`,
-        value: entry.avgPercentile ?? 0,
-        rows: [
-          { label: 'Игр', value: String(entry.games) },
-          { label: 'Средний процентиль', value: formatNumber(entry.avgPercentile, 1), color: SERIES[0] },
-          { label: 'Среднее место', value: formatNumber(entry.avgPosition, 1) },
-        ],
-      })),
+      items: formatBars(types, (entry) => entry.avgPercentile, SERIES[0]),
       max: 100,
       formatValue: (value) => formatNumber(value, 0),
     }),
@@ -681,16 +695,9 @@ function renderTypes(container, rows) {
   grid.className = 'grid charts-2';
   grid.appendChild(chartCard({
     title: 'Средний процентиль по форматам',
-    note: 'После названия — число игр в формате.',
+    note: formatBarsNote(entries),
     render: (holder, tooltip) => barChart(holder, tooltip, {
-      items: entries.map((entry) => ({
-        label: `${entry.gameType} · ${entry.games}`,
-        value: entry.avgPercentile ?? 0,
-        rows: [
-          { label: 'Игр', value: String(entry.games) },
-          { label: 'Средний процентиль', value: formatNumber(entry.avgPercentile, 1), color: SERIES[0] },
-        ],
-      })),
+      items: formatBars(entries, (entry) => entry.avgPercentile, SERIES[0]),
       max: 100,
       formatValue: (value) => formatNumber(value, 0),
     }),
@@ -699,17 +706,9 @@ function renderTypes(container, rows) {
   }));
   grid.appendChild(chartCard({
     title: 'Среднее место по форматам',
-    note: 'Меньше — лучше.',
+    note: `Меньше — лучше. ${formatBarsNote(entries)}`,
     render: (holder, tooltip) => barChart(holder, tooltip, {
-      items: entries.map((entry) => ({
-        label: `${entry.gameType} · ${entry.games}`,
-        value: entry.avgPosition ?? 0,
-        color: SERIES[1],
-        rows: [
-          { label: 'Игр', value: String(entry.games) },
-          { label: 'Среднее место', value: formatNumber(entry.avgPosition, 1), color: SERIES[1] },
-        ],
-      })),
+      items: formatBars(entries, (entry) => entry.avgPosition, SERIES[1]),
       formatValue: (value) => formatNumber(value, 1),
     }),
     table: () => simpleTable(['Формат', 'Игр', 'Среднее место'],
@@ -868,6 +867,38 @@ function renderComparison(container) {
 }
 
 /* ------------------------------------------------------------- utilities */
+
+const FORMAT_BAR_LIMIT = 12;
+
+/* Bars for the formats a team actually plays, most-played first.
+ *
+ * A city runs dozens of one-off formats; 80 bars is a list, not a chart, and
+ * ranking them by average percentile puts single-game novelties on top. So the
+ * chart shows the formats with the most games and says how many are left; the
+ * Форматы tab keeps every one of them in a sortable table. */
+function formatBars(entries, pick, color) {
+  const ranked = [...entries].sort((a, b) => b.games - a.games || (b.avgPercentile ?? 0) - (a.avgPercentile ?? 0));
+  const shown = ranked.slice(0, FORMAT_BAR_LIMIT);
+  return shown.map((entry) => ({
+    label: `${entry.gameType} · ${entry.games}`,
+    value: pick(entry) ?? 0,
+    color,
+    rows: [
+      { label: 'Игр', value: String(entry.games) },
+      { label: 'Средний процентиль', value: formatNumber(entry.avgPercentile, 1) },
+      { label: 'Среднее место', value: formatNumber(entry.avgPosition, 1) },
+      { label: 'Средний балл', value: formatNumber(entry.avgScore, 1) },
+    ],
+  }));
+}
+
+function formatBarsNote(entries) {
+  const hidden = entries.length - Math.min(entries.length, FORMAT_BAR_LIMIT);
+  const base = 'После названия — число игр в формате.';
+  return hidden
+    ? `${base} Показаны ${FORMAT_BAR_LIMIT} самых частых из ${entries.length}; остальные — в таблице и на вкладке «Форматы».`
+    : base;
+}
 
 function histogram(values, min, max, step) {
   const bins = [];

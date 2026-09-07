@@ -45,9 +45,239 @@
   "people_registered": 0,
   "people_came": 0,
   "max_participants_per_team": 9,
-  "results_table_url": null,
+  "results_table_url": "https://main-api-files-cdn.quizplease.com/files/2025%2F02%2F67ab94a6b13ff.xlsx",
   "photos": [],
   "created_at": "2025-05-15T12:37:00+00:00",
-  "results": [],
-  "scraped_at": "2026-09-06T22:22:44.037660+00:00"
+  "results": [
+    {
+      "place": 1,
+      "team": "Легенды Найт-Сити",
+      "team_id": null,
+      "rank": "kim5",
+      "rank_title": null,
+      "total": 73,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 10,
+        "round_3": 9,
+        "round_4": 5.5,
+        "round_5": 7.5,
+        "round_6": 9,
+        "round_7": 8,
+        "round_8": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 2,
+      "team": "Слон В.",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 72,
+      "rounds": {
+        "round_1": 9,
+        "round_2": 10,
+        "round_3": 9,
+        "round_4": 5,
+        "round_5": 7.5,
+        "round_6": 7,
+        "round_7": 9.5,
+        "round_8": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 3,
+      "team": "Team Rocket",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 68,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 9,
+        "round_3": 9,
+        "round_4": 5,
+        "round_5": 3.5,
+        "round_6": 9,
+        "round_7": 8.5,
+        "round_8": 16
+      },
+      "extras": null
+    },
+    {
+      "place": 4,
+      "team": "НеВалдис Пельш",
+      "team_id": null,
+      "rank": "kim3",
+      "rank_title": null,
+      "total": 67,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 8,
+        "round_3": 10,
+        "round_4": 5.5,
+        "round_5": 3.5,
+        "round_6": 10,
+        "round_7": 8,
+        "round_8": 15
+      },
+      "extras": null
+    },
+    {
+      "place": 5,
+      "team": "Фуад, возле дома твоего",
+      "team_id": null,
+      "rank": "kim4",
+      "rank_title": null,
+      "total": 65,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 10,
+        "round_3": 10,
+        "round_4": 6,
+        "round_5": 4.5,
+        "round_6": 6,
+        "round_7": 8.5,
+        "round_8": 13
+      },
+      "extras": null
+    },
+    {
+      "place": 6,
+      "team": "Тащим, как можем",
+      "team_id": null,
+      "rank": "kim1",
+      "rank_title": null,
+      "total": 61,
+      "rounds": {
+        "round_1": 7,
+        "round_2": 7,
+        "round_3": 8,
+        "round_4": 4.5,
+        "round_5": 3,
+        "round_6": 9,
+        "round_7": 5.5,
+        "round_8": 17
+      },
+      "extras": null
+    },
+    {
+      "place": 7,
+      "team": "XOD VER",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 51.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 6,
+        "round_3": 8,
+        "round_4": 5,
+        "round_5": 2,
+        "round_6": 5,
+        "round_7": 6.5,
+        "round_8": 14
+      },
+      "extras": null
+    },
+    {
+      "place": 8,
+      "team": "Амур",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 51,
+      "rounds": {
+        "round_1": 8,
+        "round_2": 8,
+        "round_3": 7,
+        "round_4": 5,
+        "round_5": 1.5,
+        "round_6": 7,
+        "round_7": 5.5,
+        "round_8": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 9,
+      "team": "Разрушители Легенд",
+      "team_id": null,
+      "rank": "kim1",
+      "rank_title": null,
+      "total": 46,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 7,
+        "round_3": 9,
+        "round_4": 2.5,
+        "round_5": 2.5,
+        "round_6": 5,
+        "round_7": 6,
+        "round_8": 9
+      },
+      "extras": null
+    },
+    {
+      "place": 10,
+      "team": "QuizBusters",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 44,
+      "rounds": {
+        "round_1": 6,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 2.5,
+        "round_5": 1,
+        "round_6": 6,
+        "round_7": 4.5,
+        "round_8": 11
+      },
+      "extras": null
+    },
+    {
+      "place": 11,
+      "team": "На приусе к победе",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 35.5,
+      "rounds": {
+        "round_1": 5,
+        "round_2": 7,
+        "round_3": 6,
+        "round_4": 1,
+        "round_5": 0.5,
+        "round_6": 5,
+        "round_7": 5,
+        "round_8": 6
+      },
+      "extras": null
+    },
+    {
+      "place": 12,
+      "team": "рататуй",
+      "team_id": null,
+      "rank": null,
+      "rank_title": null,
+      "total": 12,
+      "rounds": {
+        "round_1": 1,
+        "round_2": 1,
+        "round_3": 0,
+        "round_4": 5,
+        "round_5": 4,
+        "round_6": 0,
+        "round_7": 1,
+        "round_8": 0
+      },
+      "extras": null
+    }
+  ],
+  "results_source": "xlsx",
+  "scraped_at": "2026-09-07T04:00:36.228490+00:00"
 }
