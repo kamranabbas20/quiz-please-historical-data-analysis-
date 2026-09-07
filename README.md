@@ -166,6 +166,31 @@ of the `Гарри Поттер [Хогвартс]` series. The Форматы t
 expands families back into individual editions, and `game_type` keeps the
 original name on every row.
 
+### Games with unfilled rounds
+
+28 of Baku's 258 published scoreboards are missing a round: every team in the
+room scored zero in it while scoring normally in the others. In a real round
+somebody scores, so these are rounds that were never entered.
+
+It is almost always the **last** round — the one worth roughly a third of the
+total in a classic game — and one 2023 game is missing five of its seven. The
+sheets are internally consistent (a published total always equals the sum of the
+published rounds), so this never shows up as a contradiction; and the published
+finishing order in those games was computed from the partial totals, which means
+**the ranking is wrong too, not just the scores**. A team can be third in a game
+it actually won.
+
+So these games are excluded from statistics by default. They are not deleted:
+the checkbox «Показывать игры с неполными данными» brings them back, marked with
+a red pill naming the missing rounds, and the game's own view explains what is
+missing. The coverage line and the scope note both say how many were set aside.
+
+Detection is `dashboard/analytics.missing_rounds`, and it is deliberately
+conservative: it needs at least three teams (two teams both blanking a round is
+plausible), and it needs the game to have scores in other rounds, so a game
+where nothing at all was entered is not mistaken for one with a missing round.
+A single team scoring zero is left alone — that is a bad round, not a missing one.
+
 ### Round scores
 
 Round-by-round scores are scraped for every game that publishes them and used in
@@ -316,15 +341,17 @@ A game JSON:
 ```jsonc
 {
   "city":     { "slug": "baku", "name": "Баку", "currency": "₼" },
-  "coverage": { "games_total": 285, "games_with_results": 17, "result_rows": 143,
-                "teams": 53, "date_from": …, "scored_from": …, "scored_to": … },
+  "coverage": { "games_total": 285, "games_with_results": 258, "result_rows": 3954,
+                "teams": 682, "incomplete_games": 28,
+                "date_from": …, "scored_from": …, "scored_to": … },
   "filters":  { "families": […], "variants_by_family": { "[music party]": […] },
                 "game_types": […], "leagues": […], "seasons": […], "venues": […] },
   "games": [ { "id", "date", "season", "title", "game_number", "game_type", "game_family", "league",
                "theme", "difficulty", "format", "venue", "address", "price", "currency",
                "url", "rounds": ["round_1", …], "round_labels": ["Раунд 1", …],
                "teams_count", "best_total", "worst_total", "mean_total", "has_results",
-               "results_source": "api" | "xlsx" | null } ],
+               "results_source": "api" | "xlsx" | null,
+               "incomplete": bool, "missing_rounds": ["round_7"] } ],
   "rows":  [ { "game_id", "team", "team_key", "team_ids": [ … ], "position", "total",
                "percentile", "score_pct", "gap_to_best", "gap_to_mean",
                "rank", "rank_title",
@@ -382,7 +409,7 @@ There are ~101,000 finished games across 244 cities;
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -p 'test_*.py'   # 64 tests: scraper, model, analytics, build
+python3 -m unittest discover -s tests -p 'test_*.py'   # 70 tests: scraper, model, analytics, build
 node --test tests/test_stats.mjs                       # 13 tests: dashboard statistics
 
 # browser tests need the app running on :8765

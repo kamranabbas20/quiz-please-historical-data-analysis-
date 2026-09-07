@@ -36,7 +36,16 @@ const kpi = (label) => page.$$eval('.kpi', (nodes, text) => {
   const found = nodes.find((node) => node.querySelector('.label').textContent === text);
   return found ? found.querySelector('.value').textContent : null;
 }, label);
-record('KPI games matches the dataset', (await kpi('Игр с результатами')) === '209', await kpi('Игр с результатами'));
+// Games with an unfilled round are excluded by default, and the toggle brings
+// them back: the single file must behave exactly like the served app.
+const defaultGames = Number(await kpi('Игр с результатами'));
+record('KPI counts the usable games', defaultGames === 185, defaultGames);
+await page.check('#includeIncomplete');
+await page.waitForTimeout(300);
+const withIncomplete = Number(await kpi('Игр с результатами'));
+record('the toggle restores the excluded games', withIncomplete === 209, withIncomplete);
+await page.uncheck('#includeIncomplete');
+await page.waitForTimeout(250);
 
 for (const view of ['games', 'types', 'compare']) {
   await page.click(`.tab[data-view="${view}"]`);

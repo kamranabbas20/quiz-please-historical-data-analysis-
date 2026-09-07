@@ -117,6 +117,9 @@ export function optionsFor(rows, pick) {
 export function applyFilters(rows, filters) {
   return rows.filter((row) => {
     const game = row.game;
+    // Games with an unfilled round are excluded by default: their totals and
+    // their finishing order were both computed from partial data.
+    if (game.incomplete && !filters.includeIncomplete) return false;
     if (filters.family && (game.game_family || game.game_type) !== filters.family) return false;
     if (filters.gameType && game.game_type !== filters.gameType) return false;
     if (filters.league && game.league !== filters.league) return false;

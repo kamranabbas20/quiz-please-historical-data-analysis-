@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from dashboard.analytics import annotate_game, percentile_of, round_maxima
+from dashboard.analytics import annotate_game, missing_rounds, percentile_of, round_maxima
 from dashboard.build import build_all, build_city, discover_cities
 from dashboard.model import (
     assign_families, build_dataset, format_candidate, game_from_record, season_of, team_key,
@@ -245,6 +245,67 @@ class AnalyticsTest(unittest.TestCase):
         self.assertEqual(game.results, [])
 
 
+class MissingRoundTest(unittest.TestCase):
+    """A round nobody scored in was not played badly — it was never entered."""
+
+    @staticmethod
+    def _game(rows):
+        return game_from_record(record("a", "2026-07-01T19:30:00", results=rows))
+
+    def test_last_round_left_empty_is_detected(self):
+        game = self._game([
+            result(1, "A", 20, [6, 6, 8, 0]),
+            result(2, "B", 17, [5, 6, 6, 0]),
+            result(3, "C", 12, [4, 4, 4, 0]),
+        ])
+        self.assertEqual(missing_rounds(game), ["round_4"])
+
+    def test_a_round_one_team_blanks_is_not_missing(self):
+        game = self._game([
+            result(1, "A", 12, [6, 6]),
+            result(2, "B", 6, [6, 0]),      # B alone scored nothing in round 2
+            result(3, "C", 5, [5, 0]),
+        ])
+        self.assertEqual(missing_rounds(game), [])
+
+    def test_several_empty_rounds(self):
+        game = self._game([
+            result(1, "A", 11, [5, 6, 0, 0, 0]),
+            result(2, "B", 10, [4, 6, 0, 0, 0]),
+            result(3, "C", 9, [4, 5, 0, 0, 0]),
+        ])
+        self.assertEqual(missing_rounds(game), ["round_3", "round_4", "round_5"])
+
+    def test_too_few_teams_to_tell(self):
+        # Two teams both blanking a round is possible; twenty is not.
+        game = self._game([result(1, "A", 6, [6, 0]), result(2, "B", 5, [5, 0])])
+        self.assertEqual(missing_rounds(game), [])
+
+    def test_a_game_with_nothing_entered_anywhere(self):
+        game = self._game([
+            result(1, "A", 0, [0, 0]), result(2, "B", 0, [0, 0]), result(3, "C", 0, [0, 0]),
+        ])
+        # No round stands out as missing when none of them has any scores.
+        self.assertEqual(missing_rounds(game), [])
+
+    def test_flag_reaches_the_dataset(self):
+        games = build_dataset([
+            record("a", "2026-07-01T19:30:00", results=[
+                result(1, "A", 20, [6, 6, 8, 0]),
+                result(2, "B", 17, [5, 6, 6, 0]),
+                result(3, "C", 12, [4, 4, 4, 0]),
+            ]),
+            record("b", "2026-07-08T19:30:00", results=[
+                result(1, "A", 20, [6, 6, 8]),
+                result(2, "B", 17, [5, 6, 6]),
+                result(3, "C", 12, [4, 4, 4]),
+            ]),
+        ])
+        flags = {game.id: annotate_game(game).incomplete for game in games}
+        self.assertEqual(flags, {"a": True, "b": False})
+        self.assertEqual(games[0].missing_rounds, ["round_4"])
+
+
 class BuildTest(unittest.TestCase):
     def setUp(self):
         self.root = tempfile.mkdtemp()
@@ -312,6 +373,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(rows[("a", "Ванси")]["score_pct"], 50.0)
 
         self.assertEqual(dataset["standings"][0]["games"], 196)
+        self.assertEqual(dataset["coverage"]["incomplete_games"], 0)
         self.assertEqual(dataset["standings"][0]["team_key"], "колобки")
 
     def test_index_lists_every_built_city(self):

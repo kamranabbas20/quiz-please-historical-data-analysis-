@@ -39,6 +39,37 @@ record('credits name the map provider', /OpenStreetMap/.test(credits));
 record('credits carry the collection date',
   /\d{2}\.\d{2}\.\d{4}/.test(await page.$eval('#scrapedAt', (el) => el.textContent)));
 
+/* 0b. Games with an unfilled round are set aside by default. */
+const kpiGames = () => page.$$eval('.kpi', (nodes) => {
+  const found = nodes.find((n) => n.querySelector('.label').textContent === 'Игр с результатами');
+  return found ? Number(found.querySelector('.value').textContent) : null;
+});
+const excludedCount = await kpiGames();
+record('coverage names the incomplete games',
+  /незаполненными раундами/.test(await page.$eval('#coverage', (el) => el.textContent)));
+record('scope note says how many were set aside',
+  /исключен/.test(await page.$eval('#scopeNote', (el) => el.textContent)));
+
+await page.check('#includeIncomplete');
+await page.waitForTimeout(350);
+const includedCount = await kpiGames();
+record('including them adds games back', includedCount > excludedCount,
+  { excluded: excludedCount, included: includedCount });
+
+await page.click('.tab[data-view="games"]');
+await page.waitForTimeout(300);
+const marked = await page.$$eval('#games-table tbody tr.is-incomplete', (n) => n.length);
+record('incomplete games are marked in the table', marked > 0, marked);
+record('the marker says which rounds are missing',
+  /Не заполнены: Раунд/.test(await page.$eval('.pill--warn', (el) => el.title)));
+
+await page.uncheck('#includeIncomplete');
+await page.waitForTimeout(350);
+record('unchecking removes them again',
+  (await page.$$eval('#games-table tbody tr.is-incomplete', (n) => n.length)) === 0);
+await page.click('.tab[data-view="overview"]');
+await page.waitForTimeout(250);
+
 /* 1. City switching drives the team list. */
 if (cityOptions.length > 1) {
   const first = await teamsOf();

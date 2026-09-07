@@ -134,6 +134,13 @@ def _game_payload(game):
     # Where the scoreboard came from: the JSON endpoint (recent games, with team
     # ids) or the published .xlsx (the back catalogue, without them).
     payload["results_source"] = game.results_source
+    # Rounds that were never filled in, and so a total and a finishing order
+    # computed from partial data.
+    payload["missing_rounds"] = game.missing_rounds
+    payload["missing_round_labels"] = [
+        "Раунд %s" % name.split("_")[1] for name in game.missing_rounds
+    ]
+    payload["incomplete"] = game.incomplete
     return payload
 
 
@@ -215,6 +222,7 @@ def build_city(slug, data_dir="data", out_dir=os.path.join("app", "data")):
             "games_with_results": len(scored),
             "result_rows": len(rows),
             "teams": len(teams),
+            "incomplete_games": sum(1 for game in scored if game.incomplete),
             "date_from": first,
             "date_to": last,
             "scored_from": scored[0].date if scored else None,

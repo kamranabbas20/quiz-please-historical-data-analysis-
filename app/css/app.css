@@ -112,6 +112,11 @@ a { color: var(--series-1); }
 }
 .field--wide select { min-width: 210px; }
 .filters .reset { margin-left: auto; }
+.field--check { justify-content: flex-end; }
+.check { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; color: var(--text-secondary); }
+.check input { cursor: pointer; }
+.pill--warn { border-color: var(--bad); color: var(--bad); }
+tr.is-incomplete td { opacity: .75; }
 .reset {
   background: none; border: 1px solid var(--border); border-radius: 8px;
   padding: 6px 10px; color: var(--text-secondary); cursor: pointer;

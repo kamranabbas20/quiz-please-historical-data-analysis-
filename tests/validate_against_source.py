@@ -22,10 +22,39 @@ from dashboard.model import team_key   # noqa: E402  (only for the name key)
 DEFAULT_TEAMS = ["Колобки", "Ванси", "Noldor"]
 
 
+def has_unfilled_round(results):
+    """Re-derive the dashboard's rule here rather than importing it.
+
+    A round every team scored zero in, in a game that has scores elsewhere, was
+    never entered. Written out again on purpose: if this agrees with the app it
+    is because both read the same data, not because they share code.
+    """
+    if len(results) < 3:
+        return False
+    names = sorted({name for row in results for name in (row.get("rounds") or {})})
+    empty = False
+    scored = False
+    for name in names:
+        values = [row["rounds"].get(name) for row in results]
+        values = [value for value in values if value is not None]
+        if not values:
+            continue
+        if max(values) == 0:
+            empty = True
+        else:
+            scored = True
+    return empty and scored
+
+
 def load_rows(city="baku"):
-    """Every (game, scoreboard row) pair, computed from the raw scrape."""
+    """Every (game, scoreboard row) pair, computed from the raw scrape.
+
+    Games with an unfilled round are dropped, matching what the dashboard shows
+    by default.
+    """
     games_dir = os.path.join(ROOT, "data", city, "games")
     rows = []
+    skipped = 0
     for name in sorted(os.listdir(games_dir)):
         if not name.endswith(".json"):
             continue
@@ -33,6 +62,9 @@ def load_rows(city="baku"):
             game = json.load(handle)
         results = game.get("results") or []
         if not results:
+            continue
+        if has_unfilled_round(results):
+            skipped += 1
             continue
         best = max(row["total"] for row in results if row.get("total") is not None)
         for row in results:
@@ -46,6 +78,7 @@ def load_rows(city="baku"):
                 "teams_count": len(results),
                 "best": best,
             })
+    print("(исключено игр с незаполненными раундами: %d)" % skipped)
     return rows
 
 

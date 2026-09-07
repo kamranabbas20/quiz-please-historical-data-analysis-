@@ -171,11 +171,14 @@ class Game(object):
                  "game_type", "league", "theme", "difficulty", "format", "venue",
                  "address", "price", "currency", "url", "rounds", "results",
                  "teams_count", "best_total", "worst_total", "mean_total",
-                 "results_source", "game_family", "lat", "lon")
+                 "results_source", "game_family", "lat", "lon",
+                 "missing_rounds", "incomplete")
 
     def __init__(self, **fields):
         for name in self.__slots__:
             setattr(self, name, fields.get(name))
+        self.missing_rounds = fields.get("missing_rounds") or []
+        self.incomplete = bool(fields.get("incomplete"))
         self.results = fields.get("results") or []
         self.rounds = fields.get("rounds") or []
 

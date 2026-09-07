@@ -11,7 +11,11 @@ The winner therefore always scores 100%, and the number answers "how close to
 the best team in the room", not "how close to perfect".
 """
 
-__all__ = ["annotate_game", "percentile_of", "round_maxima"]
+__all__ = ["annotate_game", "missing_rounds", "percentile_of", "round_maxima"]
+
+# A round nobody scored in is only meaningful evidence with a field to judge by:
+# two teams both blanking a round is possible, twenty is not.
+MIN_TEAMS_FOR_MISSING_ROUND = 3
 
 
 def percentile_of(position, teams_count):
@@ -39,6 +43,40 @@ def round_maxima(results):
     return maxima
 
 
+def missing_rounds(game):
+    """Rounds that were never filled in, as opposed to rounds nobody won.
+
+    The scoreboards are internally consistent — a published total always equals
+    the sum of the published rounds — so an unfilled round does not show up as a
+    contradiction. It shows up as a column of zeros: every team in the room
+    scoring nothing in one round while scoring normally in the others. In a real
+    round somebody scores.
+
+    This matters because the missing round is usually the last one, which in a
+    classic game is worth roughly a third of the total. Both the totals and the
+    finishing order in such a game are computed from partial data.
+    """
+    results = game.results
+    if len(results) < MIN_TEAMS_FOR_MISSING_ROUND:
+        return []
+
+    empty = []
+    scored_elsewhere = False
+    for name in game.rounds:
+        values = [row.rounds.get(name) for row in results]
+        values = [value for value in values if value is not None]
+        if not values:
+            continue
+        if max(values) == 0:
+            empty.append(name)
+        else:
+            scored_elsewhere = True
+
+    # A game where nothing at all was entered is not a partially-missing round;
+    # it has no usable scores either way, and is caught by having no results.
+    return empty if scored_elsewhere else []
+
+
 def annotate_game(game):
     """Attach field-relative metrics to every scoreboard row of one game.
 
@@ -49,6 +87,9 @@ def annotate_game(game):
     results = game.results
     if not results:
         return game
+
+    game.missing_rounds = missing_rounds(game)
+    game.incomplete = bool(game.missing_rounds)
 
     best = game.best_total
     maxima = round_maxima(results)

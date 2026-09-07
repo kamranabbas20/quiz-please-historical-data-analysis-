@@ -24,7 +24,10 @@ const state = {
   city: null,
   team: null,
   compare: [],
-  filters: { family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '' },
+  filters: {
+    family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '',
+    includeIncomplete: false,
+  },
   teamQuery: '',
   view: 'overview',
   selectedGame: null,
@@ -83,8 +86,8 @@ async function loadLogo() {
 
 function cacheDom() {
   for (const id of ['city', 'team', 'teamSearch', 'family', 'gameType', 'variantField',
-    'league', 'season', 'venue', 'from', 'to', 'reset', 'main', 'tabs', 'scopeNote',
-    'themeToggle', 'coverage']) {
+    'league', 'season', 'venue', 'from', 'to', 'includeIncomplete', 'reset', 'main',
+    'tabs', 'scopeNote', 'themeToggle', 'coverage']) {
     dom[id] = document.getElementById(id);
   }
 }
@@ -115,7 +118,10 @@ function wireStaticControls() {
     });
   }
   dom.reset.addEventListener('click', () => {
-    state.filters = { family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '' };
+    state.filters = {
+      family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '',
+      includeIncomplete: false,
+    };
     state.selectedGame = null;
     syncFilterInputs();
     refreshDependentFilters();
@@ -128,6 +134,12 @@ function wireStaticControls() {
     for (const button of dom.tabs.querySelectorAll('.tab')) {
       button.setAttribute('aria-selected', String(button === tab));
     }
+    update();
+  });
+  dom.includeIncomplete.addEventListener('change', () => {
+    state.filters.includeIncomplete = dom.includeIncomplete.checked;
+    state.selectedGame = null;
+    refreshDependentFilters();
     update();
   });
   dom.themeToggle.addEventListener('click', toggleTheme);
@@ -183,7 +195,10 @@ async function selectCity(slug) {
   dom.city.value = slug;
   state.compare = [];
   state.selectedGame = null;
-  state.filters = { family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '' };
+  state.filters = {
+    family: '', gameType: '', league: '', season: '', venue: '', from: '', to: '',
+    includeIncomplete: false,
+  };
 
   // Teams depend on the city, and are discovered from its scoreboards.
   state.teamQuery = '';
@@ -203,7 +218,10 @@ async function selectCity(slug) {
 /* Filter options are scoped to the selected team, with counts, so no option
  * can produce an empty view. */
 function refreshDependentFilters() {
-  const rows = state.team ? teamRows(state.dataset, state.team) : [];
+  const all = state.team ? teamRows(state.dataset, state.team) : [];
+  const rows = state.filters.includeIncomplete
+    ? all
+    : all.filter((row) => !row.game.incomplete);
   const specs = [
     ['family', (row) => row.game.game_family || row.game.game_type, 'Все форматы'],
     ['league', (row) => row.game.league, 'Все лиги'],
@@ -270,6 +288,7 @@ function syncFilterInputs() {
   for (const id of ['family', 'gameType', 'league', 'season', 'venue', 'from', 'to']) {
     if (dom[id]) dom[id].value = state.filters[id] || '';
   }
+  if (dom.includeIncomplete) dom.includeIncomplete.checked = Boolean(state.filters.includeIncomplete);
 }
 
 function renderScrapedAt() {
@@ -288,6 +307,9 @@ function renderCoverage() {
       ? `${formatDate(coverage.scored_from)} — ${formatDate(coverage.scored_to)}`
       : null,
     `${coverage.teams} ${plural(coverage.teams, 'команда', 'команды', 'команд')}`,
+    coverage.incomplete_games
+      ? `${coverage.incomplete_games} с незаполненными раундами`
+      : null,
   ].filter(Boolean).join(' · ');
 }
 
@@ -298,9 +320,18 @@ function update() {
   const rows = state.team ? applyFilters(teamRows(state.dataset, state.team), state.filters) : [];
   const allRows = state.team ? teamRows(state.dataset, state.team) : [];
 
-  dom.scopeNote.textContent = state.team
-    ? `${rows.length} из ${allRows.length} ${plural(allRows.length, 'игры', 'игр', 'игр')} команды после фильтров`
-    : 'Выберите команду';
+  const dropped = state.team
+    ? teamRows(state.dataset, state.team).filter((row) => row.game.incomplete).length
+    : 0;
+  const parts = [];
+  if (state.team) {
+    parts.push(`${rows.length} из ${allRows.length} ${plural(allRows.length, 'игры', 'игр', 'игр')} команды после фильтров`);
+    if (dropped && !state.filters.includeIncomplete) {
+      parts.push(`${dropped} ${plural(dropped, 'игра исключена', 'игры исключены', 'игр исключено')} `
+        + 'из-за незаполненных раундов');
+    }
+  }
+  dom.scopeNote.textContent = state.team ? parts.join(' · ') : 'Выберите команду';
 
   const views = {
     overview: renderOverview,
@@ -546,7 +577,19 @@ function renderGames(container, rows) {
     return;
   }
   const columns = [
-    { key: 'date', label: 'Дата', get: (row) => row.date, render: (row) => formatDate(row.date), left: true },
+    { key: 'date', label: 'Дата', get: (row) => row.date, left: true,
+      render: (row) => {
+        if (!row.game.incomplete) return formatDate(row.date);
+        const wrap = document.createElement('span');
+        wrap.appendChild(document.createTextNode(`${formatDate(row.date)} `));
+        const pill = document.createElement('span');
+        pill.className = 'pill pill--warn';
+        pill.textContent = 'неполные данные';
+        pill.title = `Не заполнены: ${row.game.missing_round_labels.join(', ')}. `
+          + 'Сумма и место в этой игре посчитаны по неполным данным.';
+        wrap.appendChild(pill);
+        return wrap;
+      } },
     { key: 'type', label: 'Формат', get: (row) => row.game.game_type, render: (row) => row.game.game_type, left: true },
     { key: 'number', label: '№', get: (row) => Number(row.game.game_number) || 0, render: (row) => row.game.game_number || '—' },
     { key: 'position', label: 'Место', get: (row) => row.position ?? 1e6, render: (row) => String(row.position ?? '—') },
@@ -615,6 +658,19 @@ function gameDetail(row) {
   const section = document.createElement('section');
   section.id = 'game-detail';
   container_title(section, `Разбор игры: ${game.title} · ${formatDate(game.date)}`);
+
+  if (game.incomplete) {
+    const warn = document.createElement('div');
+    warn.className = 'card empty';
+    const strong = document.createElement('strong');
+    strong.textContent = 'Неполные данные игры';
+    const body = document.createElement('div');
+    body.textContent = `На сайте не заполнены ${game.missing_round_labels.join(', ')}: `
+      + 'ни одна команда не получила в них баллов. Сумма и итоговые места в этой игре '
+      + 'посчитаны без них, поэтому игра не учитывается в статистике команды.';
+    warn.append(strong, body);
+    section.appendChild(warn);
+  }
 
   const kpis = document.createElement('div');
   kpis.className = 'grid kpis';
@@ -1430,6 +1486,7 @@ function buildTable(columns, rows, { sortState, onSort, onRowClick, isSelected }
       });
     }
     if (isSelected && isSelected(row)) tr.classList.add('is-selected');
+    if (row && row.game && row.game.incomplete) tr.classList.add('is-incomplete');
     for (const column of columns) {
       const td = document.createElement('td');
       if (!column.left) td.classList.add('num');
